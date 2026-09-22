@@ -1,0 +1,45 @@
+{
+  "name": "crt-shader",
+  "version": "1.0.0",
+  "description": "Multi-pass CRT reconstruction for WebGL, Three.js and React, with portable GLSL sources.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Brooklyn (OutThisLife)",
+  "repository": {"type":"git","url":"git+https://github.com/OutThisLife/crt-shader.git","directory":"packages/crt-shader"},
+  "homepage": "https://github.com/OutThisLife/crt-shader#readme",
+  "keywords": ["crt","shader","glsl","webgl","three","react","r3f","pixel-art"],
+  "main": "./core.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {"types":"./index.d.ts","import":"./core.js","default":"./core.js"},
+    "./glsl": {"types":"./shaders.d.ts","import":"./shaders.js","default":"./shaders.js"},
+    "./glsl/*": "./glsl/*",
+    "./presets": {"types":"./presets.d.ts","import":"./presets.js","default":"./presets.js"},
+    "./react": {"types":"./react.d.ts","import":"./react.js","default":"./react.js"},
+    "./three": {"types":"./three.d.ts","import":"./three.js","default":"./three.js"},
+    "./postprocessing": {"types":"./postprocessing.d.ts","import":"./postprocessing.js","default":"./postprocessing.js"},
+    "./r3f": {"types":"./r3f.d.ts","import":"./r3f.js","default":"./r3f.js"}
+  },
+  "files": ["*.js","*.d.ts","glsl/","README.md","PORTING.md","LICENSE","NOTICE.md"],
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0",
+    "three": "^0.186.0",
+    "postprocessing": "^6.39.5",
+    "@react-three/fiber": "^9.7.0",
+    "@react-three/postprocessing": "^3.1.1"
+  },
+  "peerDependenciesMeta": {
+    "react": {"optional":true},
+    "three": {"optional":true},
+    "postprocessing": {"optional":true},
+    "@react-three/fiber": {"optional":true},
+    "@react-three/postprocessing": {"optional":true}
+  },
+  "devDependencies": {
+    "react":"19.2.7","react-dom":"19.2.7","three":"0.186.0",
+    "postprocessing":"6.39.5","@react-three/fiber":"9.7.0","@react-three/postprocessing":"3.1.1"
+  },
+  "scripts": {"prepack":"node ../../scripts/export-glsl.mjs"},
+  "publishConfig": {"access":"public"}
+}

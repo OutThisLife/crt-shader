@@ -1,0 +1,27 @@
+{
+  "name": "crt-shader-workspace",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.3.4",
+  "scripts": {
+    "dev": "pnpm --filter @crt-shader/examples dev",
+    "build": "pnpm build:glsl && pnpm --filter @crt-shader/examples build",
+    "build:glsl": "node scripts/export-glsl.mjs",
+    "test": "pnpm test:node && pnpm test:browser",
+    "test:node": "node --test tests/*.test.mjs packages/crt-shader/tests/react-ssr.test.mjs",
+    "test:browser": "node --test packages/crt-shader/tests/react-browser.test.mjs && pnpm --filter @crt-shader/examples test",
+    "ci": "pnpm build && pnpm test:node",
+    "check": "pnpm build:glsl && pnpm test && pnpm --filter @crt-shader/examples build",
+    "pack": "pnpm --filter crt-shader pack --pack-destination artifacts",
+    "verify:package": "pnpm run pack && node scripts/verify-package.mjs --browser"
+  },
+  "devDependencies": {
+    "crt-shader": "workspace:*",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@types/three": "0.186.0",
+    "esbuild": "0.28.1",
+    "playwright": "1.62.1",
+    "typescript": "6.0.3"
+  }
+}
