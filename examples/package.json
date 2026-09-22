@@ -1,0 +1,20 @@
+{
+  "name": "@crt-shader/examples",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5193 --strictPort",
+    "build": "vite build",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "crt-shader": "workspace:*",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "three": "0.186.0",
+    "postprocessing": "6.39.5",
+    "@react-three/fiber": "9.7.0",
+    "@react-three/postprocessing": "3.1.1"
+  },
+  "devDependencies": { "vite": "8.3.0" }
+}

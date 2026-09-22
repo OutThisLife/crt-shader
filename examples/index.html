@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>crt-shader examples</title>
+</head>
+<body>
+  <header>
+    <nav aria-label="Integration">
+      <a href="/vanilla/">Vanilla</a>
+      <a href="/glsl/">GLSL</a>
+      <a href="/react/">React</a>
+      <a href="/three/">Three.js</a>
+      <a href="/postprocessing/">postprocessing</a>
+      <a href="/r3f/">R3F</a>
+    </nav>
+    <label>Look <select id="preset"></select></label>
+  </header>
+  <main>
+    <h1 id="title">crt-shader</h1>
+    <p id="description"></p>
+    <div class="comparison">
+      <figure><figcaption>Original pattern</figcaption><div id="source" class="surface"></div></figure>
+      <figure><figcaption>CRT output</figcaption><div id="output" class="surface"></div></figure>
+    </div>
+    <p id="status" role="status">Loading…</p>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
