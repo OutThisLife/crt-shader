@@ -1,0 +1,32 @@
+{
+  "package": "crt-shader@1.0.0",
+  "publishedToNpm": false,
+  "npmBlocker": "npm whoami returned ENEEDAUTH",
+  "workspace": {
+    "command": "CRT_TEST_BROWSER_CHANNEL=chrome pnpm check",
+    "nodeApiTypesSsrTestsPassed": 5,
+    "reactLifecycleTestsPassed": 8,
+    "exampleBrowserTestsPassed": 11,
+    "productionExampleBuildPassed": true
+  },
+  "installedTarball": {
+    "command": "CRT_TEST_BROWSER_CHANNEL=chrome pnpm verify:package",
+    "files": 30,
+    "coreInstallsWithoutOptionalPeers": true,
+    "browserAndTypesTestsPassed": 12,
+    "integrations": ["vanilla", "glsl", "react", "three", "postprocessing", "r3f"],
+    "glslCoreExactParityPresets": ["reference", "clean", "soft", "photoSoft"],
+    "eachIntegrationUsesOneWebGlContext": true,
+    "containsOriginalLabAssets": false,
+    "containsPortingGuideAndNotices": true
+  },
+  "frozenSource": {
+    "shadersSha256": "59ab9fc09461cd2ecde62a8d9ca57ff1d4c1acf653b325a9b31079884b411ed4",
+    "presetsSha256": "effe4e721774cfd5761af8862ecbd8838a9b43934f791a4f657c922f24f19736"
+  },
+  "limits": [
+    "Framebuffer parity is measured in the same installed Chrome/WebGL backend, not claimed across all GPUs.",
+    "CI uses Node/API/types/SSR checks and the production build. GPU/browser tests were run locally.",
+    "The example build reports nonfatal use-client directive and large Three.js chunk warnings; distributed library source retains its directives."
+  ]
+}
