@@ -4,13 +4,11 @@ Multi-pass CRT reconstruction for WebGL 2. Original shader implementation and pa
 
 ## Install
 
-For a published release:
-
 ```sh
 npm install crt-shader
 ```
 
-This checkout does not establish registry availability or name ownership. Before publication, use the local tarball workflow in the [repository README](https://github.com/OutThisLife/crt-shader#install-and-run).
+[Live examples](https://crt-shader.vercel.app/) · [Source and documentation](https://github.com/OutThisLife/crt-shader)
 
 The package ships ESM and TypeScript declarations. Core/GLSL users need no framework peers. Add peers only for the route you use:
 

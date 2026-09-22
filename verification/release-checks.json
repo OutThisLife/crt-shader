@@ -1,7 +1,10 @@
 {
   "package": "crt-shader@1.0.0",
-  "publishedToNpm": false,
-  "npmBlocker": "npm whoami returned ENEEDAUTH",
+  "publishedToNpm": true,
+  "npmBlocker": null,
+  "publishedAt": "2026-09-22T20:56:54.741Z",
+  "registryUrl": "https://www.npmjs.com/package/crt-shader",
+  "publicRegistryIntegrityMatchesVerifiedArchive": true,
   "workspace": {
     "command": "CRT_TEST_BROWSER_CHANNEL=chrome pnpm check",
     "nodeApiTypesSsrTestsPassed": 5,
