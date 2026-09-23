@@ -1,0 +1,52 @@
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import QuickstartRecipe from './QuickstartRecipe.astro';
+import vanilla from '../../examples/quickstart/vanilla.js?raw';
+import react from '../../examples/quickstart/react.jsx?raw';
+import three from '../../examples/quickstart/three.js?raw';
+import postprocessing from '../../examples/quickstart/postprocessing.js?raw';
+import r3f from '../../examples/quickstart/r3f.jsx?raw';
+
+interface Props {
+  integration?: 'vanilla' | 'react' | 'three' | 'postprocessing' | 'r3f';
+}
+const { integration } = Astro.props;
+const recipes = [
+  { integration: 'vanilla', label: 'JS', code: vanilla, file: 'crt.js', peers: '',
+    note: 'Await demo.ready before reading the output; call demo.dispose() when removing it.' },
+  { integration: 'react', label: 'React', code: react, file: 'Artwork.jsx', peers: ' react@19 react-dom@19',
+    note: 'CRTImage releases its runtime lease on unmount.' },
+  { integration: 'three', label: 'Three', code: three, file: 'crt.js', peers: ' three@^0.186.0',
+    note: 'Call demo.dispose() when removing the scene. Reuse your existing renderer if you have one.' },
+  { integration: 'postprocessing', label: 'pmndrs', code: postprocessing, file: 'crt.js', peers: ' three@^0.186.0 postprocessing@^6.39.5',
+    note: 'Call demo.dispose() when removing the scene. Reuse your existing renderer if you have one.' },
+  { integration: 'r3f', label: 'R3F', code: r3f, file: 'CRTScene.jsx', peers: ' react@19 react-dom@19 three@^0.186.0 postprocessing@^6.39.5 @react-three/fiber@^9.7.0 @react-three/postprocessing@^3.1.1',
+    note: 'Fiber owns the renderer and mesh resources; CRT handles its pass cleanup on unmount.' },
+];
+const selected = recipes.find(recipe => recipe.integration === integration);
+---
+
+<div class="crt-quickstarts">
+{selected ? <QuickstartRecipe recipe={selected} /> : (
+  <Tabs syncKey="integration">
+    {recipes.map(recipe => (
+      <TabItem label={recipe.label}>
+        <QuickstartRecipe recipe={recipe} />
+      </TabItem>
+    ))}
+  </Tabs>
+)}
+</div>
+
+<style is:global>
+  .crt-quickstart { margin-block: 1rem; max-width: 32rem; }
+  .crt-quickstart .crt-surface { position: relative; width: 100%; overflow: hidden; background: #000; }
+  .crt-quickstart-frame { width: 100%; aspect-ratio: 8 / 5; }
+  .crt-quickstart-frame canvas { display: block; max-width: 100%; max-height: none; }
+  .crt-preview-loading { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--sl-color-gray-3); pointer-events: none; }
+  [data-ready='true'] .crt-preview-loading { display: none; }
+  .crt-quickstarts [role='tab']:focus-visible { outline: 2px solid var(--sl-color-text-accent); outline-offset: -2px; }
+  @media (max-width: 30rem) {
+    .crt-quickstarts [role='tab'] { padding-inline: .5rem; }
+  }
+</style>

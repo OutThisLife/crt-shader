@@ -1,77 +1,74 @@
 # crt-shader
 
-Multi-pass CRT reconstruction for WebGL 2, with image, React, Three.js and pmndrs adapters. Horizontal signal filtering, brightness-dependent scanlines and display optics reconstruct the source pixels. Four frozen presets share the same GLSL ES 3.00 stages.
+Multi-pass CRT rendering for WebGL 2, with image, React, Three.js and pmndrs adapters. The pipeline applies signal filtering, brightness-dependent scanlines and display optics.
 
-The output is opaque RGB on a black matte. This is a full-frame pipeline, not a single material shader or a WebGPU effect.
+[Documentation](https://crt-shader.vercel.app/) · [Gallery](https://crt-shader.vercel.app/examples/gallery/) · [npm](https://www.npmjs.com/package/crt-shader)
 
-## Install and run
-
-```sh
-npm install crt-shader
-```
-
-Install only the optional peers needed by your adapter; see [the package README](packages/crt-shader/README.md). The [documentation and live examples](https://crt-shader.vercel.app/) include the article comparison, original gallery, and integration guides.
-
-To develop locally or build an installable archive:
+## Install
 
 ```sh
-pnpm install
-pnpm build:glsl
-pnpm test
-pnpm build
-pnpm run pack
-# In another application:
-npm install /absolute/path/to/crt-shader/artifacts/crt-shader-1.0.0.tgz
+pnpm add crt-shader
 ```
 
-The filename follows the version in [the package manifest](packages/crt-shader/package.json). `pnpm docs:dev` runs the Starlight documentation at `http://127.0.0.1:3000/`; `pnpm dev` runs the standalone [examples](examples/). The library ships ES modules and TypeScript declarations; packaging generates raw GLSL and copies the notices and canonical porting guide. Use the pnpm version pinned in [package.json](package.json).
+The package ships ES modules and TypeScript declarations. [Get started](https://crt-shader.vercel.app/) has working examples and the dependencies for each adapter.
 
-## Choose an entry point
+Paste this into a browser module, such as `src/main.js` in a Vite app. It draws its own source image.
+
+```js
+import { createRuntime, prepareInput } from 'crt-shader';
+
+const source = document.createElement('canvas');
+source.width = 64;
+source.height = 48;
+const context = source.getContext('2d');
+context.fillStyle = '#fff';
+context.font = 'bold 24px monospace';
+context.fillText('CRT', 4, 32);
+
+const output = document.body.appendChild(document.createElement('canvas'));
+output.setAttribute('aria-label', 'CRT text');
+output.style.maxWidth = '100%';
+const runtime = createRuntime();
+try {
+  await runtime.render({
+    source: prepareInput(source), output,
+    width: 512, height: 384, preset: 'reference',
+  });
+} finally {
+  runtime.dispose();
+}
+```
+
+## Integrations
 
 | Import | Use | Guide |
 | --- | --- | --- |
-| `crt-shader` | Image preparation, runtime, `CRTRenderer`, presets | [Images and core](docs/images.md) |
-| `crt-shader/react` | `<CRTImage>` for still images | [React images](docs/images.md#react) |
-| `crt-shader/three` | `CRTPass` for Three's native `EffectComposer` | [Scene adapters](docs/scenes.md) |
-| `crt-shader/postprocessing` | `CRTPass` for the pmndrs composer | [Scene adapters](docs/scenes.md#pmndrs-postprocessing) |
-| `crt-shader/r3f` | `<CRT>` inside `@react-three/postprocessing` | [React Three Fiber](docs/scenes.md#react-three-fiber) |
-| `crt-shader/glsl` | Named JavaScript strings: `vertex`, `horizontal`, `vertical`, `optics` | [GLSL and pipeline](docs/glsl.md) |
-| `crt-shader/glsl/*.glsl` | Raw shader files for bundlers or copying | [GLSL and pipeline](docs/glsl.md) |
-| `crt-shader/presets` | Immutable `PRESETS` | [Options](docs/options.md) |
+| `crt-shader` | Image preparation, runtime, `CRTRenderer`, presets | [Vanilla JavaScript](https://crt-shader.vercel.app/guides/vanilla/) |
+| `crt-shader/react` | `<CRTImage>` for still images | [React](https://crt-shader.vercel.app/guides/react/) |
+| `crt-shader/three` | `CRTPass` for Three's native `EffectComposer` | [Three.js](https://crt-shader.vercel.app/guides/three/) |
+| `crt-shader/postprocessing` | `CRTPass` for the pmndrs composer | [pmndrs](https://crt-shader.vercel.app/guides/postprocessing/) |
+| `crt-shader/r3f` | `<CRT>` inside `@react-three/postprocessing` | [React Three Fiber](https://crt-shader.vercel.app/guides/r3f/) |
+| `crt-shader/presets` | Immutable `PRESETS` | [Options](https://crt-shader.vercel.app/options/) |
 
-```jsx
-import { CRTImage } from 'crt-shader/react';
+Images preserve native pixels by default; photo downsampling is opt-in. Scene adapters default to `inputResolution="auto"`, which downsamples the rendered scene. For native-resolution CRT, set a numeric resolution at least as large as the input buffer's longest edge. See [scene input sizing](https://crt-shader.vercel.app/scenes/#input-resolution-and-modes).
 
-<CRTImage src="/artwork.png" alt="Pixel-art landscape" width={480} />
+The effect processes full frames with opaque RGB output on a black matte.
+
+For custom integrations, see the [GLSL reference](docs/glsl.md) and [porting guide](https://crt-shader.vercel.app/agents/PORTING/).
+
+## Development
+
+Use the pnpm version pinned in [package.json](package.json).
+
+```sh
+pnpm install
+pnpm docs:dev
 ```
 
-Image input defaults to `inputMode="pixel"`, preserving native pixels. Photo downsampling is opt-in. **Scene adapters default to `inputResolution="auto"`, which downsamples the rendered scene.** For CRT at native scene resolution, use a numeric resolution at least as large as the input buffer's longest edge; [Source pixels](docs/scenes.md#input-resolution-and-modes) explains sizing and bypass. There is no `"source"` API value.
-
-## Runnable examples
-
-Run `pnpm dev`, then open the printed local URL with one of these routes. Each uses the public package exports and procedural artwork:
-
-| Route | Entry |
-| --- | --- |
-| `/vanilla/` | [Core image/canvas](examples/src/vanilla.js); `?input=image` uses a decoded image |
-| `/glsl/` | [Raw WebGL 2](examples/src/glsl.js); `?shaders=strings` uses JavaScript shader exports instead of raw files |
-| `/react/` | [React images](examples/src/react.js) |
-| `/three/` | [Native Three composer](examples/src/three.js) |
-| `/postprocessing/` | [pmndrs composer](examples/src/postprocessing.js) |
-| `/r3f/` | [React Three Fiber](examples/src/r3f.js) |
-
-## Documentation
-
-- [Image/core API and lifecycle](docs/images.md)
-- [Scene integration, color and ownership contracts](docs/scenes.md)
-- [Effect options and immutable presets](docs/options.md)
-- [Raw GLSL imports, copying and stage contract](docs/glsl.md)
-- [Agent porting checklist](docs/agents/PORTING.md)
-- [Contribution and release checks](docs/CONTRIBUTING.md)
-- [Credits and asset licensing](docs/CREDITS.md)
+The docs run at `http://127.0.0.1:3000/`. Use `pnpm dev` for the standalone [examples](examples/). Build, package and release commands are in [Contributing](https://crt-shader.vercel.app/CONTRIBUTING/).
 
 ## Credit and license
 
-Shader implementation and package: **Brooklyn ([OutThisLife](https://github.com/OutThisLife))**. Datagubbe's [The Effect of CRTs on Pixel Art](https://datagubbe.se/crt/) and [follow-up](https://datagubbe.se/crt2/) inspired the visual study; Datagubbe is not credited as the shader author.
+Code by Brooklyn ([OutThisLife](https://github.com/OutThisLife)), with visual inspiration from Datagubbe's [CRT article](https://datagubbe.se/crt/) and [follow-up](https://datagubbe.se/crt2/).
 
-This project's original code is MIT-licensed; the distributed [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md) define its terms and attribution. Article text, photographs, game sprites and other third-party assets are not relicensed by this project. See [Credits](docs/CREDITS.md) before copying reference material.
+Original code is MIT-licensed; retain [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md) when copying or porting it. Third-party images and articles have separate rights. See [Credits](https://crt-shader.vercel.app/CREDITS/).

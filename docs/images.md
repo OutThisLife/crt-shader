@@ -1,9 +1,11 @@
 ---
 title: "Core and images"
-description: "Prepare image inputs, render with the shared runtime, and manage color, caching, and lifecycle."
+description: "Image preparation, runtime methods and CRTImage props."
 ---
 
-Import the browser-independent module without creating a context; load images, prepare inputs and render only in browser/client code. Client rendering needs WebGL 2 and Canvas 2D. See the [core image/canvas example](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/vanilla.js) and [React image example](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/react.js) for complete applications and [`index.d.ts`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/index.d.ts) for core types.
+Load, prepare and render in browser code. Rendering requires WebGL 2 and Canvas 2D; importing the module creates no context.
+
+Examples: [JavaScript](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/vanilla.js), [React](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/react.js). Core types: [`index.d.ts`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/index.d.ts).
 
 ## Core
 
@@ -28,33 +30,33 @@ try {
 }
 ```
 
-| Export | Contract |
+| Export | Purpose |
 | --- | --- |
 | `PRESETS` | Immutable complete settings for `reference`, `clean`, `soft`, `photoSoft` |
 | `resolveSettings(preset = 'reference', overrides = {})` | Complete settings copy; validates names and finite numeric overrides |
 | `prepareInput(image, options = {})` | Black-backed canvas; `inputMode: 'pixel'` by default, or `'photo'` for downsampling |
 | `downsamplePhoto(image, resolution)` | Progressive Canvas 2D reduction with smoothing; pass a decoded source and positive integer longest edge |
-| `createRuntime(options = {})` | Owned scheduler/cache; call `dispose()` when finished |
+| `createRuntime(options = {})` | Scheduler and cache; call `dispose()` when finished |
 | `acquireRuntime()` | Browser-only shared `{ runtime, release }` lease; release once, do not dispose the shared runtime directly |
 | `CRTRenderer` | Synchronous low-level renderer for callers owning scheduling and cleanup |
 
-`prepareInput` accepts `HTMLImageElement` or `HTMLCanvasElement`. Pixel mode preserves dimensions and ignores `inputResolution`. Photo mode defaults to `inputResolution: 96`, validates a positive integer, preserves color and never upscales. It uploads a genuinely reduced texture, not an enlarged mosaic. Preparation does not select a CRT preset.
+`prepareInput` accepts `HTMLImageElement` or `HTMLCanvasElement`. Pixel mode preserves dimensions and ignores `inputResolution`. Photo mode defaults to `inputResolution: 96`, requires a positive integer, preserves color and never upscales. Choose the CRT preset separately.
 
 ### Runtime methods
 
-- `loadImage(url, { crossOrigin = 'anonymous' } = {})`: decoded image, deduplicated in-flight loads and bounded decoded cache. `crossOrigin` also accepts `'use-credentials'` or `null`.
-- `render({ source, output, preset = 'reference', settings = {}, width = output.width, height = output.height, view = null, sourceVersion = 0, signal })`: promise of `{ width, height }` in physical pixels. Width/height must be positive integers. Pending requests for the same output are latest-wins; superseded or aborted jobs reject with `AbortError`.
-- `invalidate(source)`: invalidate texture/output caches for that exact source object, then request another render.
-- `stats`: counters and retained-cache byte counts, not GPU timings.
-- `dispose()`: cancel queued work and free owned resources; idempotent, but the runtime cannot render afterward.
+- `loadImage(url, { crossOrigin = 'anonymous' } = {})`: returns a decoded image, deduplicates in-flight loads and caches decoded images within its budget. `crossOrigin` also accepts `'use-credentials'` or `null`.
+- `render({ source, output, preset = 'reference', settings = {}, width = output.width, height = output.height, view = null, sourceVersion = 0, signal })`: resolves to `{ width, height }` in physical pixels. Dimensions must be positive integers. The newest pending request for an output wins; superseded or aborted jobs reject with `AbortError`.
+- `invalidate(source)`: clears texture/output caches for that source object. Request a render afterward.
+- `stats`: counters and retained-cache bytes; excludes GPU timings.
+- `dispose()`: cancels queued work and frees owned resources. Safe to call again; rendering afterward fails.
 
-For a mutated canvas, increment `sourceVersion` or invalidate that source. If you mutate the original image/canvas behind a separately prepared canvas, regenerate the prepared input too. Caching cannot detect pixel changes from object identity alone.
+After changing a canvas, increment `sourceVersion` or invalidate it. If you changed the original behind a prepared canvas, regenerate the prepared input too.
 
 ### Geometry and low-level rendering
 
-`view` is `{ origin: [x, y], size: [width, height] }` in prepared source pixels, with a top-left origin. The pipeline retains the full input, including neighbors outside the view. This is framing, not effect strength. Core output dimensions are explicit; core does not derive an output aspect ratio from `settings.aspect`.
+`view` is `{ origin: [x, y], size: [width, height] }` in prepared-source pixels, with a top-left origin. Cropping retains the full input for neighboring samples. Set output dimensions explicitly; core does not derive them from `settings.aspect`.
 
-The synchronous path is `new CRTRenderer({ cacheBytes, targetBytes, sourceBytes })`, then `renderer.render(source, output, resolveSettings(...), { width, height, view, sourceVersion })`. Prepare transparent inputs against black first. Omitting `sourceVersion` here refreshes mutable input on every call and skips output caching; supplying a stable revision enables reuse. This differs from the runtime's default revision `0`. Call `renderer.dispose()` when finished.
+For synchronous rendering, use `new CRTRenderer({ cacheBytes, targetBytes, sourceBytes })`, then `renderer.render(source, output, resolveSettings(...), { width, height, view, sourceVersion })`. Prepare transparent inputs against black first. Omit `sourceVersion` to refresh input each call without output caching, or supply a stable revision to enable reuse. The runtime instead defaults to revision `0`. Call `renderer.dispose()` when finished.
 
 ## React
 
@@ -72,34 +74,42 @@ import { CRTImage } from 'crt-shader/react';
 />
 ```
 
-[`CRTImageProps`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/react.d.ts) defines the supported props. Every [scalar effect setting](/options) is a direct numeric prop overriding the preset.
+Pass [scalar effect settings](/options) as numeric props to override the preset. Types: [`CRTImageProps`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/react.d.ts).
 
 | Prop | Default | Meaning |
 | --- | --- | --- |
 | `src` | required | URL, decoded image element or canvas |
 | `sourceVersion` | `0` | Number/string revision; change after painting new source pixels |
-| `preset` | `'reference'` | Frozen preset name |
+| `preset` | `'reference'` | Preset name |
 | `inputMode` | `'pixel'` | Native pixels; `'photo'` opts into reduction |
-| `inputResolution` | `96` | Photo texture's positive integer longest edge; no `'auto'` image option |
+| `inputResolution` | `96` | Photo texture's positive integer longest edge; `'auto'` is unsupported |
 | `width`, `height` | source-derived | CSS pixels; omit one to preserve the calculated aspect |
 | `dpr` | device DPR capped at `2` | Physical/CSS pixel ratio; explicit positive value overrides cap |
 | `view` | `null` | Crop in prepared source pixels |
 | `loading` | `'eager'` | `'lazy'` waits for first intersection; falls back to eager if `IntersectionObserver` is unavailable |
 | `alt` | `''` | Canvas accessible label and fallback text |
-| `className`, `style` | none | Canvas presentation, not arbitrary DOM-prop forwarding |
+| `className`, `style` | none | Canvas presentation; other DOM props are not forwarded |
 | `onLoad` | none | After each completed render: `{ canvas, source, width, height }`; source is the decoded original and dimensions are physical pixels |
 | `onError` | none | Load, preparation or render errors; cancellation is not reported |
 
-Pixel layout uses `sourceWidth / (sourceHeight * aspect)`. Photo layout preserves the original aspect and ignores `aspect`; rounded preparation dimensions do not stretch the image. Photo crops map proportionally from the prepared texture back to the original. Supplying both width and height chooses an explicit output rectangle. CSS-only resizing does not resize the GPU framebuffer: update numeric dimensions when the rendered resolution should change.
+Pixel layout uses `sourceWidth / (sourceHeight * aspect)`. Photo layout ignores `aspect` and preserves the original ratio even when preparation rounds dimensions. Photo crops map proportionally back to the original. Set both dimensions to choose an explicit output rectangle. Update numeric dimensions to resize the framebuffer; CSS-only resizing leaves it unchanged.
 
-Import and server rendering do not touch the DOM or allocate GPU resources. Client effects acquire one shared runtime across mounted components, including StrictMode replay. Source/revision/preprocessing changes regenerate input from the retained original; effect-only changes reuse it. New requests supersede stale work; unmount cancels pending rendering and releases the lease. No automatic unprocessed-image fallback is inserted on failure.
+Import and server rendering do not touch the DOM or allocate GPU resources. Client effects share a runtime, including StrictMode replay. Source, revision or preparation changes regenerate input from the retained original; effect-only changes reuse it. New requests replace stale work. Unmount cancels pending rendering and releases the lease. Failures have no automatic image fallback.
 
 ## Access, color and memory
 
-Remote URLs need valid image-server CORS headers. Successful display in an ordinary `<img>` does not prove WebGL/Canvas access. Supplied image elements must already be decoded and CORS-clean. Browser restrictions cannot be bypassed by the library.
+Remote images need CORS headers that permit WebGL/Canvas access, even if they display in an `<img>`. Supplied image elements must be decoded and CORS-clean.
 
-Inputs use display-encoded RGB. Preparation composites transparency on black; reconstruction produces alpha `1`. Do not apply an extra output gamma/encoder. Display-P3, transparent pass-through and HDR image output are not supported.
+Inputs use display-encoded RGB. Preparation composites transparency on black; output alpha is `1`. Do not apply another output gamma/encoder. Display-P3, transparent pass-through and HDR output are unsupported.
 
-Runtime defaults are `frameBudget: 8` milliseconds of CPU submission, `imageBytes: 16 MiB`, `cacheBytes: 32 MiB` of finished outputs, `targetBytes: 32 MiB` of retained intermediate targets, and `sourceBytes: 16 MiB` of GPU source textures. The CPU budget is not a frame-rate or GPU-time guarantee.
+| Runtime option | Default | Budget |
+| --- | --- | --- |
+| `frameBudget` | `8 ms` | CPU submission time; does not bound GPU time or guarantee frame rate |
+| `imageBytes` | `16 MiB` | Decoded images |
+| `cacheBytes` | `32 MiB` | Finished outputs |
+| `targetBytes` | `32 MiB` | Retained intermediate targets |
+| `sourceBytes` | `16 MiB` | GPU source textures |
 
-Budgets exclude mounted originals/prepared inputs/output canvases and transient working buffers. Lazy initialization does not evict images that were once visible; use virtualization/unmounting for long feeds. Diagnostics include `renders`, `cacheHits`, `drawCalls`, `sourceUploads`, `targetAllocations`, `cacheBytes`, `targetBytes`, `sourceBytes`, plus runtime `queued`, `contexts`, `imageBytes` and `disposed`.
+Budgets exclude mounted originals, prepared inputs, output canvases and transient buffers. Lazy loading retains images once visible; virtualize or unmount them in long feeds.
+
+Diagnostics include `renders`, `cacheHits`, `drawCalls`, `sourceUploads`, `targetAllocations`, `cacheBytes`, `targetBytes`, `sourceBytes`, plus runtime `queued`, `contexts`, `imageBytes` and `disposed`.

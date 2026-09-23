@@ -8,6 +8,8 @@ export const collections = {
     // Keep the npm-linked Markdown canonical, and load the porting wrapper only.
     loader: glob({
       base: new URL('../', import.meta.url),
+      // Render with the current code theme, rather than caching hashed CSS links.
+      deferRender: true,
       // Keep raw GLSL references in the repository, but out of the site and search.
       pattern: ['*.{md,mdx}', 'guides/*.{md,mdx}', 'examples/*.{md,mdx}', 'agents/PORTING.mdx', '!glsl.md', '!guides/glsl.mdx'],
       generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''),

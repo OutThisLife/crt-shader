@@ -1,12 +1,30 @@
-/* Warm phosphor amber; all other Starlight theme tokens stay unchanged. */
-:root {
-  --sl-color-accent-low: #2b2114;
-  --sl-color-accent: #b76d1d;
-  --sl-color-accent-high: #f2cd98;
+/* Neutral Starlight chrome; artwork keeps its original colors. */
+:root,
+::backdrop {
+  --sl-color-white: hsl(0, 0%, 100%);
+  --sl-color-gray-1: hsl(0, 0%, 94%);
+  --sl-color-gray-2: hsl(0, 0%, 77%);
+  --sl-color-gray-3: hsl(0, 0%, 56%);
+  --sl-color-gray-4: hsl(0, 0%, 36%);
+  --sl-color-gray-5: hsl(0, 0%, 23%);
+  --sl-color-gray-6: hsl(0, 0%, 16%);
+  --sl-color-black: hsl(0, 0%, 10%);
+  --sl-color-accent-low: var(--sl-color-gray-6);
+  --sl-color-accent: var(--sl-color-white);
+  --sl-color-accent-high: var(--sl-color-white);
+  --sl-color-backdrop-overlay: hsla(0, 0%, 10%, 0.66);
 }
 
-:root[data-theme='light'] {
-  --sl-color-accent-low: #fff1db;
-  --sl-color-accent: #a16207;
-  --sl-color-accent-high: #80450b;
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+  --sl-color-white: hsl(0, 0%, 10%);
+  --sl-color-gray-1: hsl(0, 0%, 16%);
+  --sl-color-gray-2: hsl(0, 0%, 23%);
+  --sl-color-gray-3: hsl(0, 0%, 36%);
+  --sl-color-gray-4: hsl(0, 0%, 56%);
+  --sl-color-gray-5: hsl(0, 0%, 77%);
+  --sl-color-gray-6: hsl(0, 0%, 94%);
+  --sl-color-gray-7: hsl(0, 0%, 97%);
+  --sl-color-black: hsl(0, 0%, 100%);
+  --sl-color-backdrop-overlay: hsla(0, 0%, 36%, 0.66);
 }
