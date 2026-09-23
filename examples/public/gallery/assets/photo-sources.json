@@ -1,0 +1,54 @@
+[
+  {
+    "id": "photo-10",
+    "name": "Coastal forest",
+    "photo": true,
+    "url": "assets/photo-10.jpg",
+    "creator": "Paul Jarvis",
+    "sourceURL": "https://unsplash.com/photos/6J--NXulQCs",
+    "downloadURL": "https://picsum.photos/id/10/900/600",
+    "size": [
+      900,
+      600
+    ]
+  },
+  {
+    "id": "photo-64",
+    "name": "Sunlit portrait",
+    "photo": true,
+    "url": "assets/photo-64.jpg",
+    "creator": "Alexander Shustov",
+    "sourceURL": "https://unsplash.com/photos/AHBiSKaENwc",
+    "downloadURL": "https://picsum.photos/id/64/900/600",
+    "size": [
+      900,
+      600
+    ]
+  },
+  {
+    "id": "photo-237",
+    "name": "Black dog",
+    "photo": true,
+    "url": "assets/photo-237.jpg",
+    "creator": "Andr\u00e9 Spieker",
+    "sourceURL": "https://unsplash.com/photos/8wTPqxlnKM4",
+    "downloadURL": "https://picsum.photos/id/237/900/539",
+    "size": [
+      900,
+      539
+    ]
+  },
+  {
+    "id": "photo-1060",
+    "name": "Pour-over coffee",
+    "photo": true,
+    "url": "assets/photo-1060.jpg",
+    "creator": "Karl Fredrickson",
+    "sourceURL": "https://unsplash.com/photos/TYIzeCiZ_60",
+    "downloadURL": "https://picsum.photos/id/1060/900/600",
+    "size": [
+      900,
+      600
+    ]
+  }
+]

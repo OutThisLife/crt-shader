@@ -6,6 +6,7 @@ import { HalfFloatType, NoToneMapping, SRGBColorSpace } from 'three';
 import { ToneMappingMode } from 'postprocessing';
 import { CRT } from 'crt-shader/r3f';
 import { createScene } from './scene.js';
+import { DPR } from './pattern.js';
 
 // Runs after the composer's priority-1 frame, so readiness means pixels exist.
 function Ready({ crt, onReady }) {
@@ -27,7 +28,9 @@ export function mount({ source, host, preset }) {
   const crt = { current: null };
   return new Promise(resolve => {
     root.render(h(Canvas, {
-      scene: content.scene, camera: content.camera, dpr: 1, frameloop: 'demand', flat: true,
+      scene: content.scene, camera: content.camera, dpr: DPR, frameloop: 'demand', flat: true,
+      // Measure the shared logical frame, not its responsive CSS transform.
+      resize: { offsetSize: true },
       gl: { alpha: false, antialias: false, preserveDrawingBuffer: true },
       style: { width: '100%', height: '100%' },
       onCreated: ({ gl }) => {
@@ -42,6 +45,7 @@ export function mount({ source, host, preset }) {
       h(CRT, { ref: crt, preset, inputResolution: source.width })),
     h(Ready, { crt, onReady: (renderer, pass) => resolve({
       canvas: renderer.domElement, renderer, crt: pass,
+      scene: content.scene, camera: content.camera,
       dispose() { root.unmount(); content.dispose(); },
     }) })));
   });

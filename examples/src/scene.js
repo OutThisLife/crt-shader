@@ -1,7 +1,7 @@
 import { CanvasTexture, Color, Mesh, MeshBasicMaterial, NearestFilter,
   NoToneMapping, OrthographicCamera, PlaneGeometry, Scene, SRGBColorSpace,
   WebGLRenderer } from 'three';
-import { WIDTH, HEIGHT } from './pattern.js';
+import { WIDTH, HEIGHT, DPR } from './pattern.js';
 
 // One deterministic scene for native Three, pmndrs and R3F. The package's scene
 // adapters consume the existing renderer's target, never a second context.
@@ -27,7 +27,7 @@ export function createRenderer(host) {
   renderer.outputColorSpace = SRGBColorSpace;
   renderer.toneMapping = NoToneMapping;
   renderer.setClearColor(0x000000, 1);
-  renderer.setPixelRatio(1);
+  renderer.setPixelRatio(DPR);
   renderer.setSize(WIDTH, HEIGHT, false);
   renderer.domElement.setAttribute('aria-label', 'CRT procedural scene');
   host.append(renderer.domElement);

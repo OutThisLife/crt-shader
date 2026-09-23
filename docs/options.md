@@ -1,6 +1,9 @@
-# Options and presets
+---
+title: "Options and presets"
+description: "The four immutable presets and the scalar settings shared by every adapter."
+---
 
-`PRESETS` contains `reference` (default), `clean`, `soft` and `photoSoft`. Each settings object and the containing object are frozen. [`presets.js`](../packages/crt-shader/presets.js) is the source of truth for exact values; do not round or copy them into another defaults table.
+`PRESETS` contains `reference` (default), `clean`, `soft` and `photoSoft`. Each settings object and the containing object are frozen. [`presets.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/presets.js) is the source of truth for exact values; do not round or copy them into another defaults table.
 
 ```js
 import { PRESETS, resolveSettings } from 'crt-shader';
@@ -13,7 +16,7 @@ The preset changes effect settings only. `photoSoft` does not enable photo prepr
 
 ## Scalar settings
 
-All fields in [`CRTSettings`](../packages/crt-shader/index.d.ts) are numeric. Use partial `settings` with the runtime, direct props on `<CRTImage>`/`<CRT>`, or direct options on a `CRTPass`. The synchronous `CRTRenderer` requires a complete settings object, normally returned by `resolveSettings`.
+All fields in [`CRTSettings`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/index.d.ts) are numeric. Use partial `settings` with the runtime, direct props on `<CRTImage>`/`<CRT>`, or direct options on a `CRTPass`. The synchronous `CRTRenderer` requires a complete settings object, normally returned by `resolveSettings`.
 
 | Setting | Meaning |
 | --- | --- |
@@ -43,6 +46,6 @@ All fields in [`CRTSettings`](../packages/crt-shader/index.d.ts) are numeric. Us
 
 `resolveSettings` rejects unknown keys and non-finite values, but does not clamp artistic ranges. `undefined` overrides are ignored. The ranges in `controlGroups` in `presets.js` are UI guidance, not validation or safe bounds for every combination. Keep Gaussian widths positive and avoid singular mask/beam parameters when experimenting.
 
-For images, [`inputMode`, `inputResolution`, geometry and caching](images.md) are separate from the effect. For scenes, [`inputResolution`, `mode` and pass updates](scenes.md#input-resolution-and-modes) are separate too. None of those options belongs inside a runtime `settings` object.
+For images, [`inputMode`, `inputResolution`, geometry and caching](/images) are separate from the effect. For scenes, [`inputResolution`, `mode` and pass updates](/scenes#input-resolution-and-modes) are separate too. None of those options belongs inside a runtime `settings` object.
 
 `crt-shader/presets` documents/types `PRESETS`. The source also contains legacy UI/registration data; the photographic registration is not a portable crop preset or a supported renderer option. Use an explicit image `view` crop instead.

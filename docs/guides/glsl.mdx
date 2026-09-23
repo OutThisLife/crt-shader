@@ -1,0 +1,34 @@
+---
+title: Raw GLSL
+description: Run the portable GLSL ES 3.00 stages in your own WebGL 2 host.
+---
+
+import { Code } from '@astrojs/starlight/components';
+import AdapterExample from '../components/AdapterExample.jsx';
+import source from '../../examples/src/glsl.js?raw';
+
+<AdapterExample integration="glsl" client:only="react" />
+
+## Import the stages
+
+```sh
+npm install crt-shader
+```
+
+```js
+import { vertex, horizontal, vertical, optics } from 'crt-shader/glsl';
+import { PRESETS } from 'crt-shader/presets';
+```
+
+These are GLSL ES 3.00 source strings, not a ready-made single-pass material. The host must prepare the input, allocate intermediate targets, bind uniforms, and run horizontal → vertical → optics in order.
+
+Use the existing [GLSL stage contract](/glsl) for target dimensions, sampling, orientation, and color transfer. Use the [agent porting guide](/agents/PORTING) for ownership and real-GPU verification. No WebGPU, Unity, or Godot port is implied by these exports.
+
+## Runnable example source
+
+The source below is the repository's actual WebGL 2 host. Relative imports refer to other files in `examples/src/`; the shader sources remain in the package.
+
+<details>
+<summary>examples/src/glsl.js</summary>
+<Code code={source} lang="js" title="examples/src/glsl.js" />
+</details>

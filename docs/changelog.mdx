@@ -1,0 +1,20 @@
+---
+title: "Changelog"
+description: "Package changes, with links to the implementation and public API."
+---
+
+## 1.0.0
+
+Initial standalone package with:
+
+- WebGL 2 image rendering through `createRuntime`, `prepareInput`, and `CRTRenderer`.
+- React `CRTImage`, native Three.js and pmndrs `CRTPass` adapters, and React Three Fiber `CRT`.
+- The immutable `reference`, `clean`, `soft`, and `photoSoft` presets.
+- Portable GLSL ES 3.00 as named JavaScript strings and raw `.glsl` files.
+- ES modules, public TypeScript declarations, and a canonical porting guide included with the package.
+
+See the [package manifest](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/package.json), [source history](https://github.com/OutThisLife/crt-shader/commits/main/), and [npm package](https://www.npmjs.com/package/crt-shader).
+
+## Documentation preview
+
+The self-hosted Starlight documentation keeps the existing API guides in place, adds integration quickstarts, and renders the article comparison, complete gallery, and adapter examples directly in the page. This documentation work does not introduce a new package version or alter the frozen shader/preset settings.

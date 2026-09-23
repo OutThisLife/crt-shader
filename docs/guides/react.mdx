@@ -1,0 +1,67 @@
+---
+title: "React images"
+description: "Render a still image with CRTImage and let the component own its rendering lifecycle."
+---
+
+import { Code, LinkCard } from '@astrojs/starlight/components';
+import AdapterExample from '../components/AdapterExample.jsx';
+import source from '../../examples/src/react.js?raw';
+
+```sh
+npm install crt-shader react@19 react-dom@19
+```
+
+```jsx
+import { CRTImage } from 'crt-shader/react';
+
+export function Artwork() {
+  return (
+    <CRTImage
+      src="/artwork.png"
+      alt="Pixel-art landscape"
+      preset="reference"
+      width={480}
+      loading="lazy"
+      onError={console.error}
+    />
+  );
+}
+```
+
+Use your own same-origin image URL. The default `inputMode="pixel"` preserves the original pixels. `width` is in CSS pixels; the component handles its physical framebuffer using DPR. Omit one dimension to retain the calculated aspect ratio.
+
+<AdapterExample integration="react" client:only="react" />
+
+## Photos: choose reduction explicitly
+
+```jsx
+<CRTImage
+  src="/photograph.jpg"
+  alt="A mountain lake"
+  inputMode="photo"
+  inputResolution={96}
+  preset="photoSoft"
+  width={480}
+/>
+```
+
+`inputResolution` controls the prepared texture’s longest edge in photo mode. Choosing `photoSoft` alone does not reduce an image. Image input does not accept `"auto"`.
+
+## Updates and ownership
+
+Pass scalar effect overrides directly, such as `exposure={1.05}`. Increment `sourceVersion` when changing a supplied canvas. The component shares a runtime with other mounted images, cancels stale work, and releases its lease on unmount. Do not dispose that shared runtime yourself.
+
+Import and server rendering are DOM-safe; the actual image loading and rendering happen in client effects. Use your framework’s client-component boundary where required. Remote images need valid CORS headers. Errors reach `onError`; there is no automatic unprocessed-image fallback.
+
+<LinkCard title="Full image API and lifecycle" href="/images#react" description="Supported props, cropping, DPR, caching, and memory behavior." />
+
+[Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/react.js) · [Public types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/react.d.ts)
+
+## Runnable example source
+
+Imported directly from the executable example. Its relative imports refer to other files in `examples/src/`.
+
+<details>
+<summary>examples/src/react.js</summary>
+<Code code={source} lang="js" title="examples/src/react.js" />
+</details>

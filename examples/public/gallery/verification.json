@@ -1,0 +1,470 @@
+{
+  "status": "passed",
+  "method": "Real Chrome with the unmodified original gallery, copied assets, and current package renderer; intercepted local-file requests, no HTTP server.",
+  "originalDOMRowCount": 29,
+  "inventoryRowCount": 29,
+  "uniqueIDs": 29,
+  "originalRenderedRowCount": 29,
+  "rows": [
+    {
+      "id": "reference",
+      "preparedDimensions": [
+        35,
+        49
+      ],
+      "outputDimensions": [
+        423,
+        257
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "a9c538427d0ee3a1294734c093228d9de566b9007a44223ce4da4f4c901152ac",
+      "outputRGBAsha256": "7cb23d8c4d2bdc9b1c5de5a9f1346a5134e71d22b18f746e018490d8d68b0fef"
+    },
+    {
+      "id": "photo-10",
+      "preparedDimensions": [
+        96,
+        64
+      ],
+      "outputDimensions": [
+        162,
+        108
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "438465028221e7de04901787c1c4a4a6a6bea98c76320e04f18f20c79098a5b9",
+      "outputRGBAsha256": "b713c93eeb20673a85dbdfd700a69c94ef836f4be6a27e7056756018efe54a36"
+    },
+    {
+      "id": "photo-64",
+      "preparedDimensions": [
+        96,
+        64
+      ],
+      "outputDimensions": [
+        162,
+        108
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "b205a80ca99cb5dc1889db6d69c6c58a853be1969ab5eaaa4a85d8d769616d52",
+      "outputRGBAsha256": "547d9a320de56560868816364a88bf5d75717274d26818a9d864473e4f1ef36b"
+    },
+    {
+      "id": "photo-237",
+      "preparedDimensions": [
+        96,
+        57
+      ],
+      "outputDimensions": [
+        162,
+        97
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "c47ff39aa62718f91db45d81fb1d325f56d75aa36430208607e9d63e77569fae",
+      "outputRGBAsha256": "9eff4c6a1be894953550ce473fcc4b1d0fe969193342097b76fed858163fd33b"
+    },
+    {
+      "id": "photo-1060",
+      "preparedDimensions": [
+        96,
+        64
+      ],
+      "outputDimensions": [
+        162,
+        108
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "f45e31401124b50addc66a0e04f8fea0f6e02ec104900d8247183681f01716b6",
+      "outputRGBAsha256": "463ad0da3525fa83fa9933b23c47eb696250b32c50cb607ebcb756991c78d1bb"
+    },
+    {
+      "id": "test-squares",
+      "preparedDimensions": [
+        48,
+        36
+      ],
+      "outputDimensions": [
+        162,
+        105
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "5b000064ef6f5ff1153df4339223c001433dbfa4a78e9a5a9c9e1f906ba422ae",
+      "outputRGBAsha256": "04731b2f31901c77686397519255db3c185ac40b81994314c85d5223e6044e22"
+    },
+    {
+      "id": "test-lines",
+      "preparedDimensions": [
+        48,
+        36
+      ],
+      "outputDimensions": [
+        162,
+        105
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "29a70a21502e23c4624c4b3f29b43c64910328315573ccecd368e0dd0809c554",
+      "outputRGBAsha256": "de0b3d2f097a9110e47ec4cda64d16f5b501b6a865e753f3468f8e759981a39e"
+    },
+    {
+      "id": "test-rgb",
+      "preparedDimensions": [
+        48,
+        36
+      ],
+      "outputDimensions": [
+        162,
+        105
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "20a1d0d10b04e0b62de26ba1bfe4032421ec7435bf23fa817dfd887afa67dac0",
+      "outputRGBAsha256": "04eb9a819564ac3ca480417a2a853bb9fb63cd92212d461ecb295da7cf88be27"
+    },
+    {
+      "id": "test-dither",
+      "preparedDimensions": [
+        48,
+        36
+      ],
+      "outputDimensions": [
+        162,
+        105
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "6459f4b399b0734b5807037c9d31bf89d2c867874ca827aea3117004a73acdb1",
+      "outputRGBAsha256": "3b05e44f3df7868f000ce6deb1b64677fb9177432e92030e19d9590e1d0f4a74"
+    },
+    {
+      "id": "detail-sushi",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "14a09b930756e78594261cb8014a86c7ce255e1f490136ed338742ab26f748a4",
+      "outputRGBAsha256": "9a977c257b12b126c2e04f3bd81a7f44249cf983450e60e15e565a385b4b498b"
+    },
+    {
+      "id": "detail-strawberry",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "915203cb3093968c4cb337683337e2195add715bfa10a9fc586a9fa4c3a3c245",
+      "outputRGBAsha256": "b68d957e18f7fe11a25a2c26cee3e7cc8c770c8a6533ed34313684737cdfdc50"
+    },
+    {
+      "id": "detail-watermelon",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "603205dfa6543b84cfd5efeded23034fd6804d4150f0c733dbd4c66d90c3fd58",
+      "outputRGBAsha256": "152c42a725fd59cda916b4a01b05984760f1b5a1620d510afc615cb59ab4ad15"
+    },
+    {
+      "id": "detail-avocado",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "a69c2af7479fe147e56edf16e1f62a90f8405ea82cabfe14c7cca00d778777ad",
+      "outputRGBAsha256": "7ad6139dceb78a007942ec15c49bd3c3faf7dcd8caeda330c07822259173ce48"
+    },
+    {
+      "id": "detail-eggs",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "aa483572f3747b0d62f6fe27bce0b8d5d681f0eb407243297a2ab3fa42c427bb",
+      "outputRGBAsha256": "877cea4bffd679b7de297bcd0c6cb7f9b5574404b79a4f06bb9e33b2648fd447"
+    },
+    {
+      "id": "detail-jam",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "a0254c3ca23a900d9c88e90ce0bed7a30816de778fbc97b6fc634ed3f9e06853",
+      "outputRGBAsha256": "79755d3b12868af5bb023e5e3428ee43598788251a4f48532a365f6332b22117"
+    },
+    {
+      "id": "detail-wizard",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "9d61f554ca6b78828e9bf98ebbbf06baec8132cc5ca842ed404d72bc137728b6",
+      "outputRGBAsha256": "d19cb12038f74e35deef47833aad5a3e63d1dabf6b284366dbdfdf710ec48cf8"
+    },
+    {
+      "id": "detail-knight",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "f2d0cdcb994b109773709b5a21230235b6f271d4139b3f052294dac2f4bb5eaa",
+      "outputRGBAsha256": "36844d324e7727153003727da5ae014a8d080c5c9feeb40c7d0efa56550e909d"
+    },
+    {
+      "id": "detail-crab",
+      "preparedDimensions": [
+        32,
+        32
+      ],
+      "outputDimensions": [
+        128,
+        110
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "246bc4a9adea2ea1a50efa8e40a6127b8322103fea4c3a42299d545a3b8fcc89",
+      "outputRGBAsha256": "7fedcc6ddfdf031c2cc829f630024991b161b1613f68bc15d4ddff0cee079298"
+    },
+    {
+      "id": "peach",
+      "preparedDimensions": [
+        35,
+        49
+      ],
+      "outputDimensions": [
+        140,
+        169
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "a9c538427d0ee3a1294734c093228d9de566b9007a44223ce4da4f4c901152ac",
+      "outputRGBAsha256": "c1e5536bc755ca5a216a00df221654fb13ebf5e8eb6e89ba4f0295e43ec8dfec"
+    },
+    {
+      "id": "ruff",
+      "preparedDimensions": [
+        222,
+        217
+      ],
+      "outputDimensions": [
+        162,
+        136
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "43cd4b336925689c4a48e759e3eb8b2623aea8147e643d7e86acef22f8b67927",
+      "outputRGBAsha256": "b5ae02619e3402689b876408accb43935c2e6ee6f69e7dc8748e0514d1978ab7"
+    },
+    {
+      "id": "silkworm",
+      "preparedDimensions": [
+        320,
+        205
+      ],
+      "outputDimensions": [
+        162,
+        89
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "ddf640efc9dbfc9b2b7c251b7874bb24115e3f90a92d1ed2d84c705ea84383b6",
+      "outputRGBAsha256": "c179540c9df69de323c033cb841c18fdb95c7d12282455e8a7bd89271473a4e6"
+    },
+    {
+      "id": "maniac",
+      "preparedDimensions": [
+        320,
+        200
+      ],
+      "outputDimensions": [
+        162,
+        87
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "53a1136cdf8a34e5514c512392c078abae554673d944e7d9207f06a28c4d7e21",
+      "outputRGBAsha256": "9f59194c6fe438d3d41a313bd324e0d5c4fa0f7e78a6e8151ec037665b28f85f"
+    },
+    {
+      "id": "mayhem",
+      "preparedDimensions": [
+        320,
+        200
+      ],
+      "outputDimensions": [
+        162,
+        87
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "8404306a30404d1a6156ee507c21b7771f71d00c3d8f969e533108a6d37c7f47",
+      "outputRGBAsha256": "c2ebba765f4941740e717cf4a97879aa2848ab0f3b323ffbfb4aee9c45149a54"
+    },
+    {
+      "id": "monkey",
+      "preparedDimensions": [
+        640,
+        288
+      ],
+      "outputDimensions": [
+        162,
+        63
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "2ad50b898820eb32faec7f537d30e01818975c4e51450de739a8bcfd5beea095",
+      "outputRGBAsha256": "545baa89cff1ae28d9caed5ca60a9c1e5a6f472435b24d92121c7c28dc0003e6"
+    },
+    {
+      "id": "dither",
+      "preparedDimensions": [
+        320,
+        188
+      ],
+      "outputDimensions": [
+        162,
+        82
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "1a97c9345653be830eb2c5ba8b9d13c99e817d494d4ac6590716e3855ea846e4",
+      "outputRGBAsha256": "8053321c95005e579b502b7700374926ef381c39767b2ee991baaf7b92f5c44e"
+    },
+    {
+      "id": "tokitori",
+      "preparedDimensions": [
+        160,
+        144
+      ],
+      "outputDimensions": [
+        162,
+        125
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "e7768ecf4d65c9f17a12335be45a1e50ebd4fec3c86f2f3311e3662be39be8ce",
+      "outputRGBAsha256": "687f6eb59b3066d1d53675042821f66d1289707d469a42db9cedeb8351710cc1"
+    },
+    {
+      "id": "kirby",
+      "preparedDimensions": [
+        160,
+        144
+      ],
+      "outputDimensions": [
+        162,
+        125
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "8240a45aa9dcbdbd2e0382b061ce58411fbd2fb3b6d61140dc732a49cecbd42d",
+      "outputRGBAsha256": "24817a71fb74776cf72a383b172828d1723c23bab4d24637522f9e156cd4cecc"
+    },
+    {
+      "id": "gremlins",
+      "preparedDimensions": [
+        160,
+        144
+      ],
+      "outputDimensions": [
+        162,
+        125
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "15da04d9fa1aca13ebfda4141b2d64c4f8764f83fa6d1e4238e2d827a8891f58",
+      "outputRGBAsha256": "4b8b69c915bab8960d96f3d43c9fc89ce0bade054767c4b4dc787e8d7d4d6bce"
+    },
+    {
+      "id": "tripworld",
+      "preparedDimensions": [
+        160,
+        144
+      ],
+      "outputDimensions": [
+        162,
+        125
+      ],
+      "inputIdentical": true,
+      "referenceFramebufferIdentical": true,
+      "inputRGBAsha256": "da38a7681ed751d80efc2e3d85473e914d8cb0e214b35a821355fbc0f56e1204",
+      "outputRGBAsha256": "23b9a0cdfd859f99686c085f02f745dd971e1480e633b002feeb41c3de9dfeff"
+    }
+  ],
+  "copiedFileHashMatches": 35,
+  "originalEvidenceHashMatches": 11,
+  "referencePresetUnchanged": true,
+  "package": {
+    "archive": "/Users/brooklyn/.hermes/cache/scratch/crt-shader-1.0.0.tgz",
+    "sha256": "4cae3adadd07fa59d7d7ee127e3d1eeff4e4731845e1d787219a6115579ac990",
+    "fileCount": 30,
+    "containsGalleryAssets": false,
+    "prepackScriptsExecuted": false
+  },
+  "counts": {
+    "rows": 29,
+    "uniqueIDs": 29,
+    "copiedFiles": 35,
+    "copiedImageFiles": 28,
+    "copiedAssetBytes": 1020751,
+    "copiedImageBytes": 1005248,
+    "embeddedDiagnosticPNGs": 4,
+    "embeddedDiagnosticPNGBytes": 1432
+  },
+  "limitations": [
+    "Numerical parity is with the original approved renderer, not a quality ranking or calibrated CRT accuracy measurement.",
+    "Silkworm retains its original unscale despite nonidentical repeat blocks."
+  ],
+  "scope": "Only examples/gallery-inventory.json and examples/public/gallery/** changed by this recovery; original lab untouched."
+}

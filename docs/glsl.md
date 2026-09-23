@@ -1,6 +1,9 @@
-# GLSL imports and pipeline
+---
+title: "GLSL and porting"
+description: "Import portable GLSL ES 3.00 and preserve the multi-pass reconstruction contract."
+---
 
-The portable source is GLSL ES 3.00 for WebGL 2: one vertex shader and three ordered fragment stages. It is not a single `ShaderMaterial` fragment function. The [agent porting checklist](agents/PORTING.md) covers implementation and verification in another host.
+The portable source is GLSL ES 3.00 for WebGL 2: one vertex shader and three ordered fragment stages. It is not a single `ShaderMaterial` fragment function. The [agent porting checklist](/agents/PORTING) covers implementation and verification in another host.
 
 ## Import or copy
 
@@ -20,9 +23,9 @@ import vertical from 'crt-shader/glsl/vertical.glsl?raw';
 import optics from 'crt-shader/glsl/optics.glsl?raw';
 ```
 
-`?raw` is a bundler feature, not a Node or browser-native import syntax. Other bundlers need their own text loader. Alternatively copy `vertex.glsl`, `horizontal.glsl`, `vertical.glsl` and `optics.glsl` from the installed package's `glsl/` directory. Include the package's `LICENSE` and `NOTICE.md`, identify your changes, and retain Brooklyn (OutThisLife)'s implementation credit. Datagubbe's articles are visual inspiration, not shader source/authorship; [asset rights are separate](CREDITS.md).
+`?raw` is a bundler feature, not a Node or browser-native import syntax. Other bundlers need their own text loader. Alternatively copy `vertex.glsl`, `horizontal.glsl`, `vertical.glsl` and `optics.glsl` from the installed package's `glsl/` directory. Include the package's `LICENSE` and `NOTICE.md`, identify your changes, and retain Brooklyn (OutThisLife)'s implementation credit. Datagubbe's articles are visual inspiration, not shader source/authorship; [asset rights are separate](/CREDITS).
 
-[`shaders.js`](../packages/crt-shader/shaders.js) is canonical and frozen. `pnpm build:glsl` generates the [raw files](../packages/crt-shader/glsl/) through [`scripts/export-glsl.mjs`](../scripts/export-glsl.mjs). Never hand-edit generated output. Preset values come from [`presets.js`](../packages/crt-shader/presets.js); copy the applicable notices with a port. See [`examples/src/glsl.js`](../examples/src/glsl.js) for a runnable raw-GLSL host instead of a second implementation in this document.
+[`shaders.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/shaders.js) is canonical and frozen. `pnpm build:glsl` generates the [raw files](https://github.com/OutThisLife/crt-shader/tree/main/packages/crt-shader/glsl/) through [`scripts/export-glsl.mjs`](https://github.com/OutThisLife/crt-shader/blob/main/scripts/export-glsl.mjs). Never hand-edit generated output. Preset values come from [`presets.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/presets.js); copy the applicable notices with a port. See [`examples/src/glsl.js`](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/glsl.js) for a runnable raw-GLSL host instead of a second implementation in this document.
 
 ## Stage contract
 
@@ -48,10 +51,10 @@ The vertex shader expects two-component clip-space `a_position`, derives `uv` fr
 
 ## Orientation and color
 
-[`renderer.js`](../packages/crt-shader/renderer.js) uploads DOM images with `UNPACK_FLIP_Y_WEBGL = true`, then restores it. GPU render-target textures already follow the adapter's expected orientation. The frozen vertical shader contains its own coordinate flips. Match these conventions with an asymmetric test image rather than adding speculative UV flips.
+[`renderer.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/renderer.js) uploads DOM images with `UNPACK_FLIP_Y_WEBGL = true`, then restores it. GPU render-target textures already follow the adapter's expected orientation. The frozen vertical shader contains its own coordinate flips. Match these conventions with an asymmetric test image rather than adding speculative UV flips.
 
 The shaders consume display-encoded RGB, apply their own reconstruction `gamma`, color calibration, highlight shoulder and output power. This is not a general linear-light HDR effect. Image preprocessing composites on black. Scene input RGB must already be composited on black; its alpha is ignored rather than multiplied again. Output is always opaque.
 
-For native Three, put `OutputPass` before CRT and do not encode afterward. For pmndrs, feed tone-mapped linear RGB, encode **before** averaging in the first preparation stage, and decode offscreen CRT output back to linear for one final screen encode. The exact wrappers are in [`three-pipeline.js`](../packages/crt-shader/three-pipeline.js); follow [scene integration](scenes.md) rather than adapting the buffer order or color flags by guesswork.
+For native Three, put `OutputPass` before CRT and do not encode afterward. For pmndrs, feed tone-mapped linear RGB, encode **before** averaging in the first preparation stage, and decode offscreen CRT output back to linear for one final screen encode. The exact wrappers are in [`three-pipeline.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three-pipeline.js); follow [scene integration](/scenes) rather than adapting the buffer order or color flags by guesswork.
 
 The raw shaders do not include input reduction, resource management or scene color wrappers. A port must provide those explicitly. No WebGPU/WGSL, Unity/HLSL or Godot implementation is shipped or implied by these GLSL exports.

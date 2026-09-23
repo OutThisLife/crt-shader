@@ -1,6 +1,9 @@
-# Images and core
+---
+title: "Core and images"
+description: "Prepare image inputs, render with the shared runtime, and manage color, caching, and lifecycle."
+---
 
-Import the browser-independent module without creating a context; load images, prepare inputs and render only in browser/client code. Client rendering needs WebGL 2 and Canvas 2D. See the [core image/canvas example](../examples/src/vanilla.js) and [React image example](../examples/src/react.js) for complete applications and [`index.d.ts`](../packages/crt-shader/index.d.ts) for core types.
+Import the browser-independent module without creating a context; load images, prepare inputs and render only in browser/client code. Client rendering needs WebGL 2 and Canvas 2D. See the [core image/canvas example](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/vanilla.js) and [React image example](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/react.js) for complete applications and [`index.d.ts`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/index.d.ts) for core types.
 
 ## Core
 
@@ -69,7 +72,7 @@ import { CRTImage } from 'crt-shader/react';
 />
 ```
 
-[`CRTImageProps`](../packages/crt-shader/react.d.ts) defines the supported props. Every [scalar effect setting](options.md) is a direct numeric prop overriding the preset.
+[`CRTImageProps`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/react.d.ts) defines the supported props. Every [scalar effect setting](/options) is a direct numeric prop overriding the preset.
 
 | Prop | Default | Meaning |
 | --- | --- | --- |
@@ -95,7 +98,7 @@ Import and server rendering do not touch the DOM or allocate GPU resources. Clie
 
 Remote URLs need valid image-server CORS headers. Successful display in an ordinary `<img>` does not prove WebGL/Canvas access. Supplied image elements must already be decoded and CORS-clean. Browser restrictions cannot be bypassed by the library.
 
-Inputs use display-encoded RGB. Preparation composites transparency on black; reconstruction produces alpha `1`. Use the [pipeline contract](glsl.md) rather than applying an extra output gamma/encoder. Display-P3, transparent pass-through and HDR image output are not supported.
+Inputs use display-encoded RGB. Preparation composites transparency on black; reconstruction produces alpha `1`. Do not apply an extra output gamma/encoder. Display-P3, transparent pass-through and HDR image output are not supported.
 
 Runtime defaults are `frameBudget: 8` milliseconds of CPU submission, `imageBytes: 16 MiB`, `cacheBytes: 32 MiB` of finished outputs, `targetBytes: 32 MiB` of retained intermediate targets, and `sourceBytes: 16 MiB` of GPU source textures. The CPU budget is not a frame-rate or GPU-time guarantee.
 

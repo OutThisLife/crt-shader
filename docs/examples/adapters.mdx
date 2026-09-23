@@ -1,0 +1,55 @@
+---
+title: "Adapter comparison"
+description: "Inspect every public rendering integration with the same procedural source and matching settings."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import AdapterExample from '../components/AdapterExample.jsx';
+
+The adapters share the reconstruction stages, but own different integration work. Use the same source, prepared input resolution, preset, framing, and output geometry when comparing them. The examples below use a shared procedural input, not a reference photograph or separate artwork for each framework.
+
+<Tabs>
+  <TabItem label="Core">
+    <AdapterExample integration="vanilla" client:only="react" />
+
+    [Core and image API](/images) · [Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/vanilla.js)
+  </TabItem>
+  <TabItem label="React">
+    <AdapterExample integration="react" client:only="react" />
+
+    [React guide](/guides/react) · [Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/react.js)
+  </TabItem>
+  <TabItem label="Three.js">
+    <AdapterExample integration="three" client:only="react" />
+
+    [Three.js guide](/guides/three) · [Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/three.js)
+  </TabItem>
+  <TabItem label="pmndrs">
+    <AdapterExample integration="postprocessing" client:only="react" />
+
+    [pmndrs guide](/guides/postprocessing) · [Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/postprocessing.js)
+  </TabItem>
+  <TabItem label="R3F">
+    <AdapterExample integration="r3f" client:only="react" />
+
+    [R3F guide](/guides/r3f) · [Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/r3f.js)
+  </TabItem>
+</Tabs>
+
+## Why image and scene examples can look different
+
+The core and React image examples feed the original **64 × 48 pixels** directly to the shader. The Three.js, pmndrs, and R3F examples first rasterize a **384 × 288 scene**, then progressively reduce it to **64 × 48** before CRT reconstruction. That filtering can change the prepared pixels even though the original artwork and final dimensions match.
+
+Compare the three scene integrations with one another. To isolate shader parity against the image renderer, feed it the scene adapter’s exact prepared texture—not the original image. Input preparation is separate from the frozen CRT effect.
+
+## Keep these inputs consistent
+
+| Compare | Why it matters |
+| --- | --- |
+| Prepared dimensions | Scene `"auto"` reduction is not the same as native image input. Match actual prepared pixels, not just a UI label. |
+| Preset and overrides | An override survives a preset change until cleared. All adapters must receive the same resolved scalar settings. |
+| View and output geometry | Cropping, pixel aspect, framebuffer dimensions, and DPR change sampling. |
+| Color path | Native Three receives display-encoded RGB; pmndrs receives tone-mapped linear RGB. Follow each adapter’s contract rather than inserting the same passes everywhere. |
+| Target precision | RGBA8 fallback can clip highlights compared with float reconstruction targets. |
+
+This is an interactive comparison, not a cross-device pixel-equality or performance guarantee. Browsers and GPUs can differ. [Scene adapter contracts](/scenes) explain `mode`, input sizing, and diagnostics; the [porting checklist](/agents/PORTING) defines stronger verification for a new host.

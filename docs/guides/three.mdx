@@ -1,0 +1,84 @@
+---
+title: "Native Three.js"
+description: "Add a terminal CRTPass to Three.js’s native EffectComposer, after OutputPass."
+---
+
+import { Code, LinkCard } from '@astrojs/starlight/components';
+import AdapterExample from '../components/AdapterExample.jsx';
+import source from '../../examples/src/three.js?raw';
+
+```sh
+npm install crt-shader three@^0.186.0
+```
+
+Given your existing `WebGLRenderer`, scene, and camera:
+
+```js
+import { SRGBColorSpace } from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { CRTPass } from 'crt-shader/three';
+
+export function createCRTComposer(renderer, scene, camera) {
+  renderer.outputColorSpace = SRGBColorSpace;
+  renderer.setClearColor(0x000000, 1);
+
+  const composer = new EffectComposer(renderer);
+  const render = new RenderPass(scene, camera);
+  const output = new OutputPass();
+  const crt = new CRTPass({
+    preset: 'reference',
+    inputResolution: 'auto',
+  });
+
+  composer.addPass(render);
+  composer.addPass(output);
+  composer.addPass(crt);
+
+  return {
+    composer,
+    crt,
+    dispose() {
+      crt.dispose();
+      output.dispose();
+      render.dispose();
+      composer.dispose();
+    },
+  };
+}
+```
+
+Call `composer.render(delta)` in your application loop. Resize the renderer and composer together. The helper’s cleanup owns only these passes and the composer; your application still owns its renderer and scene resources.
+
+<AdapterExample integration="three" client:only="react" />
+
+## Keep the color pipeline in order
+
+`RenderPass` → `OutputPass` → `CRTPass`. CRT expects display-encoded, tone-mapped RGB and emits display-encoded output. **Do not add another tone mapper or output encoder after it.** This is not the pmndrs adapter’s linear-input contract.
+
+## Input resolution is not effect strength
+
+The code above intentionally uses the scene adapter’s reducing `"auto"` policy. To keep native input, set a numeric resolution at least as large as the incoming buffer’s longest edge. For a full-size composer, read the renderer’s physical drawing-buffer size; custom composer resolution scaling needs its own dimensions. Recompute after resize/DPR changes.
+
+```js
+import { Vector2 } from 'three';
+
+const size = renderer.getDrawingBufferSize(new Vector2());
+crt.setOptions({ inputResolution: Math.max(size.x, size.y) });
+```
+
+The `renderer` and `crt` above are your existing renderer and returned pass. Use `mode: 'pixelated'` to inspect prepared input or `mode: 'original'` to bypass both preparation and reconstruction. Keep the pass enabled.
+
+<LinkCard title="Scene adapter contracts" href="/scenes" description="Buffer ordering, color, alpha, updates, diagnostics, and ownership." />
+
+[Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/three.js) · [Public types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three.d.ts)
+
+## Runnable example source
+
+Imported directly from the executable example. Its relative imports refer to other files in `examples/src/`.
+
+<details>
+<summary>examples/src/three.js</summary>
+<Code code={source} lang="js" title="examples/src/three.js" />
+</details>

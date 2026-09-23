@@ -1,8 +1,11 @@
-# Scene adapters
+---
+title: "Scene adapter contracts"
+description: "Input resolution, color transfer, alpha, updates, and resource ownership across the Three.js adapters."
+---
 
 Both `CRTPass` adapters render through the caller's existing Three.js `WebGLRenderer`. They allocate their own targets/materials, not a second context or Canvas 2D copy path. Input reduction stays on the GPU; there are no pixel readbacks or CPU image uploads in this pipeline. WebGL 2 is required.
 
-The adapters have different composer base classes, buffer argument order and color contracts. Import the one for your composer. Complete applications: [native Three](../examples/src/three.js), [pmndrs](../examples/src/postprocessing.js) and [R3F](../examples/src/r3f.js). Shared implementation is [`three-pipeline.js`](../packages/crt-shader/three-pipeline.js).
+The adapters have different composer base classes, buffer argument order and color contracts. Import the one for your composer. Complete applications: [native Three](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/three.js), [pmndrs](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/postprocessing.js) and [R3F](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/r3f.js). Shared implementation is [`three-pipeline.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three-pipeline.js).
 
 ## Native Three.js
 
@@ -26,7 +29,7 @@ composer.addPass(crt); // last
 
 This adapter expects tone-mapped, display-encoded RGB from `OutputPass`, stored as raw values in an untagged/linear render target. It emits display-encoded RGB to both screen and offscreen targets. Do not add another tone mapper or sRGB encoder after CRT. A custom sRGB-tagged target that automatically decodes those stored values changes the contract.
 
-See [`three.js`](../packages/crt-shader/three.js) and [types](../packages/crt-shader/three.d.ts). Its composer render signature is `(renderer, writeBuffer, readBuffer, deltaTime, maskActive)`.
+See [`three.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three.js) and [types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three.d.ts). Its composer render signature is `(renderer, writeBuffer, readBuffer, deltaTime, maskActive)`.
 
 ## pmndrs postprocessing
 
@@ -34,7 +37,7 @@ Import `CRTPass` from `crt-shader/postprocessing` and add it after the `EffectPa
 
 The adapter expects **tone-mapped linear RGB**, sRGB-encodes once before input reduction, and runs the frozen stages on those display-encoded pixels. Screen output is already display-encoded. Offscreen output is explicitly decoded back to tone-mapped linear RGB so a final pmndrs `CopyPass` can encode once. This does not make the output scene-referred HDR or permit another tone-mapping stage.
 
-See [`postprocessing.js`](../packages/crt-shader/postprocessing.js) and [types](../packages/crt-shader/postprocessing.d.ts). It subclasses pmndrs `Pass`; its render signature is `(renderer, inputBuffer, outputBuffer, deltaTime, stencilTest)`. The composer calls `initialize(renderer, alpha, frameBufferType)` to allocate reusable pipeline objects.
+See [`postprocessing.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/postprocessing.js) and [types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/postprocessing.d.ts). It subclasses pmndrs `Pass`; its render signature is `(renderer, inputBuffer, outputBuffer, deltaTime, stencilTest)`. The composer calls `initialize(renderer, alpha, frameBufferType)` to allocate reusable pipeline objects.
 
 ## React Three Fiber
 
@@ -52,11 +55,11 @@ import { CRT } from 'crt-shader/r3f';
 </Canvas>
 ```
 
-`<CRT>` is a dedicated pmndrs pass, not a mergeable `Effect` or a material. It uses the same options below. [`r3f.js`](../packages/crt-shader/r3f.js) retains pass identity across prop updates, invalidates demand-mode rendering, and defers final disposal through StrictMode replay. Construction itself is GPU-lazy.
+`<CRT>` is a dedicated pmndrs pass, not a mergeable `Effect` or a material. It uses the same options below. [`r3f.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/r3f.js) retains pass identity across prop updates, invalidates demand-mode rendering, and defers final disposal through StrictMode replay. Construction itself is GPU-lazy.
 
 The `ref` exposes the pmndrs `CRTPass`. Props are authoritative: removing an override restores its preset value. If you call `ref.current.setOptions()` directly in a demand-mode scene, call Fiber's `invalidate()` yourself; subsequent React renders reapply the props. Do not dispose a mounted `<CRT>` manually.
 
-Install compatible peers from [the package manifest](../packages/crt-shader/package.json). Fiber 9 needs React 19. Keep one copy of `three`, `react`, `react-dom` and `postprocessing`; duplicate pmndrs copies break `instanceof Pass` checks. Linked workspaces may need bundler deduplication.
+Install compatible peers from [the package manifest](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/package.json). Fiber 9 needs React 19. Keep one copy of `three`, `react`, `react-dom` and `postprocessing`; duplicate pmndrs copies break `instanceof Pass` checks. Linked workspaces may need bundler deduplication.
 
 ## Input resolution and modes
 
@@ -67,7 +70,7 @@ Install compatible peers from [the package manifest](../packages/crt-shader/pack
 | `preset` | `'reference'` | `reference`, `clean`, `soft`, `photoSoft` |
 | `inputResolution` | `'auto'` | Positive integer longest edge, or the CSS-size policy below |
 | `mode` | `'crt'` | Reconstruction; `'pixelated'` inspects the prepared input; `'original'` bypasses both preparation and CRT |
-| [Scalar settings](options.md) | preset values | Direct numeric options/props; `aspect` does not stretch scene geometry |
+| [Scalar settings](/options) | preset values | Direct numeric options/props; `aspect` does not stretch scene geometry |
 
 Auto selects `max(32, ceil((CSSLongestEdge / 384 * 32) / 8) * 8)`, clamped to native input dimensions. CSS size is the renderer's logical size, not DPR-scaled pixels. The other edge is rounded proportionally; the displayed scene rectangle remains unchanged.
 
@@ -83,7 +86,7 @@ For native-resolution CRT, set `inputResolution` to a positive integer at least 
 
 ## Color, alpha and ownership
 
-The [pipeline](glsl.md) uses real RGBA8 preparation targets, then RGBA16F reconstruction targets if `EXT_color_buffer_float` is available. RGBA8 fallback can clip highlights. Unused preparation levels are released; targets/materials are reused and resized.
+The pipeline uses real RGBA8 preparation targets, then RGBA16F reconstruction targets if `EXT_color_buffer_float` is available. RGBA8 fallback can clip highlights. Unused preparation levels are released; targets/materials are reused and resized.
 
 Clear/composite the scene against black before CRT. Scene-buffer RGB is treated as already composited; alpha is not multiplied again. Every output mode writes alpha `1`. Transparent pass-through, Display-P3/wide-gamut output, XR stereo/multiview and composer stencil masks are unsupported. The complete composer rectangle is processed, not individual scene objects.
 

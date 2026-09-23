@@ -1,0 +1,12 @@
+/* Warm phosphor amber; all other Starlight theme tokens stay unchanged. */
+:root {
+  --sl-color-accent-low: #2b2114;
+  --sl-color-accent: #b76d1d;
+  --sl-color-accent-high: #f2cd98;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #fff1db;
+  --sl-color-accent: #a16207;
+  --sl-color-accent-high: #80450b;
+}

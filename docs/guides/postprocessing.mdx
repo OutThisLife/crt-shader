@@ -1,0 +1,80 @@
+---
+title: "pmndrs postprocessing"
+description: "Use a dedicated CRT pass after tone mapping in the pmndrs composer."
+---
+
+import { Code, LinkCard } from '@astrojs/starlight/components';
+import AdapterExample from '../components/AdapterExample.jsx';
+import source from '../../examples/src/postprocessing.js?raw';
+
+```sh
+npm install crt-shader three@^0.186.0 postprocessing@^6.39.5
+```
+
+Given your existing renderer, scene, and camera:
+
+```js
+import { HalfFloatType, NoToneMapping, SRGBColorSpace } from 'three';
+import {
+  EffectComposer,
+  EffectPass,
+  RenderPass,
+  ToneMappingEffect,
+  ToneMappingMode,
+} from 'postprocessing';
+import { CRTPass } from 'crt-shader/postprocessing';
+
+export function createCRTComposer(renderer, scene, camera) {
+  renderer.outputColorSpace = SRGBColorSpace;
+  renderer.toneMapping = NoToneMapping;
+  renderer.setClearColor(0x000000, 1);
+
+  const composer = new EffectComposer(renderer, {
+    frameBufferType: HalfFloatType,
+    multisampling: 0,
+  });
+  composer.addPass(new RenderPass(scene, camera));
+  composer.addPass(new EffectPass(
+    camera,
+    new ToneMappingEffect({ mode: ToneMappingMode.LINEAR }),
+  ));
+  const crt = new CRTPass({
+    preset: 'reference',
+    inputResolution: 'auto',
+  });
+  composer.addPass(crt);
+
+  return { composer, crt, dispose: () => composer.dispose() };
+}
+```
+
+Call `composer.render(delta)` from your application loop. Resize the renderer and composer together. Disposing this composer also disposes its passes; your application retains responsibility for its renderer and scene.
+
+`ToneMappingMode.LINEAR` is the neutral tone-mapping choice used by the comparison example. Choose the tone-mapping mode appropriate for your scene before CRT, not after it.
+
+<AdapterExample integration="postprocessing" client:only="react" />
+
+## Do not swap the two CRTPass imports
+
+The native Three pass and this pass have different base classes and buffer argument order. This adapter expects **tone-mapped linear RGB**, not the encoded output of Three’s `OutputPass`.
+
+Screen output is display-encoded. Offscreen output is decoded back to tone-mapped linear RGB so pmndrs can encode it once on final screen output. It is not scene-referred HDR output and should not be tone-mapped again.
+
+## Choose preparation separately
+
+`inputResolution: 'auto'` downsamples the scene. A positive integer selects the prepared texture’s longest edge, clamped to the incoming input. To retain source resolution, supply a number at least as large as the incoming render buffer’s longest edge and update it when that size changes.
+
+Use `crt.setOptions({ mode: 'pixelated' })` to inspect that prepared input. `mode: 'original'` bypasses both preparation and CRT while preserving the color and opaque-alpha contract. Do not disable a terminal pass for bypass: that can leave no pass rendering to the screen.
+
+<LinkCard title="Scene adapter contracts" href="/scenes" description="Exact resolution policy, alpha, output targets, and lifecycle guarantees." />
+
+[Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/postprocessing.js) · [Public types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/postprocessing.d.ts)
+
+## Runnable example source
+
+Imported directly from the executable example. Its relative imports refer to other files in `examples/src/`.
+
+<details>
+<summary>examples/src/postprocessing.js</summary>
+<Code code={source} lang="js" title="examples/src/postprocessing.js" />
+</details>

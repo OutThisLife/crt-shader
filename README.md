@@ -10,7 +10,7 @@ The output is opaque RGB on a black matte. This is a full-frame pipeline, not a 
 npm install crt-shader
 ```
 
-Install only the optional peers needed by your adapter; see [the package README](packages/crt-shader/README.md). Try the [live examples](https://crt-shader.vercel.app/).
+Install only the optional peers needed by your adapter; see [the package README](packages/crt-shader/README.md). The [documentation and live examples](https://crt-shader.vercel.app/) include the article comparison, original gallery, and integration guides.
 
 To develop locally or build an installable archive:
 
@@ -24,7 +24,7 @@ pnpm run pack
 npm install /absolute/path/to/crt-shader/artifacts/crt-shader-1.0.0.tgz
 ```
 
-The filename follows the version in [the package manifest](packages/crt-shader/package.json). `pnpm dev` runs the [examples](examples/). The library ships ES modules and TypeScript declarations; packaging generates raw GLSL and copies the notices and canonical porting guide. Use the pnpm version pinned in [package.json](package.json).
+The filename follows the version in [the package manifest](packages/crt-shader/package.json). `pnpm docs:dev` runs the Starlight documentation at `http://127.0.0.1:3000/`; `pnpm dev` runs the standalone [examples](examples/). The library ships ES modules and TypeScript declarations; packaging generates raw GLSL and copies the notices and canonical porting guide. Use the pnpm version pinned in [package.json](package.json).
 
 ## Choose an entry point
 

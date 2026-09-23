@@ -1,0 +1,36 @@
+---
+title: "Article comparison"
+description: "Read the source pixels, photographed CRT reference, and live reconstruction as three different kinds of evidence."
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import ComparisonGallery from '../components/ComparisonGallery.jsx';
+
+The starting point is Datagubbe’s [The Effect of CRTs on Pixel Art](https://datagubbe.se/crt/), not another software filter. This comparison keeps the source, the article’s physical-display photograph, and our reconstruction separate.
+
+<ComparisonGallery only="reference" client:only="react" />
+
+## What you are looking at
+
+| View | Meaning |
+| --- | --- |
+| Original source pixels | The digital image before reconstruction. Enlarging its pixels is a way to inspect the input, not a CRT simulation. |
+| Article CRT photograph | An actual screen photograph reproduced in the article. The display, signal path, camera focus, exposure, and framing all affect it. |
+| Our live output | The source pixels rendered through this package’s horizontal, vertical, and optics passes in your browser. |
+
+The `reference` preset is an artistic calibration. It does not make this an exact model of the photographed display. Differences in framing, focus, and signal conditions are part of the comparison—not grounds for calling one image “correct” in every setting.
+
+## Input preparation is a separate decision
+
+Native pixel input retains the artwork’s dimensions. Reducing a photograph or scene first changes the source that CRT reconstructs. Do not mistake that reduction for the CRT effect itself. Changing a preset never selects a source resolution.
+
+For a fair renderer comparison, match the prepared source, crop, output dimensions, DPR, and settings. The [adapter comparison](/examples/adapters) uses procedural artwork rather than reference photographs to make integration behavior easier to inspect.
+
+## Read the photographic context
+
+The [Peach follow-up](https://datagubbe.se/crt2/) distinguishes RGB, S-Video, and composite examples, and explains why close-up focus can obscure visible pixels. Its comparison pictures are not interchangeable “CRT filter” outputs. The package approximates horizontal color spread; it does **not** implement a complete composite/NTSC encoder and decoder.
+
+<CardGrid>
+  <LinkCard title="Complete example gallery" href="/examples/gallery" description="Explore the rest of the original study, including Peach and itch.io artwork." />
+  <LinkCard title="Credits and image rights" href="/CREDITS" description="Article and game assets retain their own authorship and rights." />
+</CardGrid>

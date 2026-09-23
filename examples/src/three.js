@@ -15,7 +15,7 @@ export async function mount({ source, host, preset }) {
   composer.addPass(output); // Tone map + encode before the native CRT pass.
   composer.addPass(crt); // Terminal: do not encode a second time afterward.
   composer.render();
-  return { canvas: renderer.domElement, renderer, composer, crt, dispose() {
+  return { canvas: renderer.domElement, renderer, composer, crt, scene: content.scene, camera: content.camera, dispose() {
     crt.dispose(); output.dispose(); render.dispose(); composer.dispose();
     content.dispose(); renderer.dispose();
   } };

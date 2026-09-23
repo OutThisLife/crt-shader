@@ -1,0 +1,114 @@
+[
+  {
+    "id": "maniac",
+    "name": "Maniac Mansion",
+    "url": "assets/maniac.png",
+    "sourceURL": "https://datagubbe.se/crt/maniac.png",
+    "size": [
+      640,
+      400
+    ],
+    "repeat": [
+      2,
+      2
+    ]
+  },
+  {
+    "id": "mayhem",
+    "name": "Mayhem in Monsterland",
+    "url": "assets/mayhem.png",
+    "sourceURL": "https://datagubbe.se/crt/mayhem_in_monsterland.png",
+    "size": [
+      640,
+      400
+    ],
+    "repeat": [
+      2,
+      2
+    ]
+  },
+  {
+    "id": "monkey",
+    "name": "Monkey Island",
+    "url": "assets/monkey.png",
+    "sourceURL": "https://datagubbe.se/crt/mi_org__b.png",
+    "size": [
+      640,
+      288
+    ],
+    "repeat": [
+      1,
+      1
+    ]
+  },
+  {
+    "id": "dither",
+    "name": "Dither + anti-aliasing",
+    "url": "assets/dither.png",
+    "sourceURL": "https://datagubbe.se/crt/dith_anti.png",
+    "size": [
+      640,
+      376
+    ],
+    "repeat": [
+      2,
+      2
+    ]
+  },
+  {
+    "id": "tokitori",
+    "name": "Toki Tori",
+    "url": "assets/tokitori.png",
+    "sourceURL": "https://datagubbe.se/crt2/tokitoribig.png",
+    "size": [
+      640,
+      576
+    ],
+    "repeat": [
+      4,
+      4
+    ]
+  },
+  {
+    "id": "kirby",
+    "name": "Kirby\u2019s Dream Land",
+    "url": "assets/kirby.png",
+    "sourceURL": "https://datagubbe.se/crt2/kirbtybig.png",
+    "size": [
+      640,
+      576
+    ],
+    "repeat": [
+      4,
+      4
+    ]
+  },
+  {
+    "id": "gremlins",
+    "name": "Gremlins 2",
+    "url": "assets/gremlins.png",
+    "sourceURL": "https://datagubbe.se/crt2/grembig.png",
+    "size": [
+      640,
+      576
+    ],
+    "repeat": [
+      4,
+      4
+    ]
+  },
+  {
+    "id": "tripworld",
+    "name": "Trip World",
+    "url": "assets/tripworld.png",
+    "sourceURL": "https://datagubbe.se/crt2/tripworldbig.png",
+    "size": [
+      640,
+      576
+    ],
+    "repeat": [
+      4,
+      4
+    ]
+  }
+]
