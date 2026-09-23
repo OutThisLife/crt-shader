@@ -1,6 +1,7 @@
 // Original procedural artwork. No image downloads, gallery assets or font dependency.
 export const WIDTH = 384;
 export const HEIGHT = 288;
+export const DPR = 1;
 
 export function createPattern() {
   const canvas = document.createElement('canvas');

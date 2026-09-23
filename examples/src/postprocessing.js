@@ -13,7 +13,7 @@ export async function mount({ source, host, preset }) {
   const crt = new CRTPass({ preset, inputResolution: source.width });
   composer.addPass(crt);
   composer.render();
-  return { canvas: renderer.domElement, renderer, composer, crt, dispose() {
+  return { canvas: renderer.domElement, renderer, composer, crt, scene: content.scene, camera: content.camera, dispose() {
     composer.dispose(); content.dispose(); renderer.dispose();
   } };
 }
