@@ -1,13 +1,13 @@
 ---
 title: "Credits and provenance"
-description: "Shader authorship, article inspiration, and the separate rights of reference images and artwork."
+description: "Code authorship, visual references and asset rights."
 ---
 
 ## Code
 
-**Brooklyn ([OutThisLife](https://github.com/OutThisLife))** implemented the reconstruction shaders, rendering pipeline, framework adapters and package. The canonical [`shaders.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/shaders.js) and [`presets.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/presets.js) preserve the approved study implementation and appearance. Raw `.glsl` files are generated from those JavaScript shader strings, not from an external shader project.
+Brooklyn ([OutThisLife](https://github.com/OutThisLife)) wrote the shaders, rendering pipeline, adapters and package.
 
-This project's original code is MIT-licensed. The distributed [LICENSE](https://github.com/OutThisLife/crt-shader/blob/main/LICENSE) contains the legal terms; [NOTICE.md](https://github.com/OutThisLife/crt-shader/blob/main/NOTICE.md) records attribution. Copies and ports, including extracted GLSL, must retain the applicable copyright and permission notice. Keep the provenance notice alongside them. Do not infer a license for other material from the package's `license` field.
+Original code is MIT-licensed under [LICENSE](https://github.com/OutThisLife/crt-shader/blob/main/LICENSE), with attribution in [NOTICE.md](https://github.com/OutThisLife/crt-shader/blob/main/NOTICE.md). Copies and ports, including extracted GLSL, must retain the copyright and permission notice. Keep NOTICE.md alongside them.
 
 ## Visual inspiration
 
@@ -16,10 +16,12 @@ Datagubbe's articles prompted the visual study:
 - [The Effect of CRTs on Pixel Art](https://datagubbe.se/crt/)
 - [The Peach meme: On CRTs, pixels and signal quality (again)](https://datagubbe.se/crt2/)
 
-These are visual references and article inspiration. **Datagubbe is not the author of this shader or package.** A reference photograph was used to evaluate/calibrate the appearance; it is not sampled by the shader at runtime. The `reference` preset is an artistic reconstruction, not a promise to simulate a particular physical CRT or reproduce every photographed image.
+The `reference` preset is an artistic reconstruction developed by comparing output with a photograph discussed in those articles.
 
 ## Third-party material
 
-Article text, photographs, game screenshots and sprites remain the property of their respective authors/rightsholders. Linking an article or studying its images does not license those images for redistribution, and this project's MIT license does not relicense them.
+Article text, photographs and game artwork remain under their authors' or rightsholders' terms. The project's MIT license covers its original code, not those assets. Redistribution requires separate permission or a license that allows it.
 
-The standalone package must exclude the original lab's article images, game artwork, calibration pages and gallery assets. Keep examples procedural or use assets with separately documented redistribution rights. If adding an asset, record the creator, source URL, actual license and any crop/downsampling changes next to it; preserve any required notices. Never label a mixed asset collection as MIT merely because the rendering code is MIT.
+The standalone package excludes article images, game artwork, calibration pages and gallery assets. For assets added to the docs or examples, record the creator, source URL, license or permission, and edits such as cropping or downsampling. Preserve required notices.
+
+The selfie is by [Brooklyn](https://x.com/imbabybrooklyn/status/2102090214940262413), used with permission. See [gallery image credits and licenses](/gallery/RIGHTS.md) for the other images.

@@ -1,0 +1,26 @@
+---
+import { Code } from '@astrojs/starlight/components';
+import QuickstartPreview from './QuickstartPreview.jsx';
+
+const { recipe } = Astro.props;
+const isComponent = recipe.file.endsWith('.jsx');
+const component = recipe.integration === 'react' ? 'Artwork' : 'CRTScene';
+---
+
+<Code code={`pnpm add crt-shader${recipe.peers}`} lang="sh" wrap />
+<QuickstartPreview integration={recipe.integration} label={recipe.label} client:visible />
+{isComponent ? (
+  <p>Save as <code>{recipe.file}</code>, then import and render <code>{`<${component} />`}</code> in your existing React app.</p>
+) : (
+  <p>Save as <code>crt.js</code> in your browser app.</p>
+)}
+<Code code={recipe.code} lang={isComponent ? 'jsx' : 'js'} title={recipe.file} />
+{!isComponent && <>
+  <p>Then mount it from your entry point:</p>
+  <Code code={"import { mount } from './crt.js';\nconst demo = mount(document.body);"} lang="js" title="main.js" />
+</>}
+<p>{recipe.note}</p>
+<p>
+  <a href={['vanilla', 'react'].includes(recipe.integration) ? '/images/' : '/scenes/'}>API reference</a>
+  {' · '}<a href="/options/">Presets and options</a>
+</p>

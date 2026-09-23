@@ -8,16 +8,17 @@
     "preview": "astro preview --host 127.0.0.1 --port 3000"
   },
   "dependencies": {
-    "@astrojs/starlight": "0.42.3",
-    "@astrojs/react": "7.0.0",
     "@astrojs/markdown-remark": "7.3.1",
+    "@astrojs/react": "7.0.0",
+    "@astrojs/starlight": "0.42.3",
+    "@react-three/fiber": "9.7.0",
+    "@react-three/postprocessing": "3.1.1",
     "astro": "7.3.4",
     "crt-shader": "workspace:*",
+    "photoswipe": "5.4.4",
+    "postprocessing": "6.39.5",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "three": "0.186.0",
-    "postprocessing": "6.39.5",
-    "@react-three/fiber": "9.7.0",
-    "@react-three/postprocessing": "3.1.1"
+    "three": "0.186.0"
   }
 }

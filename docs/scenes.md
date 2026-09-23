@@ -1,11 +1,11 @@
 ---
 title: "Scene adapter contracts"
-description: "Input resolution, color transfer, alpha, updates, and resource ownership across the Three.js adapters."
+description: "Color, resolution, options and lifecycle for Three.js scene adapters."
 ---
 
-Both `CRTPass` adapters render through the caller's existing Three.js `WebGLRenderer`. They allocate their own targets/materials, not a second context or Canvas 2D copy path. Input reduction stays on the GPU; there are no pixel readbacks or CPU image uploads in this pipeline. WebGL 2 is required.
+Both `CRTPass` adapters require WebGL 2 and use your existing `WebGLRenderer`. They own their targets and materials. Input reduction stays on the GPU without readbacks, CPU uploads or Canvas 2D copies.
 
-The adapters have different composer base classes, buffer argument order and color contracts. Import the one for your composer. Complete applications: [native Three](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/three.js), [pmndrs](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/postprocessing.js) and [R3F](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/r3f.js). Shared implementation is [`three-pipeline.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three-pipeline.js).
+Choose the adapter for your composer; their base classes, buffer order and color handling differ. Examples: [native Three](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/three.js), [pmndrs](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/postprocessing.js), [R3F](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/r3f.js). Shared implementation: [`three-pipeline.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three-pipeline.js).
 
 ## Native Three.js
 
@@ -27,17 +27,17 @@ composer.addPass(crt); // last
 // On removal: composer.removePass(crt); crt.dispose().
 ```
 
-This adapter expects tone-mapped, display-encoded RGB from `OutputPass`, stored as raw values in an untagged/linear render target. It emits display-encoded RGB to both screen and offscreen targets. Do not add another tone mapper or sRGB encoder after CRT. A custom sRGB-tagged target that automatically decodes those stored values changes the contract.
+This adapter expects tone-mapped, display-encoded RGB from `OutputPass` in an untagged/linear render target. An sRGB-tagged target would decode those stored values incorrectly. Screen and offscreen output are display-encoded; do not tone-map or sRGB-encode after CRT.
 
 See [`three.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three.js) and [types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/three.d.ts). Its composer render signature is `(renderer, writeBuffer, readBuffer, deltaTime, maskActive)`.
 
 ## pmndrs postprocessing
 
-Import `CRTPass` from `crt-shader/postprocessing` and add it after the `EffectPass` containing your `ToneMappingEffect`. Prefer half-float composer buffers for the linear path. CRT should be the terminal pass; scene/HDR effects belong before tone mapping and CRT.
+Import `CRTPass` from `crt-shader/postprocessing` and add it last, after the `EffectPass` containing `ToneMappingEffect`. Put scene/HDR effects before tone mapping. Prefer half-float composer buffers.
 
-The adapter expects **tone-mapped linear RGB**, sRGB-encodes once before input reduction, and runs the frozen stages on those display-encoded pixels. Screen output is already display-encoded. Offscreen output is explicitly decoded back to tone-mapped linear RGB so a final pmndrs `CopyPass` can encode once. This does not make the output scene-referred HDR or permit another tone-mapping stage.
+Input must be tone-mapped linear RGB. The adapter sRGB-encodes it before reduction and reconstruction. Screen output is display-encoded; offscreen output is decoded to tone-mapped linear RGB for a final pmndrs `CopyPass` to encode once. Do not treat the output as scene-referred HDR or tone-map it again.
 
-See [`postprocessing.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/postprocessing.js) and [types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/postprocessing.d.ts). It subclasses pmndrs `Pass`; its render signature is `(renderer, inputBuffer, outputBuffer, deltaTime, stencilTest)`. The composer calls `initialize(renderer, alpha, frameBufferType)` to allocate reusable pipeline objects.
+This adapter subclasses pmndrs `Pass` with render signature `(renderer, inputBuffer, outputBuffer, deltaTime, stencilTest)`. The composer calls `initialize(renderer, alpha, frameBufferType)` to allocate pipeline objects. See [`postprocessing.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/postprocessing.js) and [types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/postprocessing.d.ts).
 
 ## React Three Fiber
 
@@ -55,15 +55,15 @@ import { CRT } from 'crt-shader/r3f';
 </Canvas>
 ```
 
-`<CRT>` is a dedicated pmndrs pass, not a mergeable `Effect` or a material. It uses the same options below. [`r3f.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/r3f.js) retains pass identity across prop updates, invalidates demand-mode rendering, and defers final disposal through StrictMode replay. Construction itself is GPU-lazy.
+`<CRT>` is a dedicated pmndrs pass with the options below. It cannot be merged as an `Effect` or used as a material. [`r3f.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/r3f.js) reuses the pass across prop updates, invalidates demand-mode rendering and handles disposal through StrictMode replay. Construction allocates no GPU resources.
 
-The `ref` exposes the pmndrs `CRTPass`. Props are authoritative: removing an override restores its preset value. If you call `ref.current.setOptions()` directly in a demand-mode scene, call Fiber's `invalidate()` yourself; subsequent React renders reapply the props. Do not dispose a mounted `<CRT>` manually.
+The `ref` exposes the pmndrs `CRTPass`. Removing a prop override restores its preset value. After `ref.current.setOptions()` in a demand-mode scene, call Fiber's `invalidate()`; subsequent React renders reapply props. Do not dispose a mounted `<CRT>`.
 
-Install compatible peers from [the package manifest](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/package.json). Fiber 9 needs React 19. Keep one copy of `three`, `react`, `react-dom` and `postprocessing`; duplicate pmndrs copies break `instanceof Pass` checks. Linked workspaces may need bundler deduplication.
+Use the peer versions in [the package manifest](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/package.json). Fiber 9 needs React 19. Keep one copy of `three`, `react`, `react-dom` and `postprocessing`; duplicate pmndrs copies break `instanceof Pass` checks. Deduplicate linked workspaces in your bundler if needed.
 
 ## Input resolution and modes
 
-**`inputResolution: 'auto'` downsamples by default.** It is a stylized low-resolution input stage, not automatic preservation of the scene's source pixels.
+`inputResolution: 'auto'` reduces the scene input by default.
 
 | Option | Default | Meaning |
 | --- | --- | --- |
@@ -72,22 +72,22 @@ Install compatible peers from [the package manifest](https://github.com/OutThisL
 | `mode` | `'crt'` | Reconstruction; `'pixelated'` inspects the prepared input; `'original'` bypasses both preparation and CRT |
 | [Scalar settings](/options) | preset values | Direct numeric options/props; `aspect` does not stretch scene geometry |
 
-Auto selects `max(32, ceil((CSSLongestEdge / 384 * 32) / 8) * 8)`, clamped to native input dimensions. CSS size is the renderer's logical size, not DPR-scaled pixels. The other edge is rounded proportionally; the displayed scene rectangle remains unchanged.
+Auto selects `max(32, ceil((CSSLongestEdge / 384 * 32) / 8) * 8)`, clamped to native input dimensions. It uses the renderer's logical CSS size, excluding DPR. The other edge is rounded proportionally; the displayed rectangle is unchanged.
 
 ### Source pixels
 
-For native-resolution CRT, set `inputResolution` to a positive integer at least as large as the **incoming render buffer's** longest edge. With a full-canvas composer, use its physical drawing-buffer dimensions; account for any custom composer resolution scale. Recompute after resize or DPR changes. There is no `'source'` or `'native'` string option. Even without reduction, a GPU preparation copy isolates source quantization/filtering.
+To keep native resolution, set `inputResolution` to a positive integer at least as large as the incoming render buffer's longest edge. Use physical drawing-buffer dimensions for a full-canvas composer and account for custom composer scaling. Update after resize or DPR changes. Neither `'source'` nor `'native'` is supported. A GPU preparation copy still applies source quantization/filtering without reduction.
 
-`mode: 'pixelated'` nearest-enlarges that exact prepared texture. `mode: 'original'` uses the full-resolution scene and skips reconstruction, but still follows the adapter's color and opaque-alpha contract. Keep the pass enabled for bypass: disabling a terminal pmndrs pass can leave nothing rendering to screen.
+`mode: 'pixelated'` enlarges prepared input with nearest sampling. `mode: 'original'` uses the full-resolution scene with the adapter's color handling and opaque alpha. Keep the pass enabled for bypass; disabling a terminal pmndrs pass can leave nothing rendering to screen.
 
-`crt.setOptions(partial)` patches options and returns the pass. Explicit `undefined` clears an override. Changing a preset preserves explicitly set numeric overrides; changing modes preserves settings. Unknown keys, invalid modes and non-positive/non-integer fixed resolutions are rejected.
+`crt.setOptions(partial)` patches options and returns the pass. `undefined` clears an override. Preset changes preserve numeric overrides; mode changes preserve settings. Unknown keys, invalid modes and non-positive/non-integer fixed resolutions are rejected.
 
-`inputSize` reports the most recently prepared dimensions, or the original input dimensions in original mode. `stats` includes it plus physical `outputSize`, cumulative `renders`, `drawCalls`, `targetAllocations`, current `targets`, last-frame `preparationPasses`, `floatTargets` (`null` before initialization), and `disposed`. These are diagnostics, not FPS/GPU timing.
+`inputSize` reports the last prepared dimensions, or original dimensions in original mode. `stats` includes it plus physical `outputSize`, cumulative `renders`, `drawCalls`, `targetAllocations`, current `targets`, last-frame `preparationPasses`, `floatTargets` (`null` before initialization), and `disposed`. It does not measure FPS or GPU time.
 
 ## Color, alpha and ownership
 
-The pipeline uses real RGBA8 preparation targets, then RGBA16F reconstruction targets if `EXT_color_buffer_float` is available. RGBA8 fallback can clip highlights. Unused preparation levels are released; targets/materials are reused and resized.
+Preparation uses RGBA8 targets. Reconstruction uses RGBA16F when `EXT_color_buffer_float` is available; RGBA8 fallback can clip highlights. Unused preparation levels are released; targets and materials are reused and resized.
 
-Clear/composite the scene against black before CRT. Scene-buffer RGB is treated as already composited; alpha is not multiplied again. Every output mode writes alpha `1`. Transparent pass-through, Display-P3/wide-gamut output, XR stereo/multiview and composer stencil masks are unsupported. The complete composer rectangle is processed, not individual scene objects.
+Clear/composite the scene against black before CRT. Input RGB is treated as already composited; alpha is not multiplied again. All modes write alpha `1` across the full composer rectangle. Transparent pass-through, Display-P3/wide-gamut output, XR stereo/multiview and composer stencil masks are unsupported.
 
-Passes preserve the caller's render target, viewport/scissor, auto-clear and XR enable state. They never dispose the caller's renderer, buffers or input textures. Remove a manually managed pass from its composer and call `dispose()` when finished. Disposal is idempotent; rendering a disposed pass fails. `<CRT>` owns its own disposal.
+Passes preserve your render target, viewport/scissor, auto-clear and XR enable state. They do not dispose your renderer, buffers or input textures. Remove manually managed passes from the composer and call `dispose()` when finished. Repeated disposal is safe; rendering afterward fails. `<CRT>` handles its own disposal.

@@ -1,9 +1,9 @@
 ---
 title: "Options and presets"
-description: "The four immutable presets and the scalar settings shared by every adapter."
+description: "Presets and numeric effect settings for every adapter."
 ---
 
-`PRESETS` contains `reference` (default), `clean`, `soft` and `photoSoft`. Each settings object and the containing object are frozen. [`presets.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/presets.js) is the source of truth for exact values; do not round or copy them into another defaults table.
+`PRESETS` contains `reference` (default), `clean`, `soft` and `photoSoft`. The object and its settings are immutable. See [`presets.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/presets.js) for values.
 
 ```js
 import { PRESETS, resolveSettings } from 'crt-shader';
@@ -12,16 +12,16 @@ const settings = resolveSettings('reference', { exposure: 1.05 });
 // settings is a new complete object; PRESETS.reference is unchanged.
 ```
 
-The preset changes effect settings only. `photoSoft` does not enable photo preprocessing or choose an input resolution. Reset by removing overrides, not by modifying a preset.
+A preset changes effect settings only; `photoSoft` does not enable photo preparation or choose a resolution. Remove overrides to restore preset values.
 
 ## Scalar settings
 
-All fields in [`CRTSettings`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/index.d.ts) are numeric. Use partial `settings` with the runtime, direct props on `<CRTImage>`/`<CRT>`, or direct options on a `CRTPass`. The synchronous `CRTRenderer` requires a complete settings object, normally returned by `resolveSettings`.
+All [`CRTSettings`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/index.d.ts) fields are numeric. Pass partial `settings` to the runtime, direct props to `<CRTImage>`/`<CRT>`, or direct options to `CRTPass`. Synchronous `CRTRenderer` calls require complete settings; use `resolveSettings` to create them.
 
 | Setting | Meaning |
 | --- | --- |
 | `spread` | Horizontal luminance Gaussian width, in source-pixel units |
-| `bleed` | Additional horizontal chroma width; this approximates color spread, not composite/NTSC encode/decode |
+| `bleed` | Additional horizontal chroma width; approximates color spread without composite/NTSC encoding |
 | `gamma` | Input reconstruction power; also output gamma when `outputGamma` is not positive |
 | `beam` | Base vertical beam width, in source-row units |
 | `bloom` | Intensity-dependent beam widening; beam energy is normalized |
@@ -44,8 +44,8 @@ All fields in [`CRTSettings`](https://github.com/OutThisLife/crt-shader/blob/mai
 | `gr`, `gb` | Red and blue contributions to green |
 | `br`, `bg` | Red and green contributions to blue |
 
-`resolveSettings` rejects unknown keys and non-finite values, but does not clamp artistic ranges. `undefined` overrides are ignored. The ranges in `controlGroups` in `presets.js` are UI guidance, not validation or safe bounds for every combination. Keep Gaussian widths positive and avoid singular mask/beam parameters when experimenting.
+`resolveSettings` rejects unknown keys and non-finite values, ignores `undefined` overrides and leaves numeric ranges unclamped. The `controlGroups` ranges in `presets.js` guide UI controls; they do not validate settings or guarantee valid combinations. Keep Gaussian widths positive and avoid singular mask/beam parameters.
 
-For images, [`inputMode`, `inputResolution`, geometry and caching](/images) are separate from the effect. For scenes, [`inputResolution`, `mode` and pass updates](/scenes#input-resolution-and-modes) are separate too. None of those options belongs inside a runtime `settings` object.
+Keep [image preparation, geometry and caching options](/images) and [scene resolution, modes and updates](/scenes#input-resolution-and-modes) outside the runtime `settings` object.
 
-`crt-shader/presets` documents/types `PRESETS`. The source also contains legacy UI/registration data; the photographic registration is not a portable crop preset or a supported renderer option. Use an explicit image `view` crop instead.
+`PRESETS` is the documented, typed export of `crt-shader/presets`. Legacy UI/registration data in the module is not a supported renderer option. Use image `view` for cropping.

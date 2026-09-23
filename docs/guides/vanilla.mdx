@@ -1,52 +1,17 @@
 ---
 title: Vanilla JavaScript
-description: Prepare an image and render it into a canvas with the core runtime.
+description: Prepare pixels and render them with the core runtime.
 ---
 
-import { Code } from '@astrojs/starlight/components';
-import AdapterExample from '../components/AdapterExample.jsx';
-import source from '../../examples/src/vanilla.js?raw';
-
-<AdapterExample integration="vanilla" client:only="react" />
+import Quickstart from '../components/Quickstart.astro';
 
 ## Install and render
 
-```sh
-npm install crt-shader
-```
+<span id="runnable-example-source" />
+<Quickstart integration="vanilla" />
 
-Run this in browser code with a canvas in your page and a same-origin image URL:
+Keep the runtime for updates. After changing an input canvas, prepare it again and increment `sourceVersion` in the next `runtime.render()` call. Output dimensions are physical pixels.
 
-```js
-import { createRuntime, prepareInput } from 'crt-shader';
+For an image URL, use `await runtime.loadImage(url)` instead of drawing a source canvas; remote URLs need CORS permission.
 
-const runtime = createRuntime();
-const image = await runtime.loadImage('/artwork.png');
-const source = prepareInput(image);
-
-await runtime.render({
-  source,
-  output: document.querySelector('canvas'),
-  preset: 'reference',
-  width: 960,
-  height: 540,
-});
-
-// When no further updates are needed:
-runtime.dispose();
-```
-
-The prepared input retains native pixels by default and composites transparency on black. Rendering needs WebGL 2 and Canvas 2D. Output dimensions are physical pixels, not CSS dimensions.
-
-Retain the runtime for updates. Increment `sourceVersion` when mutating an input canvas, and regenerate the prepared input if the original source changed. Remote images require CORS permission.
-
-The [core and image API](/images) is the canonical reference for preparation, scheduling, cache invalidation, cropping, errors, and resource ownership. [Options and presets](/options) describe effect settings independently of input preparation.
-
-## Runnable example source
-
-This is imported directly from the repository's executable example, not maintained as a second implementation. Its relative imports refer to other files in `examples/src/`.
-
-<details>
-<summary>examples/src/vanilla.js</summary>
-<Code code={source} lang="js" title="examples/src/vanilla.js" />
-</details>
+[Core and image API](/images) · [Options and presets](/options)

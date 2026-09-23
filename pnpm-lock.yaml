@@ -154,6 +154,9 @@ importers:
       crt-shader:
         specifier: workspace:*
         version: link:../packages/crt-shader
+      photoswipe:
+        specifier: 5.4.4
+        version: 5.4.4
       postprocessing:
         specifier: 6.39.5
         version: 6.39.5(three@0.186.0)
@@ -1879,6 +1882,10 @@ packages:
 
   parse5@7.3.0:
     resolution: {integrity: sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==}
+
+  photoswipe@5.4.4:
+    resolution: {integrity: sha512-WNFHoKrkZNnvFFhbHL93WDkW3ifwVOXSW3w1UuZZelSmgXpIGiZSNlZJq37rR8YejqME2rHs9EhH9ZvlvFH2NA==}
+    engines: {node: '>= 0.12.0'}
 
   piccolore@0.1.3:
     resolution: {integrity: sha512-o8bTeDWjE086iwKrROaDf31K0qC/BENdm15/uH9usSC/uZjJOKb2YGiVHfLY4GhwsERiPI1jmwI2XrA7ACOxVw==}
@@ -4390,6 +4397,8 @@ snapshots:
   parse5@7.3.0:
     dependencies:
       entities: 6.0.1
+
+  photoswipe@5.4.4: {}
 
   piccolore@0.1.3: {}
 
