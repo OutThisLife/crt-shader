@@ -10,15 +10,15 @@
     "kenney": 3,
     "article-art": 11
   },
-  "orderSource": "Exact original gallery.js samples builder, confirmed against every actual row rendered by unmodified gallery.html in Chrome; splat-scene/src/asset-gallery.js mounts this same gallery.",
-  "scope": "Original gallery only. No later Petdex catalog, SHARP/splat assets, new UI, or generated photographs.",
+  "orderSource": "Original gallery order, with Brooklyn's selfie replacing photo-64.",
+  "scope": "Pixel art, photographs, and diagnostic patterns for the documentation gallery.",
   "fieldConventions": {
     "paths": "Site-root-relative URLs under /gallery/. originalSample retains original lab-relative values; do not resolve those against the new document.",
     "crop": "[x, y, width, height] in original image pixels, applied before unscaleFactors.",
-    "nativeDimensions": "Actual prepared input texture dimensions from the original gallery. These are not always hardware-native raster dimensions. For photos they are the default downsampled shader input.",
+    "nativeDimensions": "Prepared input texture dimensions. Photos are downsampled before the CRT effect.",
     "nativeArtworkDimensions": "Unpadded art dimensions when available; original photograph dimensions for photo rows.",
     "reference": "Boolean identifying the original fixed-registration reference row; articleReference carries separate photographed-reference metadata.",
-    "url": "Copied original image URL, except original procedural diagnostics whose real data URLs are preserved. Do not downsample ordinary pixel art again.",
+    "url": "Source image URL, or an embedded PNG for a procedural diagnostic.",
     "settingsRef": "Every row uses the top-level reconstruction.settings without per-image adjustments."
   },
   "reconstruction": {
@@ -96,7 +96,7 @@
     "The shader package MIT license does not cover third-party images. Keep every gallery asset out of npm.",
     "Article/game imagery and photographed references have no established redistribution permission in the retained lab; attribution is not a license. Review rights before broader publication.",
     "Henry Software art is CC0, not the separate MIT code-license entry on its itch.io page. Kenney CC0 notice is preserved.",
-    "Photo credits and source/download URLs are retained. Unsplash licensing is distinct from MIT/CC0, and per-file releases/ownership are not independently verified.",
+    "Unsplash photographs retain their original licenses. Brooklyn supplied permission to use her selfie in this gallery.",
     "A photographed CRT is not a competing shader output; this inventory does not substantiate a best-shader ranking.",
     "Silkworm preserves the original 2×2 unscale despite failed exact-repeat verification; the historical SOURCES.md generalization is not valid for that asset."
   ],
@@ -105,8 +105,8 @@
     "uniqueIDs": 29,
     "copiedFiles": 35,
     "copiedImageFiles": 28,
-    "copiedAssetBytes": 1020751,
-    "copiedImageBytes": 1005248,
+    "copiedAssetBytes": 1556493,
+    "copiedImageBytes": 1540853,
     "embeddedDiagnosticPNGs": 4,
     "embeddedDiagnosticPNGBytes": 1432
   },
@@ -172,7 +172,8 @@
     "frozen": true,
     "referenceCropMismatchedChannels": 0,
     "sourceCorrespondencePath": "/gallery/calibration/source-correspondence.json",
-    "runtimeVerification": "Real Chrome + original WebGL renderer, local files supplied through Playwright request interception; no HTTP server, no original source changes."
+    "runtimeVerification": "Real Chrome + original WebGL renderer, local files supplied through Playwright request interception; no HTTP server, no original source changes.",
+    "scope": "Historical verification of the original gallery, before image replacements."
   },
   "rows": [
     {
@@ -477,30 +478,30 @@
       ]
     },
     {
-      "id": "photo-64",
-      "title": "Sunlit portrait",
-      "name": "Sunlit portrait",
+      "id": "brooklyn-selfie",
+      "title": "Brooklyn's selfie",
+      "name": "Brooklyn's selfie",
       "category": "photo",
-      "url": "/gallery/assets/photo-64.jpg",
-      "sourcePath": "/gallery/assets/photo-64.jpg",
-      "originalPath": "/gallery/assets/photo-64.jpg",
+      "url": "/gallery/assets/brooklyn-selfie.png",
+      "sourcePath": "/gallery/assets/brooklyn-selfie.png",
+      "originalPath": "/gallery/assets/brooklyn-selfie.png",
       "originalDimensions": [
-        900,
-        600
+        497,
+        759
       ],
       "nativeDimensions": [
-        96,
-        64
+        63,
+        96
       ],
       "nativeArtworkDimensions": [
-        900,
-        600
+        497,
+        759
       ],
       "crop": [
         0,
         0,
-        900,
-        600
+        497,
+        759
       ],
       "repeat": [
         1,
@@ -512,46 +513,43 @@
       ],
       "photo": true,
       "reference": false,
-      "originalSample": {
-        "id": "photo-64",
-        "name": "Sunlit portrait",
-        "photo": true,
-        "url": "assets/photo-64.jpg",
-        "creator": "Alexander Shustov",
-        "sourceURL": "https://unsplash.com/photos/AHBiSKaENwc",
-        "downloadURL": "https://picsum.photos/id/64/900/600",
-        "size": [
-          900,
-          600
-        ]
-      },
+      "originalSample": null,
       "source": {
         "kind": "photograph-input",
-        "path": "/gallery/assets/photo-64.jpg",
-        "url": "https://unsplash.com/photos/AHBiSKaENwc",
-        "downloadURL": "https://picsum.photos/id/64/900/600",
+        "path": "/gallery/assets/brooklyn-selfie.png",
+        "url": "https://x.com/imbabybrooklyn/status/2102090214940262413",
+        "downloadURL": "https://pbs.twimg.com/media/HSwf2u_XIAA1Lgr?format=jpg&name=orig",
         "dimensions": [
-          900,
-          600
+          497,
+          759
+        ],
+        "downloadDimensions": [
+          1238,
+          872
+        ],
+        "downloadCrop": [
+          33,
+          30,
+          497,
+          759
         ]
       },
       "article": null,
       "articleReference": null,
       "referencePath": null,
       "credits": [
-        "Alexander Shustov",
-        "Supplied by Lorem Picsum; original source on Unsplash"
+        "Brooklyn (@imbabybrooklyn)"
       ],
       "sourceURLs": [
-        "https://unsplash.com/photos/AHBiSKaENwc",
-        "https://picsum.photos/id/64/900/600"
+        "https://x.com/imbabybrooklyn/status/2102090214940262413",
+        "https://pbs.twimg.com/media/HSwf2u_XIAA1Lgr?format=jpg&name=orig"
       ],
       "license": {
-        "status": "source-specific-license-review",
-        "identifier": "Unsplash License (source attribution; not independently confirmed for each archived file)",
+        "status": "creator-permission",
+        "identifier": "Used with permission",
         "mit": false,
-        "evidenceURL": "https://unsplash.com/license",
-        "notice": "Original manifest credits preserved. General Unsplash license permits use with restrictions, but does not establish model/property/trademark releases or independently authenticate each archived image. Not MIT, CC0, or public domain."
+        "evidenceURL": "https://x.com/imbabybrooklyn/status/2102090214940262413",
+        "notice": "Photo by Brooklyn. Used with permission in this gallery."
       },
       "reconstruction": {
         "preset": "reference",
@@ -562,16 +560,16 @@
         "crop": [
           0,
           0,
-          900,
-          600
+          497,
+          759
         ],
         "unscaleFactors": [
           1,
           1
         ],
         "preparedDimensions": [
-          96,
-          64
+          63,
+          96
         ],
         "matte": "#000000",
         "imageSmoothing": "progressive-high-quality",
@@ -581,8 +579,9 @@
         "pixelAspect": 1
       },
       "limitations": [
-        "The before image remains the original photograph. Only the shader input is progressively downsampled to a 96-pixel longest edge; retain full color and the original photographic aspect ratio."
-      ]
+        "Unfiltered left panel of the original comparison post."
+      ],
+      "replaces": "photo-64"
     },
     {
       "id": "photo-237",
@@ -3732,17 +3731,17 @@
       ]
     },
     {
-      "path": "/gallery/assets/photo-64.jpg",
-      "originalLabPath": "assets/photo-64.jpg",
-      "bytes": 39301,
-      "sha256": "afeaa42ec70614bceaf0c09c1dd5cdae50b7edef8d0292962dac36beaf01172a",
+      "path": "/gallery/assets/brooklyn-selfie.png",
+      "originalLabPath": null,
+      "bytes": 574906,
+      "sha256": "72259bd0161808c88a9088b2b2ad7922a4c6a9eb2976a042741acd3d11fbe67a",
       "dimensions": [
-        900,
-        600
+        497,
+        759
       ],
       "role": "shader-input",
       "rowIDs": [
-        "photo-64"
+        "brooklyn-selfie"
       ]
     },
     {
@@ -4117,8 +4116,8 @@
     {
       "path": "/gallery/assets/photo-sources.json",
       "originalLabPath": "assets/photo-sources.json",
-      "bytes": 1239,
-      "sha256": "23ebd5fda538de013745724d060104ddd23dac5a73e4dc4547f2e369bdb48e9a",
+      "bytes": 1376,
+      "sha256": "ce7425c77696243103ed0241f58b4204339a5b4cb13caf4e6558ae9753c7d22c",
       "dimensions": null,
       "role": "provenance-or-notice",
       "rowIDs": []

@@ -13,16 +13,22 @@
     ]
   },
   {
-    "id": "photo-64",
-    "name": "Sunlit portrait",
+    "id": "brooklyn-selfie",
+    "name": "Brooklyn's selfie",
     "photo": true,
-    "url": "assets/photo-64.jpg",
-    "creator": "Alexander Shustov",
-    "sourceURL": "https://unsplash.com/photos/AHBiSKaENwc",
-    "downloadURL": "https://picsum.photos/id/64/900/600",
+    "url": "assets/brooklyn-selfie.png",
+    "creator": "Brooklyn (@imbabybrooklyn)",
+    "sourceURL": "https://x.com/imbabybrooklyn/status/2102090214940262413",
+    "downloadURL": "https://pbs.twimg.com/media/HSwf2u_XIAA1Lgr?format=jpg&name=orig",
+    "downloadCrop": [
+      33,
+      30,
+      497,
+      759
+    ],
     "size": [
-      900,
-      600
+      497,
+      759
     ]
   },
   {
@@ -30,7 +36,7 @@
     "name": "Black dog",
     "photo": true,
     "url": "assets/photo-237.jpg",
-    "creator": "Andr\u00e9 Spieker",
+    "creator": "André Spieker",
     "sourceURL": "https://unsplash.com/photos/8wTPqxlnKM4",
     "downloadURL": "https://picsum.photos/id/237/900/539",
     "size": [
