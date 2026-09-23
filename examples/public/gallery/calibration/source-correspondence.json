@@ -1,0 +1,217 @@
+{
+  "coordinate_convention": "Pixel centers. Native u=x-140, v=y-66; target qx=reference x-430, qy=reference y. Raw fit x=sx*u+tx, y=sy*v+ty. CRT affine qx=sx*u+skx*v+tx, qy=sky*u+sy*v+ty.",
+  "raw_fit_sx_sy_tx_ty": [
+    20.672383475244537,
+    17.961952582730348,
+    20.999999764657478,
+    16.819643822418268
+  ],
+  "raw_center_test_count": 266,
+  "raw_mismatch_yx": [
+    [
+      0,
+      10
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      12,
+      4
+    ]
+  ],
+  "palette": [
+    {
+      "native_rgb": [
+        0,
+        0,
+        0
+      ],
+      "reference_median_rgb": [
+        2.0,
+        7.0,
+        11.0
+      ],
+      "cells": 97
+    },
+    {
+      "native_rgb": [
+        48,
+        48,
+        208
+      ],
+      "reference_median_rgb": [
+        59.0,
+        55.0,
+        218.0
+      ],
+      "cells": 7
+    },
+    {
+      "native_rgb": [
+        80,
+        32,
+        16
+      ],
+      "reference_median_rgb": [
+        81.5,
+        40.5,
+        25.5
+      ],
+      "cells": 6
+    },
+    {
+      "native_rgb": [
+        112,
+        96,
+        96
+      ],
+      "reference_median_rgb": [
+        122.5,
+        105.01,
+        100.01
+      ],
+      "cells": 4
+    },
+    {
+      "native_rgb": [
+        144,
+        80,
+        16
+      ],
+      "reference_median_rgb": [
+        155.0,
+        80.0,
+        13.0
+      ],
+      "cells": 40
+    },
+    {
+      "native_rgb": [
+        176,
+        32,
+        128
+      ],
+      "reference_median_rgb": [
+        183.0,
+        30.0,
+        134.0
+      ],
+      "cells": 3
+    },
+    {
+      "native_rgb": [
+        208,
+        192,
+        192
+      ],
+      "reference_median_rgb": [
+        215.0,
+        203.0,
+        206.0
+      ],
+      "cells": 11
+    },
+    {
+      "native_rgb": [
+        224,
+        64,
+        176
+      ],
+      "reference_median_rgb": [
+        241.0,
+        71.0,
+        182.32
+      ],
+      "cells": 7
+    },
+    {
+      "native_rgb": [
+        224,
+        144,
+        112
+      ],
+      "reference_median_rgb": [
+        230.0,
+        154.0,
+        113.0
+      ],
+      "cells": 7
+    },
+    {
+      "native_rgb": [
+        224,
+        224,
+        224
+      ],
+      "reference_median_rgb": [
+        253.0,
+        251.0,
+        254.0
+      ],
+      "cells": 11
+    },
+    {
+      "native_rgb": [
+        240,
+        128,
+        32
+      ],
+      "reference_median_rgb": [
+        255.0,
+        137.62,
+        30.0
+      ],
+      "cells": 38
+    },
+    {
+      "native_rgb": [
+        240,
+        208,
+        48
+      ],
+      "reference_median_rgb": [
+        254.0,
+        212.0,
+        57.0
+      ],
+      "cells": 27
+    },
+    {
+      "native_rgb": [
+        240,
+        224,
+        176
+      ],
+      "reference_median_rgb": [
+        255.0,
+        233.0,
+        181.0
+      ],
+      "cells": 7
+    },
+    {
+      "native_rgb": [
+        255,
+        255,
+        255
+      ],
+      "reference_median_rgb": [
+        252.83,
+        251.0,
+        254.0
+      ],
+      "cells": 1
+    }
+  ],
+  "crt_affine_sx_sy_tx_ty_skx_sky": [
+    22.114217875485863,
+    19.2785840900211,
+    14.22379379617757,
+    -1.527943945028848,
+    0.17310623667683417,
+    0.23875325888411741
+  ],
+  "crt_geometry_rmse_0_1": 0.10036040433281258
+}

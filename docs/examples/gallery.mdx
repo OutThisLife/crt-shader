@@ -1,0 +1,25 @@
+---
+title: "Complete gallery"
+description: "Explore the original study’s article comparisons, Peach examples, and itch.io artwork."
+---
+
+import ComparisonGallery from '../components/ComparisonGallery.jsx';
+
+Browse all 29 entries from the original study: article artwork, Peach, itch.io and Kenney sprites, photographs, and procedural diagnostics. Each live reconstruction uses source pixels; a reference photograph, where provided, stays a separate comparison image.
+
+<ComparisonGallery client:only="react" />
+
+## Compare like with like
+
+- **Article examples:** compare digital input, the actual photographed reference, and the live reconstruction. A photograph includes the camera and signal path as well as the CRT.
+- **Peach examples:** retain the distinctions between original pixels and the different photographed display/signal combinations discussed in the [follow-up article](https://datagubbe.se/crt2/).
+- **itch.io artwork:** judge reconstruction against the original artwork. These examples are not measurements of a physical display.
+- **Photo inputs:** downsampling is preparation chosen by the user, separate from the reconstruction preset.
+
+The renderer uses the same frozen presets as the package. A different crop or prepared resolution can change the image even when the preset name is the same; see [options and presets](/options) and [image geometry](/images#geometry-and-low-level-rendering).
+
+## Asset provenance
+
+Article photographs, game sprites, and itch.io artwork are not covered by the shader’s MIT license. Consult each example’s source attribution and the [credits](/CREDITS) before reusing an image. The standalone npm package excludes these gallery/reference assets.
+
+[Start with the article comparison](/examples/article) or [compare framework adapters](/examples/adapters).

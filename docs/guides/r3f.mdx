@@ -1,0 +1,65 @@
+---
+title: "React Three Fiber"
+description: "Add CRT as a terminal pass inside @react-three/postprocessing’s EffectComposer."
+---
+
+import { Code, LinkCard } from '@astrojs/starlight/components';
+import AdapterExample from '../components/AdapterExample.jsx';
+import source from '../../examples/src/r3f.js?raw';
+
+```sh
+npm install crt-shader react@19 react-dom@19 three@^0.186.0 postprocessing@^6.39.5 @react-three/fiber@^9.7.0 @react-three/postprocessing@^3.1.1
+```
+
+```jsx
+import { Canvas } from '@react-three/fiber';
+import { EffectComposer, ToneMapping } from '@react-three/postprocessing';
+import { HalfFloatType } from 'three';
+import { ToneMappingMode } from 'postprocessing';
+import { CRT } from 'crt-shader/r3f';
+
+export function CRTScene() {
+  return (
+    <Canvas flat>
+      <color attach="background" args={['black']} />
+      <mesh>
+        <boxGeometry />
+        <meshBasicMaterial color="orange" />
+      </mesh>
+      <EffectComposer frameBufferType={HalfFloatType} multisampling={0}>
+        <ToneMapping mode={ToneMappingMode.LINEAR} />
+        <CRT preset="reference" inputResolution="auto" />
+      </EffectComposer>
+    </Canvas>
+  );
+}
+```
+
+Give the containing element a nonzero size. Fiber 9 requires React 19. Keep one copy of React, Three.js, and postprocessing in your app.
+
+<AdapterExample integration="r3f" client:only="react" />
+
+## Pass, not material
+
+`<CRT>` processes the complete composer rectangle. It is a dedicated pass, not a mergeable pmndrs `Effect`, a material, or an effect attached to one mesh. Put scene/HDR effects before tone mapping; keep CRT last. The example uses neutral linear tone mapping for its display-color scene.
+
+## Control preparation and reconstruction
+
+`inputResolution="auto"` intentionally reduces the incoming scene. For native input, use a numeric resolution at least as large as the incoming render buffer’s longest edge, updated for resize, DPR, and composer resolution scale. There is no `"source"` prop value.
+
+Scalar settings are direct props, such as `exposure={1.05}`. Remove an override to restore its preset value. `mode="pixelated"` shows prepared input; `mode="original"` bypasses preparation and reconstruction.
+
+The component preserves pass identity across prop updates and owns disposal, including StrictMode replay. Do not manually dispose a mounted `<CRT>`. Its ref exposes the pmndrs `CRTPass`; if you update that pass imperatively in a demand-rendered scene, call Fiber’s `invalidate()` yourself. Later React renders reapply the props.
+
+<LinkCard title="Scene adapter contracts" href="/scenes#react-three-fiber" description="Public options, color and alpha behavior, pass refs, and resource ownership." />
+
+[Runnable source](https://github.com/OutThisLife/crt-shader/blob/main/examples/src/r3f.js) · [Public types](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/r3f.d.ts)
+
+## Runnable example source
+
+Imported directly from the executable example. Its relative imports refer to other files in `examples/src/`.
+
+<details>
+<summary>examples/src/r3f.js</summary>
+<Code code={source} lang="js" title="examples/src/r3f.js" />
+</details>

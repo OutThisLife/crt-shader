@@ -1,0 +1,119 @@
+[
+  {
+    "id": "detail-sushi",
+    "name": "Sushi \u00b7 16\u00d716",
+    "url": "assets/detail-sushi.png",
+    "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+    "creator": "Henry Software",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-strawberry",
+    "name": "Strawberry \u00b7 16\u00d716",
+    "url": "assets/detail-strawberry.png",
+    "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+    "creator": "Henry Software",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-watermelon",
+    "name": "Watermelon \u00b7 16\u00d716",
+    "url": "assets/detail-watermelon.png",
+    "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+    "creator": "Henry Software",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-avocado",
+    "name": "Fruit half \u00b7 16\u00d716",
+    "url": "assets/detail-avocado.png",
+    "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+    "creator": "Henry Software",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-eggs",
+    "name": "Fried eggs \u00b7 16\u00d716",
+    "url": "assets/detail-eggs.png",
+    "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+    "creator": "Henry Software",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-jam",
+    "name": "Jam jar \u00b7 16\u00d716",
+    "url": "assets/detail-jam.png",
+    "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+    "creator": "Henry Software",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-wizard",
+    "name": "Purple wizard \u00b7 16\u00d716",
+    "url": "assets/detail-wizard.png",
+    "sourceURL": "https://kenney.nl/assets/tiny-dungeon",
+    "creator": "Kenney",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-knight",
+    "name": "Armored knight \u00b7 16\u00d716",
+    "url": "assets/detail-knight.png",
+    "sourceURL": "https://kenney.nl/assets/tiny-dungeon",
+    "creator": "Kenney",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  },
+  {
+    "id": "detail-crab",
+    "name": "Red crab \u00b7 16\u00d716",
+    "url": "assets/detail-crab.png",
+    "sourceURL": "https://kenney.nl/assets/tiny-dungeon",
+    "creator": "Kenney",
+    "license": "CC0",
+    "padding": 8,
+    "nativeArtworkSize": [
+      16,
+      16
+    ]
+  }
+]

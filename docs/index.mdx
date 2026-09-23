@@ -1,0 +1,36 @@
+---
+title: "From pixels to CRT"
+description: "The original article pixels, a photographed CRT, and our live shader reconstruction."
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import ComparisonGallery from './components/ComparisonGallery.jsx';
+
+**Article pixels → CRT photograph → our shader.** From Datagubbe’s [CRT article](https://datagubbe.se/crt/).
+
+<ComparisonGallery only="reference" client:only="react" />
+
+[Explore all 29 gallery examples](/examples/gallery) · [Read the comparison](/examples/article) · [Install the package](/installation)
+
+`crt-shader` reconstructs images through horizontal signal filtering, brightness-dependent scanlines, and display optics. It is a WebGL 2 pipeline with image, React, Three.js, pmndrs, and React Three Fiber entry points.
+
+The photograph includes the display, signal, camera, and viewing conditions. This is an artistic reconstruction inspired by the articles—not a measurement of that monitor or a claim to reproduce every CRT. The [Peach follow-up](https://datagubbe.se/crt2/) explains why signal quality and camera focus matter.
+
+## Use it in your application
+
+```jsx
+import { CRTImage } from 'crt-shader/react';
+
+<CRTImage src="/artwork.png" alt="Pixel-art landscape" width={480} />
+```
+
+Images preserve their native pixels by default. Photo reduction is opt-in. **Scene adapters downsample by default** with `inputResolution="auto"`; choose a numeric input resolution to control that separately from the CRT effect. Output is opaque RGB on a black matte.
+
+<CardGrid>
+  <LinkCard title="Install and choose an adapter" href="/installation" description="Add the package and only the framework peers your application needs." />
+  <LinkCard title="Explore the complete gallery" href="/examples/gallery" description="Compare the original study’s article, Peach, and itch.io examples." />
+  <LinkCard title="Understand the comparison" href="/examples/article" description="Separate source pixels, the photographed reference, and live reconstruction." />
+  <LinkCard title="Compare integrations" href="/examples/adapters" description="Inspect the same procedural input through every public renderer entry point." />
+</CardGrid>
+
+Shader implementation and package by **Brooklyn ([OutThisLife](https://github.com/OutThisLife))**. Datagubbe’s articles are visual inspiration, not shader source. See [credits and asset rights](/CREDITS).

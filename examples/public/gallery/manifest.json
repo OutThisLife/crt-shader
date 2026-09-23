@@ -1,0 +1,4154 @@
+{
+  "schemaVersion": 1,
+  "basePath": "/gallery/",
+  "rowCount": 29,
+  "categoryCounts": {
+    "article-reference": 1,
+    "photo": 4,
+    "diagnostic": 4,
+    "itchio": 6,
+    "kenney": 3,
+    "article-art": 11
+  },
+  "orderSource": "Exact original gallery.js samples builder, confirmed against every actual row rendered by unmodified gallery.html in Chrome; splat-scene/src/asset-gallery.js mounts this same gallery.",
+  "scope": "Original gallery only. No later Petdex catalog, SHARP/splat assets, new UI, or generated photographs.",
+  "fieldConventions": {
+    "paths": "Site-root-relative URLs under /gallery/. originalSample retains original lab-relative values; do not resolve those against the new document.",
+    "crop": "[x, y, width, height] in original image pixels, applied before unscaleFactors.",
+    "nativeDimensions": "Actual prepared input texture dimensions from the original gallery. These are not always hardware-native raster dimensions. For photos they are the default downsampled shader input.",
+    "nativeArtworkDimensions": "Unpadded art dimensions when available; original photograph dimensions for photo rows.",
+    "reference": "Boolean identifying the original fixed-registration reference row; articleReference carries separate photographed-reference metadata.",
+    "url": "Copied original image URL, except original procedural diagnostics whose real data URLs are preserved. Do not downsample ordinary pixel art again.",
+    "settingsRef": "Every row uses the top-level reconstruction.settings without per-image adjustments."
+  },
+  "reconstruction": {
+    "preset": "reference",
+    "label": "Reference / approved Article crisp",
+    "unchanged": true,
+    "settings": {
+      "spread": 0.53,
+      "bleed": 0.5636315407,
+      "gamma": 1.0705261569,
+      "beam": 0.1840719213,
+      "bloom": 0.1548009529,
+      "glow": 0,
+      "focus": 0,
+      "mask": 0.1017257735,
+      "exposure": 1,
+      "aspect": 0.860508297748451,
+      "outputGamma": 0.8485562699,
+      "cameraBlur": 0.018,
+      "blackLevel": 0,
+      "redGain": 1.0718383876,
+      "greenGain": 0.9021840644,
+      "blueGain": 0.8515301518,
+      "maskPitch": 0.41776469465005694,
+      "maskPhase": 0.1732497797,
+      "slot": 0.0976022686,
+      "slotPhase": -0.0199341169,
+      "maskSlant": 0.0060042998,
+      "beamTilt": 0.0069226077,
+      "maskWarp": 0.1809592285,
+      "rg": -0.0680113591,
+      "rb": -0.1368904736,
+      "gr": -0.0344967575,
+      "gb": 0.1917875629,
+      "br": -0.0753665589,
+      "bg": 0.4
+    },
+    "registration": {
+      "sx": 22.307839770188362,
+      "sy": 19.196081227077265,
+      "tx": 2.7124585748610417,
+      "ty": -10.676694881034846
+    },
+    "referenceOutput": [
+      423,
+      257
+    ],
+    "referenceView": {
+      "origin": [
+        7.878407833174151,
+        8.556191378580682
+      ],
+      "size": [
+        18.961943619717342,
+        13.388149224826448
+      ]
+    },
+    "photographNeverShaderInput": true
+  },
+  "articleHeroIDs": [
+    "reference",
+    "peach",
+    "ruff",
+    "gremlins",
+    "tripworld"
+  ],
+  "articleHeroNotes": {
+    "reference": "Primary registered photograph/native-source/ours comparison, with correspondence and photographic caveats visible.",
+    "peach": "Whole native sprite and the separately labeled article meme; do not present the meme as another shader.",
+    "ruff": "Rich dithering and anti-aliasing source; article supplies no matched CRT photograph in this gallery.",
+    "gremlins": "Detailed four-tone artwork; handheld LCD origin must remain explicit.",
+    "tripworld": "Small-scale AA/dither detail; handheld LCD origin must remain explicit."
+  },
+  "rightsWarnings": [
+    "The shader package MIT license does not cover third-party images. Keep every gallery asset out of npm.",
+    "Article/game imagery and photographed references have no established redistribution permission in the retained lab; attribution is not a license. Review rights before broader publication.",
+    "Henry Software art is CC0, not the separate MIT code-license entry on its itch.io page. Kenney CC0 notice is preserved.",
+    "Photo credits and source/download URLs are retained. Unsplash licensing is distinct from MIT/CC0, and per-file releases/ownership are not independently verified.",
+    "A photographed CRT is not a competing shader output; this inventory does not substantiate a best-shader ranking.",
+    "Silkworm preserves the original 2×2 unscale despite failed exact-repeat verification; the historical SOURCES.md generalization is not valid for that asset."
+  ],
+  "counts": {
+    "rows": 29,
+    "uniqueIDs": 29,
+    "copiedFiles": 35,
+    "copiedImageFiles": 28,
+    "copiedAssetBytes": 1020751,
+    "copiedImageBytes": 1005248,
+    "embeddedDiagnosticPNGs": 4,
+    "embeddedDiagnosticPNGBytes": 1432
+  },
+  "originalEvidence": {
+    "files": [
+      {
+        "path": "gallery.js",
+        "bytes": 17221,
+        "sha256": "339a2fb9eb19e735b041c7fbbee97dff17555d581fbfc833400f5d2ac0dc058c"
+      },
+      {
+        "path": "gallery.html",
+        "bytes": 6348,
+        "sha256": "0740882d74f6412bd0246ec9f21585d333e7a5cd8921c4a09254f9c179a13d1f"
+      },
+      {
+        "path": "patterns.js",
+        "bytes": 1277,
+        "sha256": "2db2f0ba6cc2f24916d9ac08309e341d9fe23c8c033194f902b18026aa520b55"
+      },
+      {
+        "path": "presets.js",
+        "bytes": 2745,
+        "sha256": "effe4e721774cfd5761af8862ecbd8838a9b43934f791a4f657c922f24f19736"
+      },
+      {
+        "path": "shaders.js",
+        "bytes": 3826,
+        "sha256": "59ab9fc09461cd2ecde62a8d9ca57ff1d4c1acf653b325a9b31079884b411ed4"
+      },
+      {
+        "path": "renderer.js",
+        "bytes": 7882,
+        "sha256": "d40a9e6e1cbb734bd71f0c281ff90d7166db6ce31d07d942e6f6c850843fc70d"
+      },
+      {
+        "path": "photo-source.js",
+        "bytes": 1074,
+        "sha256": "2f5a5407525750ed4e609ae449dd909ca171f4cf48d8dd68418cd5af1767bf23"
+      },
+      {
+        "path": "SOURCES.md",
+        "bytes": 4543,
+        "sha256": "0ebff6f42a1b2d29b73a158a40b97387a7adee30fc1f2e90a2549a0d1b27fee3"
+      },
+      {
+        "path": "assets/gallery-sources.json",
+        "bytes": 1888,
+        "sha256": "97dd9088c04012dbbde445251fc5c1889184bbb198069c4d3e5c7c39906fe298"
+      },
+      {
+        "path": "assets/detail-sources.json",
+        "bytes": 2713,
+        "sha256": "0846d2b28dafb049893fcae7bd858feb098e1f30edb625977c3d5895ca6bb615"
+      },
+      {
+        "path": "assets/photo-sources.json",
+        "bytes": 1239,
+        "sha256": "23ebd5fda538de013745724d060104ddd23dac5a73e4dc4547f2e369bdb48e9a"
+      }
+    ],
+    "renderedRowCount": 29,
+    "frozen": true,
+    "referenceCropMismatchedChannels": 0,
+    "sourceCorrespondencePath": "/gallery/calibration/source-correspondence.json",
+    "runtimeVerification": "Real Chrome + original WebGL renderer, local files supplied through Playwright request interception; no HTTP server, no original source changes."
+  },
+  "rows": [
+    {
+      "id": "reference",
+      "title": "CRT reference · photograph / reconstruction",
+      "name": "CRT reference · photograph / reconstruction",
+      "category": "article-reference",
+      "url": "/gallery/assets/peach.png",
+      "sourcePath": "/gallery/assets/peach.png",
+      "originalPath": "/gallery/assets/peach.png",
+      "originalDimensions": [
+        320,
+        256
+      ],
+      "nativeDimensions": [
+        35,
+        49
+      ],
+      "nativeArtworkDimensions": [
+        19,
+        33
+      ],
+      "crop": [
+        132,
+        58,
+        35,
+        49
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": true,
+      "originalSample": {
+        "id": "reference",
+        "name": "CRT reference · photograph / reconstruction",
+        "url": "assets/peach.png",
+        "sprite": true,
+        "reference": true
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/peach.png",
+        "url": "https://datagubbe.se/crt2/peach2.png",
+        "downloadURL": null,
+        "dimensions": [
+          320,
+          256
+        ],
+        "articleURL": "https://datagubbe.se/crt2/"
+      },
+      "article": {
+        "title": "The Effect of CRTs on Pixel Art",
+        "url": "https://datagubbe.se/crt/",
+        "imagePath": "/gallery/assets/reference-comparison.png",
+        "imageSourceURL": "https://datagubbe.se/crt/rpg_compare.png",
+        "imageKind": "source-plus-photographed-crt-comparison"
+      },
+      "articleReference": {
+        "kind": "photographed-crt-reference",
+        "isShaderOutput": false,
+        "path": "/gallery/assets/reference-head.png",
+        "dimensions": [
+          423,
+          257
+        ],
+        "parentPath": "/gallery/assets/reference-comparison.png",
+        "parentDimensions": [
+          853,
+          257
+        ],
+        "parentCrop": [
+          430,
+          0,
+          423,
+          257
+        ],
+        "parentCropConvention": "x, y, width, height; equivalent to [430,0,853,257) bounds",
+        "sourceURL": "https://datagubbe.se/crt/rpg_compare.png",
+        "articleURL": "https://datagubbe.se/crt/",
+        "originalCredit": "CRTpixels; reproduced by datagubbe and in mylifeisanrpg’s video",
+        "originalPostURL": "https://x.com/CRTpixels/status/1400097860029489152?lang=en",
+        "signal": "S-Video, as identified in the follow-up article",
+        "suppliedToShader": false
+      },
+      "referencePath": "/gallery/assets/reference-head.png",
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt2/peach2.png",
+        "https://datagubbe.se/crt/",
+        "https://datagubbe.se/crt2/",
+        "https://datagubbe.se/crt/rpg_compare.png",
+        "https://x.com/CRTpixels/status/1400097860029489152?lang=en"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          132,
+          58,
+          35,
+          49
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          35,
+          49
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": {
+          "origin": [
+            7.878407833174151,
+            8.556191378580682
+          ],
+          "size": [
+            18.961943619717342,
+            13.388149224826448
+          ]
+        },
+        "output": {
+          "width": 423,
+          "height": 257
+        },
+        "pixelAspect": 0.860508297748451,
+        "registration": {
+          "sx": 22.307839770188362,
+          "sy": 19.196081227077265,
+          "tx": 2.7124585748610417,
+          "ty": -10.676694881034846
+        }
+      },
+      "limitations": [
+        "The follow-up peach2.png sprite shares the pose, but is not an identical source to the earlier meme: the retained source-correspondence study finds palette differences and 3 mismatched cells among 266 tested. A registered photographic approximation is not a pixel-identical source comparison or a calibrated display measurement.",
+        "The right-hand article panel is a photograph of a CRT, not another shader. Camera focus, signal path, palette, and display conditions confound direct quality comparisons.",
+        "The original reference row compares its photograph against a registered reconstruction; retain the independent native source as a separately labeled input. No best-shader ranking is established."
+      ],
+      "correspondence": {
+        "path": "/gallery/calibration/source-correspondence.json",
+        "testedCells": 266,
+        "mismatchedCells": [
+          [
+            0,
+            10
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            12,
+            4
+          ]
+        ],
+        "coordinateConvention": "Pixel centers. Native u=x-140, v=y-66; target qx=reference x-430, qy=reference y. Raw fit x=sx*u+tx, y=sy*v+ty. CRT affine qx=sx*u+skx*v+tx, qy=sky*u+sy*v+ty."
+      },
+      "preprocessing": {
+        "originalSpriteFlag": true,
+        "artworkBounds": [
+          140,
+          66,
+          19,
+          33
+        ],
+        "padding": 8,
+        "resolvedCrop": [
+          132,
+          58,
+          35,
+          49
+        ],
+        "algorithm": "Original gallery: scan alpha>0 and R+G+B>45, then retain an eight-pixel border in the original image."
+      }
+    },
+    {
+      "id": "photo-10",
+      "title": "Coastal forest",
+      "name": "Coastal forest",
+      "category": "photo",
+      "url": "/gallery/assets/photo-10.jpg",
+      "sourcePath": "/gallery/assets/photo-10.jpg",
+      "originalPath": "/gallery/assets/photo-10.jpg",
+      "originalDimensions": [
+        900,
+        600
+      ],
+      "nativeDimensions": [
+        96,
+        64
+      ],
+      "nativeArtworkDimensions": [
+        900,
+        600
+      ],
+      "crop": [
+        0,
+        0,
+        900,
+        600
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": true,
+      "reference": false,
+      "originalSample": {
+        "id": "photo-10",
+        "name": "Coastal forest",
+        "photo": true,
+        "url": "assets/photo-10.jpg",
+        "creator": "Paul Jarvis",
+        "sourceURL": "https://unsplash.com/photos/6J--NXulQCs",
+        "downloadURL": "https://picsum.photos/id/10/900/600",
+        "size": [
+          900,
+          600
+        ]
+      },
+      "source": {
+        "kind": "photograph-input",
+        "path": "/gallery/assets/photo-10.jpg",
+        "url": "https://unsplash.com/photos/6J--NXulQCs",
+        "downloadURL": "https://picsum.photos/id/10/900/600",
+        "dimensions": [
+          900,
+          600
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Paul Jarvis",
+        "Supplied by Lorem Picsum; original source on Unsplash"
+      ],
+      "sourceURLs": [
+        "https://unsplash.com/photos/6J--NXulQCs",
+        "https://picsum.photos/id/10/900/600"
+      ],
+      "license": {
+        "status": "source-specific-license-review",
+        "identifier": "Unsplash License (source attribution; not independently confirmed for each archived file)",
+        "mit": false,
+        "evidenceURL": "https://unsplash.com/license",
+        "notice": "Original manifest credits preserved. General Unsplash license permits use with restrictions, but does not establish model/property/trademark releases or independently authenticate each archived image. Not MIT, CC0, or public domain."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "photo",
+        "inputResolution": 96,
+        "crop": [
+          0,
+          0,
+          900,
+          600
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          96,
+          64
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "progressive-high-quality",
+        "maxPreparedEdge": 96,
+        "view": null,
+        "output": null,
+        "pixelAspect": 1
+      },
+      "limitations": [
+        "The before image remains the original photograph. Only the shader input is progressively downsampled to a 96-pixel longest edge; retain full color and the original photographic aspect ratio."
+      ]
+    },
+    {
+      "id": "photo-64",
+      "title": "Sunlit portrait",
+      "name": "Sunlit portrait",
+      "category": "photo",
+      "url": "/gallery/assets/photo-64.jpg",
+      "sourcePath": "/gallery/assets/photo-64.jpg",
+      "originalPath": "/gallery/assets/photo-64.jpg",
+      "originalDimensions": [
+        900,
+        600
+      ],
+      "nativeDimensions": [
+        96,
+        64
+      ],
+      "nativeArtworkDimensions": [
+        900,
+        600
+      ],
+      "crop": [
+        0,
+        0,
+        900,
+        600
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": true,
+      "reference": false,
+      "originalSample": {
+        "id": "photo-64",
+        "name": "Sunlit portrait",
+        "photo": true,
+        "url": "assets/photo-64.jpg",
+        "creator": "Alexander Shustov",
+        "sourceURL": "https://unsplash.com/photos/AHBiSKaENwc",
+        "downloadURL": "https://picsum.photos/id/64/900/600",
+        "size": [
+          900,
+          600
+        ]
+      },
+      "source": {
+        "kind": "photograph-input",
+        "path": "/gallery/assets/photo-64.jpg",
+        "url": "https://unsplash.com/photos/AHBiSKaENwc",
+        "downloadURL": "https://picsum.photos/id/64/900/600",
+        "dimensions": [
+          900,
+          600
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Alexander Shustov",
+        "Supplied by Lorem Picsum; original source on Unsplash"
+      ],
+      "sourceURLs": [
+        "https://unsplash.com/photos/AHBiSKaENwc",
+        "https://picsum.photos/id/64/900/600"
+      ],
+      "license": {
+        "status": "source-specific-license-review",
+        "identifier": "Unsplash License (source attribution; not independently confirmed for each archived file)",
+        "mit": false,
+        "evidenceURL": "https://unsplash.com/license",
+        "notice": "Original manifest credits preserved. General Unsplash license permits use with restrictions, but does not establish model/property/trademark releases or independently authenticate each archived image. Not MIT, CC0, or public domain."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "photo",
+        "inputResolution": 96,
+        "crop": [
+          0,
+          0,
+          900,
+          600
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          96,
+          64
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "progressive-high-quality",
+        "maxPreparedEdge": 96,
+        "view": null,
+        "output": null,
+        "pixelAspect": 1
+      },
+      "limitations": [
+        "The before image remains the original photograph. Only the shader input is progressively downsampled to a 96-pixel longest edge; retain full color and the original photographic aspect ratio."
+      ]
+    },
+    {
+      "id": "photo-237",
+      "title": "Black dog",
+      "name": "Black dog",
+      "category": "photo",
+      "url": "/gallery/assets/photo-237.jpg",
+      "sourcePath": "/gallery/assets/photo-237.jpg",
+      "originalPath": "/gallery/assets/photo-237.jpg",
+      "originalDimensions": [
+        900,
+        539
+      ],
+      "nativeDimensions": [
+        96,
+        57
+      ],
+      "nativeArtworkDimensions": [
+        900,
+        539
+      ],
+      "crop": [
+        0,
+        0,
+        900,
+        539
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": true,
+      "reference": false,
+      "originalSample": {
+        "id": "photo-237",
+        "name": "Black dog",
+        "photo": true,
+        "url": "assets/photo-237.jpg",
+        "creator": "André Spieker",
+        "sourceURL": "https://unsplash.com/photos/8wTPqxlnKM4",
+        "downloadURL": "https://picsum.photos/id/237/900/539",
+        "size": [
+          900,
+          539
+        ]
+      },
+      "source": {
+        "kind": "photograph-input",
+        "path": "/gallery/assets/photo-237.jpg",
+        "url": "https://unsplash.com/photos/8wTPqxlnKM4",
+        "downloadURL": "https://picsum.photos/id/237/900/539",
+        "dimensions": [
+          900,
+          539
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "André Spieker",
+        "Supplied by Lorem Picsum; original source on Unsplash"
+      ],
+      "sourceURLs": [
+        "https://unsplash.com/photos/8wTPqxlnKM4",
+        "https://picsum.photos/id/237/900/539"
+      ],
+      "license": {
+        "status": "source-specific-license-review",
+        "identifier": "Unsplash License (source attribution; not independently confirmed for each archived file)",
+        "mit": false,
+        "evidenceURL": "https://unsplash.com/license",
+        "notice": "Original manifest credits preserved. General Unsplash license permits use with restrictions, but does not establish model/property/trademark releases or independently authenticate each archived image. Not MIT, CC0, or public domain."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "photo",
+        "inputResolution": 96,
+        "crop": [
+          0,
+          0,
+          900,
+          539
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          96,
+          57
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "progressive-high-quality",
+        "maxPreparedEdge": 96,
+        "view": null,
+        "output": null,
+        "pixelAspect": 1
+      },
+      "limitations": [
+        "The before image remains the original photograph. Only the shader input is progressively downsampled to a 96-pixel longest edge; retain full color and the original photographic aspect ratio."
+      ]
+    },
+    {
+      "id": "photo-1060",
+      "title": "Pour-over coffee",
+      "name": "Pour-over coffee",
+      "category": "photo",
+      "url": "/gallery/assets/photo-1060.jpg",
+      "sourcePath": "/gallery/assets/photo-1060.jpg",
+      "originalPath": "/gallery/assets/photo-1060.jpg",
+      "originalDimensions": [
+        900,
+        600
+      ],
+      "nativeDimensions": [
+        96,
+        64
+      ],
+      "nativeArtworkDimensions": [
+        900,
+        600
+      ],
+      "crop": [
+        0,
+        0,
+        900,
+        600
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": true,
+      "reference": false,
+      "originalSample": {
+        "id": "photo-1060",
+        "name": "Pour-over coffee",
+        "photo": true,
+        "url": "assets/photo-1060.jpg",
+        "creator": "Karl Fredrickson",
+        "sourceURL": "https://unsplash.com/photos/TYIzeCiZ_60",
+        "downloadURL": "https://picsum.photos/id/1060/900/600",
+        "size": [
+          900,
+          600
+        ]
+      },
+      "source": {
+        "kind": "photograph-input",
+        "path": "/gallery/assets/photo-1060.jpg",
+        "url": "https://unsplash.com/photos/TYIzeCiZ_60",
+        "downloadURL": "https://picsum.photos/id/1060/900/600",
+        "dimensions": [
+          900,
+          600
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Karl Fredrickson",
+        "Supplied by Lorem Picsum; original source on Unsplash"
+      ],
+      "sourceURLs": [
+        "https://unsplash.com/photos/TYIzeCiZ_60",
+        "https://picsum.photos/id/1060/900/600"
+      ],
+      "license": {
+        "status": "source-specific-license-review",
+        "identifier": "Unsplash License (source attribution; not independently confirmed for each archived file)",
+        "mit": false,
+        "evidenceURL": "https://unsplash.com/license",
+        "notice": "Original manifest credits preserved. General Unsplash license permits use with restrictions, but does not establish model/property/trademark releases or independently authenticate each archived image. Not MIT, CC0, or public domain."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "photo",
+        "inputResolution": 96,
+        "crop": [
+          0,
+          0,
+          900,
+          600
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          96,
+          64
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "progressive-high-quality",
+        "maxPreparedEdge": 96,
+        "view": null,
+        "output": null,
+        "pixelAspect": 1
+      },
+      "limitations": [
+        "The before image remains the original photograph. Only the shader input is progressively downsampled to a 96-pixel longest edge; retain full color and the original photographic aspect ratio."
+      ]
+    },
+    {
+      "id": "test-squares",
+      "title": "Color squares + single pixels",
+      "name": "Color squares + single pixels",
+      "category": "diagnostic",
+      "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAAA/klEQVR4AeyWoQ7CQBBEmyqqKB9Sg0QCFo3hUxAVfAoGjQUkEtMPAVQlZEPGbDNqxXHNNJmceNlLd+aS3XJS1Z+cVRaZf2ogdYBKQAkEHaBPqN8u6dX9dUHZ5X2grO06ys7HJ2X960EZbaA63WhRtbpTtp7uKWubhrLNbkZZVc8pow3Qij8DaiB1IEpACQQdGN8TsgHmBZNsgHmB2QDzArMB5gVmA8wLzAaYFxjO8SWAznI5lUDqpAYJ2BLn9fvJorAlzgvMljgvMFvivMBsifMCsyXOCwznoAGAXE41kDopJaAEgg7oCQUNDJcrgbCFwQuUQNDAcLkSCFsYvOALAAD//53Vyh8AAAAGSURBVAMAFIaiSR+Q68sAAAAASUVORK5CYII=",
+      "sourcePath": null,
+      "originalPath": null,
+      "originalDimensions": [
+        48,
+        36
+      ],
+      "nativeDimensions": [
+        48,
+        36
+      ],
+      "nativeArtworkDimensions": [
+        48,
+        36
+      ],
+      "crop": [
+        0,
+        0,
+        48,
+        36
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "test-squares",
+        "name": "Color squares + single pixels",
+        "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAAA/klEQVR4AeyWoQ7CQBBEmyqqKB9Sg0QCFo3hUxAVfAoGjQUkEtMPAVQlZEPGbDNqxXHNNJmceNlLd+aS3XJS1Z+cVRaZf2ogdYBKQAkEHaBPqN8u6dX9dUHZ5X2grO06ys7HJ2X960EZbaA63WhRtbpTtp7uKWubhrLNbkZZVc8pow3Qij8DaiB1IEpACQQdGN8TsgHmBZNsgHmB2QDzArMB5gVmA8wLzAaYFxjO8SWAznI5lUDqpAYJ2BLn9fvJorAlzgvMljgvMFvivMBsifMCsyXOCwznoAGAXE41kDopJaAEgg7oCQUNDJcrgbCFwQuUQNDAcLkSCFsYvOALAAD//53Vyh8AAAAGSURBVAMAFIaiSR+Q68sAAAAASUVORK5CYII="
+      },
+      "source": {
+        "kind": "procedural-diagnostic",
+        "path": null,
+        "url": null,
+        "downloadURL": null,
+        "dimensions": [
+          48,
+          36
+        ],
+        "generatorPath": "/gallery/patterns.js"
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Original CRT lab diagnostic generator"
+      ],
+      "sourceURLs": [],
+      "license": {
+        "status": "first-party-procedural-diagnostic",
+        "identifier": null,
+        "mit": false,
+        "notice": "Generated by the original lab patterns.js; no third-party photograph or artwork substituted. This inventory grants no new license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          48,
+          36
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          48,
+          36
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "generator": {
+        "path": "/gallery/patterns.js",
+        "export": "testPatterns",
+        "id": "test-squares",
+        "embeddedDataURL": "url contains the PNG data URL generated by the original patterns.js in real Chrome; no replacement generator"
+      }
+    },
+    {
+      "id": "test-lines",
+      "title": "One-pixel horizontal lines",
+      "name": "One-pixel horizontal lines",
+      "category": "diagnostic",
+      "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAABDElEQVR4AeyWIQ7CUBBENyiqgINgkEjAojEcBYHgKBg0FpBITA8CqErIimemckOaX7bJZDN5bZO/88UMhtX4U7IGVviTB+g6wEwgEwhuIK9QcIHhzzOB8AqDP+hfAs1mYSqW1FznpoJd3gdTwfZ1bSrY+fg0Fax5PUwFY7YSqE43U/FytbybCrYa7UwF20+npoKttxNTwarxzFQwZusAgFJmHqDrpDKBTCC4gX+6QsFV/ejz/iWgNcI9y9Ma4R6mNcI9TGuEe5jWCPcwrRHuYcxWAloj3POy1gj3MK0R7mFaI9zDtEa4h2mNcA9jtg4AKGXmAbpOKhPIBIIbyCsUXGD480wgvMLgD4pP4AsAAP//LVM/owAAAAZJREFUAwDGG+pJXqZ0dwAAAABJRU5ErkJggg==",
+      "sourcePath": null,
+      "originalPath": null,
+      "originalDimensions": [
+        48,
+        36
+      ],
+      "nativeDimensions": [
+        48,
+        36
+      ],
+      "nativeArtworkDimensions": [
+        48,
+        36
+      ],
+      "crop": [
+        0,
+        0,
+        48,
+        36
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "test-lines",
+        "name": "One-pixel horizontal lines",
+        "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAABDElEQVR4AeyWIQ7CUBBENyiqgINgkEjAojEcBYHgKBg0FpBITA8CqErIimemckOaX7bJZDN5bZO/88UMhtX4U7IGVviTB+g6wEwgEwhuIK9QcIHhzzOB8AqDP+hfAs1mYSqW1FznpoJd3gdTwfZ1bSrY+fg0Fax5PUwFY7YSqE43U/FytbybCrYa7UwF20+npoKttxNTwarxzFQwZusAgFJmHqDrpDKBTCC4gX+6QsFV/ejz/iWgNcI9y9Ma4R6mNcI9TGuEe5jWCPcwrRHuYcxWAloj3POy1gj3MK0R7mFaI9zDtEa4h2mNcA9jtg4AKGXmAbpOKhPIBIIbyCsUXGD480wgvMLgD4pP4AsAAP//LVM/owAAAAZJREFUAwDGG+pJXqZ0dwAAAABJRU5ErkJggg=="
+      },
+      "source": {
+        "kind": "procedural-diagnostic",
+        "path": null,
+        "url": null,
+        "downloadURL": null,
+        "dimensions": [
+          48,
+          36
+        ],
+        "generatorPath": "/gallery/patterns.js"
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Original CRT lab diagnostic generator"
+      ],
+      "sourceURLs": [],
+      "license": {
+        "status": "first-party-procedural-diagnostic",
+        "identifier": null,
+        "mit": false,
+        "notice": "Generated by the original lab patterns.js; no third-party photograph or artwork substituted. This inventory grants no new license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          48,
+          36
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          48,
+          36
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "generator": {
+        "path": "/gallery/patterns.js",
+        "export": "testPatterns",
+        "id": "test-lines",
+        "embeddedDataURL": "url contains the PNG data URL generated by the original patterns.js in real Chrome; no replacement generator"
+      }
+    },
+    {
+      "id": "test-rgb",
+      "title": "RGB edges + color blending",
+      "name": "RGB edges + color blending",
+      "category": "diagnostic",
+      "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAAA2ElEQVR4AeySMQoCMRBFP1sZK7dXsNPSI2jnASztPZO9pQew0yNYaidov51bapVC8EOGhSQb/sIj7DBJ+PNSDdzo02cq9PxTgNQCyzXQzqawMH8vYWGxa2CBmS7XAEucW10GUhuRARnoOIFyn5C7P2DhNrzAwnVfwwITVa4Blji3ugykNiID2RpoX2v88v/fB2i3Z4Tg+zfPBiH4frbqCbHJxKrLQKxJs3tkgE0mVl0GYk2a3UMNuPEJIfiD3WGFEHz/cVIjBN/PVhqAbcitrgCpjchAagNfAAAA//8TrIyzAAAABklEQVQDAEOH/ElssMY9AAAAAElFTkSuQmCC",
+      "sourcePath": null,
+      "originalPath": null,
+      "originalDimensions": [
+        48,
+        36
+      ],
+      "nativeDimensions": [
+        48,
+        36
+      ],
+      "nativeArtworkDimensions": [
+        48,
+        36
+      ],
+      "crop": [
+        0,
+        0,
+        48,
+        36
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "test-rgb",
+        "name": "RGB edges + color blending",
+        "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAAA2ElEQVR4AeySMQoCMRBFP1sZK7dXsNPSI2jnASztPZO9pQew0yNYaidov51bapVC8EOGhSQb/sIj7DBJ+PNSDdzo02cq9PxTgNQCyzXQzqawMH8vYWGxa2CBmS7XAEucW10GUhuRARnoOIFyn5C7P2DhNrzAwnVfwwITVa4Blji3ugykNiID2RpoX2v88v/fB2i3Z4Tg+zfPBiH4frbqCbHJxKrLQKxJs3tkgE0mVl0GYk2a3UMNuPEJIfiD3WGFEHz/cVIjBN/PVhqAbcitrgCpjchAagNfAAAA//8TrIyzAAAABklEQVQDAEOH/ElssMY9AAAAAElFTkSuQmCC"
+      },
+      "source": {
+        "kind": "procedural-diagnostic",
+        "path": null,
+        "url": null,
+        "downloadURL": null,
+        "dimensions": [
+          48,
+          36
+        ],
+        "generatorPath": "/gallery/patterns.js"
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Original CRT lab diagnostic generator"
+      ],
+      "sourceURLs": [],
+      "license": {
+        "status": "first-party-procedural-diagnostic",
+        "identifier": null,
+        "mit": false,
+        "notice": "Generated by the original lab patterns.js; no third-party photograph or artwork substituted. This inventory grants no new license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          48,
+          36
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          48,
+          36
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "generator": {
+        "path": "/gallery/patterns.js",
+        "export": "testPatterns",
+        "id": "test-rgb",
+        "embeddedDataURL": "url contains the PNG data URL generated by the original patterns.js in real Chrome; no replacement generator"
+      }
+    },
+    {
+      "id": "test-dither",
+      "title": "Dither patterns",
+      "name": "Dither patterns",
+      "category": "diagnostic",
+      "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAABiklEQVR4AeyRITNEYRSGz2yybSUUMwTSFv9AlmiKIMmiYO4IoiwJikaS/QNlE4EZBYkmMm940rnhe8u9c9e3MzvvzL3znvs854wWxpPfIf9HMfBfFej7gPN3ga/ri9heP4rS5AI/34+xvLQSpUmvmc1idfckSpMemS6w1zzHbbMRpcmgtc2deH26j9Kkd3V6E4dn+1Ga9Mgk4MBLkkEOvCTpOfCSpEcmAUE5EgwSlCNBT1COBD0yCTjwkmWQAy9Zeg68ZOmRSUBQjgSDBOVI0BOUI0GPTAIOvGQZ5MBLlp4DL1l6ZBIQlCPBIEE5EvQE5UjQI5OAAy9ZBjnwkqXnwEuWHpkEBOVIMEhQjgQ9QTkS9Mgk4MBLlkEOvGTpOfCSpUcmAUE5EgwSlCNBT1COBD0yCfBiKFkF+r7Uf7pA37tu/369QPteuntaL9Ddrtu/VC/QvpfuntYLdLfr9i/N3wUeXi5j8eA4SpO9fHy+x3iyFaVJ7+3uPJrpNEqTHjl/F8BsKFkv0Pel/gAAAP//0ROr+gAAAAZJREFUAwDXW/Rnzg77XQAAAABJRU5ErkJggg==",
+      "sourcePath": null,
+      "originalPath": null,
+      "originalDimensions": [
+        48,
+        36
+      ],
+      "nativeDimensions": [
+        48,
+        36
+      ],
+      "nativeArtworkDimensions": [
+        48,
+        36
+      ],
+      "crop": [
+        0,
+        0,
+        48,
+        36
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "test-dither",
+        "name": "Dither patterns",
+        "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAkCAYAAADPRbkKAAABiklEQVR4AeyRITNEYRSGz2yybSUUMwTSFv9AlmiKIMmiYO4IoiwJikaS/QNlE4EZBYkmMm940rnhe8u9c9e3MzvvzL3znvs854wWxpPfIf9HMfBfFej7gPN3ga/ri9heP4rS5AI/34+xvLQSpUmvmc1idfckSpMemS6w1zzHbbMRpcmgtc2deH26j9Kkd3V6E4dn+1Ga9Mgk4MBLkkEOvCTpOfCSpEcmAUE5EgwSlCNBT1COBD0yCTjwkmWQAy9Zeg68ZOmRSUBQjgSDBOVI0BOUI0GPTAIOvGQZ5MBLlp4DL1l6ZBIQlCPBIEE5EvQE5UjQI5OAAy9ZBjnwkqXnwEuWHpkEBOVIMEhQjgQ9QTkS9Mgk4MBLlkEOvGTpOfCSpUcmAUE5EgwSlCNBT1COBD0yCfBiKFkF+r7Uf7pA37tu/369QPteuntaL9Ddrtu/VC/QvpfuntYLdLfr9i/N3wUeXi5j8eA4SpO9fHy+x3iyFaVJ7+3uPJrpNEqTHjl/F8BsKFkv0Pel/gAAAP//0ROr+gAAAAZJREFUAwDXW/Rnzg77XQAAAABJRU5ErkJggg=="
+      },
+      "source": {
+        "kind": "procedural-diagnostic",
+        "path": null,
+        "url": null,
+        "downloadURL": null,
+        "dimensions": [
+          48,
+          36
+        ],
+        "generatorPath": "/gallery/patterns.js"
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Original CRT lab diagnostic generator"
+      ],
+      "sourceURLs": [],
+      "license": {
+        "status": "first-party-procedural-diagnostic",
+        "identifier": null,
+        "mit": false,
+        "notice": "Generated by the original lab patterns.js; no third-party photograph or artwork substituted. This inventory grants no new license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          48,
+          36
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          48,
+          36
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "generator": {
+        "path": "/gallery/patterns.js",
+        "export": "testPatterns",
+        "id": "test-dither",
+        "embeddedDataURL": "url contains the PNG data URL generated by the original patterns.js in real Chrome; no replacement generator"
+      }
+    },
+    {
+      "id": "detail-sushi",
+      "title": "Sushi · 16×16",
+      "name": "Sushi · 16×16",
+      "category": "itchio",
+      "url": "/gallery/assets/detail-sushi.png",
+      "sourcePath": "/gallery/assets/detail-sushi.png",
+      "originalPath": "/gallery/assets/detail-sushi.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-sushi",
+        "name": "Sushi · 16×16",
+        "url": "assets/detail-sushi.png",
+        "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+        "creator": "Henry Software",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-sushi.png",
+        "url": "https://henrysoftware.itch.io/pixel-food",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Henry Software"
+      ],
+      "sourceURLs": [
+        "https://henrysoftware.itch.io/pixel-food"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://henrysoftware.itch.io/pixel-food",
+        "noticePath": null,
+        "notice": "The creator page identifies the ASSET license as CC0. Its separate CODE license is not the art license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalAtlasPath": "/gallery/assets/itch-food-sheet.png",
+        "originalAtlasDimensions": [
+          128,
+          128
+        ],
+        "originalAtlasCrop": [
+          112,
+          0,
+          16,
+          16
+        ],
+        "atlasMatch": "Exact RGBA match after compositing the source atlas on black"
+      }
+    },
+    {
+      "id": "detail-strawberry",
+      "title": "Strawberry · 16×16",
+      "name": "Strawberry · 16×16",
+      "category": "itchio",
+      "url": "/gallery/assets/detail-strawberry.png",
+      "sourcePath": "/gallery/assets/detail-strawberry.png",
+      "originalPath": "/gallery/assets/detail-strawberry.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-strawberry",
+        "name": "Strawberry · 16×16",
+        "url": "assets/detail-strawberry.png",
+        "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+        "creator": "Henry Software",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-strawberry.png",
+        "url": "https://henrysoftware.itch.io/pixel-food",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Henry Software"
+      ],
+      "sourceURLs": [
+        "https://henrysoftware.itch.io/pixel-food"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://henrysoftware.itch.io/pixel-food",
+        "noticePath": null,
+        "notice": "The creator page identifies the ASSET license as CC0. Its separate CODE license is not the art license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalAtlasPath": "/gallery/assets/itch-food-sheet.png",
+        "originalAtlasDimensions": [
+          128,
+          128
+        ],
+        "originalAtlasCrop": [
+          16,
+          64,
+          16,
+          16
+        ],
+        "atlasMatch": "Exact RGBA match after compositing the source atlas on black"
+      }
+    },
+    {
+      "id": "detail-watermelon",
+      "title": "Watermelon · 16×16",
+      "name": "Watermelon · 16×16",
+      "category": "itchio",
+      "url": "/gallery/assets/detail-watermelon.png",
+      "sourcePath": "/gallery/assets/detail-watermelon.png",
+      "originalPath": "/gallery/assets/detail-watermelon.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-watermelon",
+        "name": "Watermelon · 16×16",
+        "url": "assets/detail-watermelon.png",
+        "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+        "creator": "Henry Software",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-watermelon.png",
+        "url": "https://henrysoftware.itch.io/pixel-food",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Henry Software"
+      ],
+      "sourceURLs": [
+        "https://henrysoftware.itch.io/pixel-food"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://henrysoftware.itch.io/pixel-food",
+        "noticePath": null,
+        "notice": "The creator page identifies the ASSET license as CC0. Its separate CODE license is not the art license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalAtlasPath": "/gallery/assets/itch-food-sheet.png",
+        "originalAtlasDimensions": [
+          128,
+          128
+        ],
+        "originalAtlasCrop": [
+          0,
+          96,
+          16,
+          16
+        ],
+        "atlasMatch": "Exact RGBA match after compositing the source atlas on black"
+      }
+    },
+    {
+      "id": "detail-avocado",
+      "title": "Fruit half · 16×16",
+      "name": "Fruit half · 16×16",
+      "category": "itchio",
+      "url": "/gallery/assets/detail-avocado.png",
+      "sourcePath": "/gallery/assets/detail-avocado.png",
+      "originalPath": "/gallery/assets/detail-avocado.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-avocado",
+        "name": "Fruit half · 16×16",
+        "url": "assets/detail-avocado.png",
+        "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+        "creator": "Henry Software",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-avocado.png",
+        "url": "https://henrysoftware.itch.io/pixel-food",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Henry Software"
+      ],
+      "sourceURLs": [
+        "https://henrysoftware.itch.io/pixel-food"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://henrysoftware.itch.io/pixel-food",
+        "noticePath": null,
+        "notice": "The creator page identifies the ASSET license as CC0. Its separate CODE license is not the art license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalAtlasPath": "/gallery/assets/itch-food-sheet.png",
+        "originalAtlasDimensions": [
+          128,
+          128
+        ],
+        "originalAtlasCrop": [
+          0,
+          112,
+          16,
+          16
+        ],
+        "atlasMatch": "Exact RGBA match after compositing the source atlas on black"
+      }
+    },
+    {
+      "id": "detail-eggs",
+      "title": "Fried eggs · 16×16",
+      "name": "Fried eggs · 16×16",
+      "category": "itchio",
+      "url": "/gallery/assets/detail-eggs.png",
+      "sourcePath": "/gallery/assets/detail-eggs.png",
+      "originalPath": "/gallery/assets/detail-eggs.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-eggs",
+        "name": "Fried eggs · 16×16",
+        "url": "assets/detail-eggs.png",
+        "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+        "creator": "Henry Software",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-eggs.png",
+        "url": "https://henrysoftware.itch.io/pixel-food",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Henry Software"
+      ],
+      "sourceURLs": [
+        "https://henrysoftware.itch.io/pixel-food"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://henrysoftware.itch.io/pixel-food",
+        "noticePath": null,
+        "notice": "The creator page identifies the ASSET license as CC0. Its separate CODE license is not the art license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalAtlasPath": "/gallery/assets/itch-food-sheet.png",
+        "originalAtlasDimensions": [
+          128,
+          128
+        ],
+        "originalAtlasCrop": [
+          0,
+          32,
+          16,
+          16
+        ],
+        "atlasMatch": "Exact RGBA match after compositing the source atlas on black"
+      }
+    },
+    {
+      "id": "detail-jam",
+      "title": "Jam jar · 16×16",
+      "name": "Jam jar · 16×16",
+      "category": "itchio",
+      "url": "/gallery/assets/detail-jam.png",
+      "sourcePath": "/gallery/assets/detail-jam.png",
+      "originalPath": "/gallery/assets/detail-jam.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-jam",
+        "name": "Jam jar · 16×16",
+        "url": "assets/detail-jam.png",
+        "sourceURL": "https://henrysoftware.itch.io/pixel-food",
+        "creator": "Henry Software",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-jam.png",
+        "url": "https://henrysoftware.itch.io/pixel-food",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Henry Software"
+      ],
+      "sourceURLs": [
+        "https://henrysoftware.itch.io/pixel-food"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://henrysoftware.itch.io/pixel-food",
+        "noticePath": null,
+        "notice": "The creator page identifies the ASSET license as CC0. Its separate CODE license is not the art license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalAtlasPath": "/gallery/assets/itch-food-sheet.png",
+        "originalAtlasDimensions": [
+          128,
+          128
+        ],
+        "originalAtlasCrop": [
+          48,
+          0,
+          16,
+          16
+        ],
+        "atlasMatch": "Exact RGBA match after compositing the source atlas on black"
+      }
+    },
+    {
+      "id": "detail-wizard",
+      "title": "Purple wizard · 16×16",
+      "name": "Purple wizard · 16×16",
+      "category": "kenney",
+      "url": "/gallery/assets/detail-wizard.png",
+      "sourcePath": "/gallery/assets/detail-wizard.png",
+      "originalPath": "/gallery/assets/detail-wizard.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-wizard",
+        "name": "Purple wizard · 16×16",
+        "url": "assets/detail-wizard.png",
+        "sourceURL": "https://kenney.nl/assets/tiny-dungeon",
+        "creator": "Kenney",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-wizard.png",
+        "url": "https://kenney.nl/assets/tiny-dungeon",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Kenney"
+      ],
+      "sourceURLs": [
+        "https://kenney.nl/assets/tiny-dungeon"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://kenney.nl/assets/tiny-dungeon",
+        "noticePath": "/gallery/assets/kenney-license.txt",
+        "notice": "Original included Kenney license retained byte-for-byte."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "SOURCES.md retains tile IDs 84, 96 and 110 for the group, but not an explicit per-row mapping; none is invented."
+      ],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalTileIdsInGroup": [
+          84,
+          96,
+          110
+        ],
+        "originalTileId": null
+      }
+    },
+    {
+      "id": "detail-knight",
+      "title": "Armored knight · 16×16",
+      "name": "Armored knight · 16×16",
+      "category": "kenney",
+      "url": "/gallery/assets/detail-knight.png",
+      "sourcePath": "/gallery/assets/detail-knight.png",
+      "originalPath": "/gallery/assets/detail-knight.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-knight",
+        "name": "Armored knight · 16×16",
+        "url": "assets/detail-knight.png",
+        "sourceURL": "https://kenney.nl/assets/tiny-dungeon",
+        "creator": "Kenney",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-knight.png",
+        "url": "https://kenney.nl/assets/tiny-dungeon",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Kenney"
+      ],
+      "sourceURLs": [
+        "https://kenney.nl/assets/tiny-dungeon"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://kenney.nl/assets/tiny-dungeon",
+        "noticePath": "/gallery/assets/kenney-license.txt",
+        "notice": "Original included Kenney license retained byte-for-byte."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "SOURCES.md retains tile IDs 84, 96 and 110 for the group, but not an explicit per-row mapping; none is invented."
+      ],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalTileIdsInGroup": [
+          84,
+          96,
+          110
+        ],
+        "originalTileId": null
+      }
+    },
+    {
+      "id": "detail-crab",
+      "title": "Red crab · 16×16",
+      "name": "Red crab · 16×16",
+      "category": "kenney",
+      "url": "/gallery/assets/detail-crab.png",
+      "sourcePath": "/gallery/assets/detail-crab.png",
+      "originalPath": "/gallery/assets/detail-crab.png",
+      "originalDimensions": [
+        32,
+        32
+      ],
+      "nativeDimensions": [
+        32,
+        32
+      ],
+      "nativeArtworkDimensions": [
+        16,
+        16
+      ],
+      "crop": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "detail-crab",
+        "name": "Red crab · 16×16",
+        "url": "assets/detail-crab.png",
+        "sourceURL": "https://kenney.nl/assets/tiny-dungeon",
+        "creator": "Kenney",
+        "license": "CC0",
+        "padding": 8,
+        "nativeArtworkSize": [
+          16,
+          16
+        ]
+      },
+      "source": {
+        "kind": "padded-native-sprite",
+        "path": "/gallery/assets/detail-crab.png",
+        "url": "https://kenney.nl/assets/tiny-dungeon",
+        "downloadURL": null,
+        "dimensions": [
+          32,
+          32
+        ]
+      },
+      "article": null,
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Kenney"
+      ],
+      "sourceURLs": [
+        "https://kenney.nl/assets/tiny-dungeon"
+      ],
+      "license": {
+        "status": "verified-asset-license",
+        "identifier": "CC0-1.0",
+        "mit": false,
+        "evidenceURL": "https://kenney.nl/assets/tiny-dungeon",
+        "noticePath": "/gallery/assets/kenney-license.txt",
+        "notice": "Original included Kenney license retained byte-for-byte."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          32,
+          32
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          32,
+          32
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "SOURCES.md retains tile IDs 84, 96 and 110 for the group, but not an explicit per-row mapping; none is invented."
+      ],
+      "padding": 8,
+      "preprocessing": {
+        "paddingAlreadyBakedIntoAsset": 8,
+        "artworkCropWithinAsset": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "rescale": 1,
+        "originalTileIdsInGroup": [
+          84,
+          96,
+          110
+        ],
+        "originalTileId": null
+      }
+    },
+    {
+      "id": "peach",
+      "title": "Peach",
+      "name": "Peach",
+      "category": "article-art",
+      "url": "/gallery/assets/peach.png",
+      "sourcePath": "/gallery/assets/peach.png",
+      "originalPath": "/gallery/assets/peach.png",
+      "originalDimensions": [
+        320,
+        256
+      ],
+      "nativeDimensions": [
+        35,
+        49
+      ],
+      "nativeArtworkDimensions": [
+        19,
+        33
+      ],
+      "crop": [
+        132,
+        58,
+        35,
+        49
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "peach",
+        "name": "Peach",
+        "url": "assets/peach.png",
+        "sprite": true
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/peach.png",
+        "url": "https://datagubbe.se/crt2/peach2.png",
+        "downloadURL": null,
+        "dimensions": [
+          320,
+          256
+        ]
+      },
+      "article": {
+        "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
+        "url": "https://datagubbe.se/crt2/",
+        "imagePath": "/gallery/assets/peach.png",
+        "imageSourceURL": "https://datagubbe.se/crt2/peach2.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": {
+        "kind": "source-plus-photographed-crt-comparison",
+        "isShaderOutput": false,
+        "path": "/gallery/assets/reference-full.jpg",
+        "dimensions": [
+          1280,
+          720
+        ],
+        "sourceURL": "https://datagubbe.se/crt2/Super-Mario-RPG2.jpg",
+        "articleURL": "https://datagubbe.se/crt2/",
+        "registered": false,
+        "suppliedToShader": false,
+        "credit": "CRTpixels, as traced by the follow-up article"
+      },
+      "referencePath": "/gallery/assets/reference-full.jpg",
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt2/peach2.png",
+        "https://datagubbe.se/crt2/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          132,
+          58,
+          35,
+          49
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          35,
+          49
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "The follow-up peach2.png sprite shares the pose, but is not an identical source to the earlier meme: the retained source-correspondence study finds palette differences and 3 mismatched cells among 266 tested. A registered photographic approximation is not a pixel-identical source comparison or a calibrated display measurement."
+      ],
+      "preprocessing": {
+        "originalSpriteFlag": true,
+        "artworkBounds": [
+          140,
+          66,
+          19,
+          33
+        ],
+        "padding": 8,
+        "resolvedCrop": [
+          132,
+          58,
+          35,
+          49
+        ],
+        "algorithm": "Original gallery: scan alpha>0 and R+G+B>45, then retain an eight-pixel border in the original image."
+      }
+    },
+    {
+      "id": "ruff",
+      "title": "Ruff ’n’ Tumble",
+      "name": "Ruff ’n’ Tumble",
+      "category": "article-art",
+      "url": "/gallery/assets/ruff.png",
+      "sourcePath": "/gallery/assets/ruff.png",
+      "originalPath": "/gallery/assets/ruff.png",
+      "originalDimensions": [
+        640,
+        434
+      ],
+      "nativeDimensions": [
+        222,
+        217
+      ],
+      "nativeArtworkDimensions": [
+        222,
+        217
+      ],
+      "crop": [
+        0,
+        0,
+        444,
+        434
+      ],
+      "repeat": [
+        2,
+        2
+      ],
+      "unscaleFactors": [
+        2,
+        2
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "ruff",
+        "name": "Ruff ’n’ Tumble",
+        "url": "assets/ruff.png",
+        "crop": [
+          0,
+          0,
+          444,
+          434
+        ],
+        "repeat": [
+          2,
+          2
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/ruff.png",
+        "url": "https://datagubbe.se/crt/rnt_title.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          434
+        ]
+      },
+      "article": {
+        "title": "The Effect of CRTs on Pixel Art",
+        "url": "https://datagubbe.se/crt/",
+        "imagePath": "/gallery/assets/ruff.png",
+        "imageSourceURL": "https://datagubbe.se/crt/rnt_title.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt/rnt_title.png",
+        "https://datagubbe.se/crt/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          444,
+          434
+        ],
+        "unscaleFactors": [
+          2,
+          2
+        ],
+        "preparedDimensions": [
+          222,
+          217
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          2,
+          2
+        ],
+        "pixels": 192696,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "silkworm",
+      "title": "Silkworm",
+      "name": "Silkworm",
+      "category": "article-art",
+      "url": "/gallery/assets/silkworm.png",
+      "sourcePath": "/gallery/assets/silkworm.png",
+      "originalPath": "/gallery/assets/silkworm.png",
+      "originalDimensions": [
+        640,
+        410
+      ],
+      "nativeDimensions": [
+        320,
+        205
+      ],
+      "nativeArtworkDimensions": [
+        320,
+        205
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        410
+      ],
+      "repeat": [
+        2,
+        2
+      ],
+      "unscaleFactors": [
+        2,
+        2
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "silkworm",
+        "name": "Silkworm",
+        "url": "assets/silkworm.png",
+        "repeat": [
+          2,
+          2
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/silkworm.png",
+        "url": "https://datagubbe.se/crt/silkworm.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          410
+        ]
+      },
+      "article": {
+        "title": "The Effect of CRTs on Pixel Art",
+        "url": "https://datagubbe.se/crt/",
+        "imagePath": "/gallery/assets/silkworm.png",
+        "imageSourceURL": "https://datagubbe.se/crt/silkworm.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt/silkworm.png",
+        "https://datagubbe.se/crt/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          410
+        ],
+        "unscaleFactors": [
+          2,
+          2
+        ],
+        "preparedDimensions": [
+          320,
+          205
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "Original gallery unscale [2, 2] retained unchanged, but pixel verification found 33480 pixels differing within those repeat blocks. Do not describe this file as a lossless, verified nearest-neighbor enlargement."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          2,
+          2
+        ],
+        "pixels": 262400,
+        "mismatchedRepeatedPixels": 33480
+      }
+    },
+    {
+      "id": "maniac",
+      "title": "Maniac Mansion",
+      "name": "Maniac Mansion",
+      "category": "article-art",
+      "url": "/gallery/assets/maniac.png",
+      "sourcePath": "/gallery/assets/maniac.png",
+      "originalPath": "/gallery/assets/maniac.png",
+      "originalDimensions": [
+        640,
+        400
+      ],
+      "nativeDimensions": [
+        320,
+        200
+      ],
+      "nativeArtworkDimensions": [
+        320,
+        200
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "repeat": [
+        2,
+        2
+      ],
+      "unscaleFactors": [
+        2,
+        2
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "maniac",
+        "name": "Maniac Mansion",
+        "url": "assets/maniac.png",
+        "sourceURL": "https://datagubbe.se/crt/maniac.png",
+        "size": [
+          640,
+          400
+        ],
+        "repeat": [
+          2,
+          2
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/maniac.png",
+        "url": "https://datagubbe.se/crt/maniac.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          400
+        ]
+      },
+      "article": {
+        "title": "The Effect of CRTs on Pixel Art",
+        "url": "https://datagubbe.se/crt/",
+        "imagePath": "/gallery/assets/maniac.png",
+        "imageSourceURL": "https://datagubbe.se/crt/maniac.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt/maniac.png",
+        "https://datagubbe.se/crt/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          400
+        ],
+        "unscaleFactors": [
+          2,
+          2
+        ],
+        "preparedDimensions": [
+          320,
+          200
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "The article describes the C64 graphics as 160×200. The original gallery removes only 2×2 enlargement and supplies a 320×200 texture; nativeDimensions here documents that effective gallery texture, not the hardware raster."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          2,
+          2
+        ],
+        "pixels": 256000,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "mayhem",
+      "title": "Mayhem in Monsterland",
+      "name": "Mayhem in Monsterland",
+      "category": "article-art",
+      "url": "/gallery/assets/mayhem.png",
+      "sourcePath": "/gallery/assets/mayhem.png",
+      "originalPath": "/gallery/assets/mayhem.png",
+      "originalDimensions": [
+        640,
+        400
+      ],
+      "nativeDimensions": [
+        320,
+        200
+      ],
+      "nativeArtworkDimensions": [
+        320,
+        200
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        400
+      ],
+      "repeat": [
+        2,
+        2
+      ],
+      "unscaleFactors": [
+        2,
+        2
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "mayhem",
+        "name": "Mayhem in Monsterland",
+        "url": "assets/mayhem.png",
+        "sourceURL": "https://datagubbe.se/crt/mayhem_in_monsterland.png",
+        "size": [
+          640,
+          400
+        ],
+        "repeat": [
+          2,
+          2
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/mayhem.png",
+        "url": "https://datagubbe.se/crt/mayhem_in_monsterland.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          400
+        ]
+      },
+      "article": {
+        "title": "The Effect of CRTs on Pixel Art",
+        "url": "https://datagubbe.se/crt/",
+        "imagePath": "/gallery/assets/mayhem.png",
+        "imageSourceURL": "https://datagubbe.se/crt/mayhem_in_monsterland.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt/mayhem_in_monsterland.png",
+        "https://datagubbe.se/crt/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          400
+        ],
+        "unscaleFactors": [
+          2,
+          2
+        ],
+        "preparedDimensions": [
+          320,
+          200
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          2,
+          2
+        ],
+        "pixels": 256000,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "monkey",
+      "title": "Monkey Island",
+      "name": "Monkey Island",
+      "category": "article-art",
+      "url": "/gallery/assets/monkey.png",
+      "sourcePath": "/gallery/assets/monkey.png",
+      "originalPath": "/gallery/assets/monkey.png",
+      "originalDimensions": [
+        640,
+        288
+      ],
+      "nativeDimensions": [
+        640,
+        288
+      ],
+      "nativeArtworkDimensions": [
+        640,
+        288
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        288
+      ],
+      "repeat": [
+        1,
+        1
+      ],
+      "unscaleFactors": [
+        1,
+        1
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "monkey",
+        "name": "Monkey Island",
+        "url": "assets/monkey.png",
+        "sourceURL": "https://datagubbe.se/crt/mi_org__b.png",
+        "size": [
+          640,
+          288
+        ],
+        "repeat": [
+          1,
+          1
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/monkey.png",
+        "url": "https://datagubbe.se/crt/mi_org__b.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          288
+        ]
+      },
+      "article": {
+        "title": "The Effect of CRTs on Pixel Art",
+        "url": "https://datagubbe.se/crt/",
+        "imagePath": "/gallery/assets/monkey.png",
+        "imageSourceURL": "https://datagubbe.se/crt/mi_org__b.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt/mi_org__b.png",
+        "https://datagubbe.se/crt/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          288
+        ],
+        "unscaleFactors": [
+          1,
+          1
+        ],
+        "preparedDimensions": [
+          640,
+          288
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "Kept at the supplied 640×288 resolution, exactly as in the original gallery. No underlying integer enlargement is asserted."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          1,
+          1
+        ],
+        "pixels": 184320,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "dither",
+      "title": "Dither + anti-aliasing",
+      "name": "Dither + anti-aliasing",
+      "category": "article-art",
+      "url": "/gallery/assets/dither.png",
+      "sourcePath": "/gallery/assets/dither.png",
+      "originalPath": "/gallery/assets/dither.png",
+      "originalDimensions": [
+        640,
+        376
+      ],
+      "nativeDimensions": [
+        320,
+        188
+      ],
+      "nativeArtworkDimensions": [
+        320,
+        188
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        376
+      ],
+      "repeat": [
+        2,
+        2
+      ],
+      "unscaleFactors": [
+        2,
+        2
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "dither",
+        "name": "Dither + anti-aliasing",
+        "url": "assets/dither.png",
+        "sourceURL": "https://datagubbe.se/crt/dith_anti.png",
+        "size": [
+          640,
+          376
+        ],
+        "repeat": [
+          2,
+          2
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/dither.png",
+        "url": "https://datagubbe.se/crt/dith_anti.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          376
+        ]
+      },
+      "article": {
+        "title": "The Effect of CRTs on Pixel Art",
+        "url": "https://datagubbe.se/crt/",
+        "imagePath": "/gallery/assets/dither.png",
+        "imageSourceURL": "https://datagubbe.se/crt/dith_anti.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt/dith_anti.png",
+        "https://datagubbe.se/crt/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          376
+        ],
+        "unscaleFactors": [
+          2,
+          2
+        ],
+        "preparedDimensions": [
+          320,
+          188
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          2,
+          2
+        ],
+        "pixels": 240640,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "tokitori",
+      "title": "Toki Tori",
+      "name": "Toki Tori",
+      "category": "article-art",
+      "url": "/gallery/assets/tokitori.png",
+      "sourcePath": "/gallery/assets/tokitori.png",
+      "originalPath": "/gallery/assets/tokitori.png",
+      "originalDimensions": [
+        640,
+        576
+      ],
+      "nativeDimensions": [
+        160,
+        144
+      ],
+      "nativeArtworkDimensions": [
+        160,
+        144
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        576
+      ],
+      "repeat": [
+        4,
+        4
+      ],
+      "unscaleFactors": [
+        4,
+        4
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "tokitori",
+        "name": "Toki Tori",
+        "url": "assets/tokitori.png",
+        "sourceURL": "https://datagubbe.se/crt2/tokitoribig.png",
+        "size": [
+          640,
+          576
+        ],
+        "repeat": [
+          4,
+          4
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/tokitori.png",
+        "url": "https://datagubbe.se/crt2/tokitoribig.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          576
+        ]
+      },
+      "article": {
+        "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
+        "url": "https://datagubbe.se/crt2/",
+        "imagePath": "/gallery/assets/tokitori.png",
+        "imageSourceURL": "https://datagubbe.se/crt2/tokitoribig.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt2/tokitoribig.png",
+        "https://datagubbe.se/crt2/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          576
+        ],
+        "unscaleFactors": [
+          4,
+          4
+        ],
+        "preparedDimensions": [
+          160,
+          144
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "Game Boy / Game Boy Color artwork: these handhelds use LCDs, not CRTs. This is a shader-on-artwork demonstration, not a reconstruction of their original display hardware."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          4,
+          4
+        ],
+        "pixels": 368640,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "kirby",
+      "title": "Kirby’s Dream Land",
+      "name": "Kirby’s Dream Land",
+      "category": "article-art",
+      "url": "/gallery/assets/kirby.png",
+      "sourcePath": "/gallery/assets/kirby.png",
+      "originalPath": "/gallery/assets/kirby.png",
+      "originalDimensions": [
+        640,
+        576
+      ],
+      "nativeDimensions": [
+        160,
+        144
+      ],
+      "nativeArtworkDimensions": [
+        160,
+        144
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        576
+      ],
+      "repeat": [
+        4,
+        4
+      ],
+      "unscaleFactors": [
+        4,
+        4
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "kirby",
+        "name": "Kirby’s Dream Land",
+        "url": "assets/kirby.png",
+        "sourceURL": "https://datagubbe.se/crt2/kirbtybig.png",
+        "size": [
+          640,
+          576
+        ],
+        "repeat": [
+          4,
+          4
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/kirby.png",
+        "url": "https://datagubbe.se/crt2/kirbtybig.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          576
+        ]
+      },
+      "article": {
+        "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
+        "url": "https://datagubbe.se/crt2/",
+        "imagePath": "/gallery/assets/kirby.png",
+        "imageSourceURL": "https://datagubbe.se/crt2/kirbtybig.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt2/kirbtybig.png",
+        "https://datagubbe.se/crt2/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          576
+        ],
+        "unscaleFactors": [
+          4,
+          4
+        ],
+        "preparedDimensions": [
+          160,
+          144
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "Game Boy / Game Boy Color artwork: these handhelds use LCDs, not CRTs. This is a shader-on-artwork demonstration, not a reconstruction of their original display hardware."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          4,
+          4
+        ],
+        "pixels": 368640,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "gremlins",
+      "title": "Gremlins 2",
+      "name": "Gremlins 2",
+      "category": "article-art",
+      "url": "/gallery/assets/gremlins.png",
+      "sourcePath": "/gallery/assets/gremlins.png",
+      "originalPath": "/gallery/assets/gremlins.png",
+      "originalDimensions": [
+        640,
+        576
+      ],
+      "nativeDimensions": [
+        160,
+        144
+      ],
+      "nativeArtworkDimensions": [
+        160,
+        144
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        576
+      ],
+      "repeat": [
+        4,
+        4
+      ],
+      "unscaleFactors": [
+        4,
+        4
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "gremlins",
+        "name": "Gremlins 2",
+        "url": "assets/gremlins.png",
+        "sourceURL": "https://datagubbe.se/crt2/grembig.png",
+        "size": [
+          640,
+          576
+        ],
+        "repeat": [
+          4,
+          4
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/gremlins.png",
+        "url": "https://datagubbe.se/crt2/grembig.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          576
+        ]
+      },
+      "article": {
+        "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
+        "url": "https://datagubbe.se/crt2/",
+        "imagePath": "/gallery/assets/gremlins.png",
+        "imageSourceURL": "https://datagubbe.se/crt2/grembig.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt2/grembig.png",
+        "https://datagubbe.se/crt2/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          576
+        ],
+        "unscaleFactors": [
+          4,
+          4
+        ],
+        "preparedDimensions": [
+          160,
+          144
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "Game Boy / Game Boy Color artwork: these handhelds use LCDs, not CRTs. This is a shader-on-artwork demonstration, not a reconstruction of their original display hardware."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          4,
+          4
+        ],
+        "pixels": 368640,
+        "mismatchedRepeatedPixels": 0
+      }
+    },
+    {
+      "id": "tripworld",
+      "title": "Trip World",
+      "name": "Trip World",
+      "category": "article-art",
+      "url": "/gallery/assets/tripworld.png",
+      "sourcePath": "/gallery/assets/tripworld.png",
+      "originalPath": "/gallery/assets/tripworld.png",
+      "originalDimensions": [
+        640,
+        576
+      ],
+      "nativeDimensions": [
+        160,
+        144
+      ],
+      "nativeArtworkDimensions": [
+        160,
+        144
+      ],
+      "crop": [
+        0,
+        0,
+        640,
+        576
+      ],
+      "repeat": [
+        4,
+        4
+      ],
+      "unscaleFactors": [
+        4,
+        4
+      ],
+      "photo": false,
+      "reference": false,
+      "originalSample": {
+        "id": "tripworld",
+        "name": "Trip World",
+        "url": "assets/tripworld.png",
+        "sourceURL": "https://datagubbe.se/crt2/tripworldbig.png",
+        "size": [
+          640,
+          576
+        ],
+        "repeat": [
+          4,
+          4
+        ]
+      },
+      "source": {
+        "kind": "article-pixel-art",
+        "path": "/gallery/assets/tripworld.png",
+        "url": "https://datagubbe.se/crt2/tripworldbig.png",
+        "downloadURL": null,
+        "dimensions": [
+          640,
+          576
+        ]
+      },
+      "article": {
+        "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
+        "url": "https://datagubbe.se/crt2/",
+        "imagePath": "/gallery/assets/tripworld.png",
+        "imageSourceURL": "https://datagubbe.se/crt2/tripworldbig.png",
+        "imageKind": "pixel-art-source-not-crt-output"
+      },
+      "articleReference": null,
+      "referencePath": null,
+      "credits": [
+        "Artwork: respective original creators and game rights holders",
+        "Image supplied by datagubbe.se"
+      ],
+      "sourceURLs": [
+        "https://datagubbe.se/crt2/tripworldbig.png",
+        "https://datagubbe.se/crt2/"
+      ],
+      "license": {
+        "status": "permission-not-established",
+        "identifier": null,
+        "mit": false,
+        "notice": "Original game/art/article imagery remains with its respective rights holders. Existing local comparative-study copy; no redistribution permission or new license is established by this inventory. Not covered by the shader package MIT license."
+      },
+      "reconstruction": {
+        "preset": "reference",
+        "settingsRef": "reconstruction.settings",
+        "perImageOverrides": {},
+        "inputMode": "pixel",
+        "inputResolution": null,
+        "crop": [
+          0,
+          0,
+          640,
+          576
+        ],
+        "unscaleFactors": [
+          4,
+          4
+        ],
+        "preparedDimensions": [
+          160,
+          144
+        ],
+        "matte": "#000000",
+        "imageSmoothing": "disabled",
+        "maxPreparedEdge": 1024,
+        "view": null,
+        "output": null,
+        "pixelAspect": 0.860508297748451
+      },
+      "limitations": [
+        "The article image is source artwork, not a competing shader output. No matched photographic output is claimed for this row.",
+        "Game Boy / Game Boy Color artwork: these handhelds use LCDs, not CRTs. This is a shader-on-artwork demonstration, not a reconstruction of their original display hardware."
+      ],
+      "unscaleVerification": {
+        "repeat": [
+          4,
+          4
+        ],
+        "pixels": 368640,
+        "mismatchedRepeatedPixels": 0
+      }
+    }
+  ],
+  "assets": [
+    {
+      "path": "/gallery/assets/peach.png",
+      "originalLabPath": "assets/peach.png",
+      "bytes": 1262,
+      "sha256": "646a3bb2e95ba98444b17f04b259976553d7c1fbde802753914ecc7713b9d9e7",
+      "dimensions": [
+        320,
+        256
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "reference",
+        "peach"
+      ]
+    },
+    {
+      "path": "/gallery/assets/photo-10.jpg",
+      "originalLabPath": "assets/photo-10.jpg",
+      "bytes": 78727,
+      "sha256": "45d78b6c6b9eea5c5ae3e7e9501e3bbda950ab68631cf5fb044ddd2e45d73768",
+      "dimensions": [
+        900,
+        600
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "photo-10"
+      ]
+    },
+    {
+      "path": "/gallery/assets/photo-64.jpg",
+      "originalLabPath": "assets/photo-64.jpg",
+      "bytes": 39301,
+      "sha256": "afeaa42ec70614bceaf0c09c1dd5cdae50b7edef8d0292962dac36beaf01172a",
+      "dimensions": [
+        900,
+        600
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "photo-64"
+      ]
+    },
+    {
+      "path": "/gallery/assets/photo-237.jpg",
+      "originalLabPath": "assets/photo-237.jpg",
+      "bytes": 76089,
+      "sha256": "e35e65838a6ddc4a8f47143410215d8a5ff966c2ff17847cea83c906898ec2ba",
+      "dimensions": [
+        900,
+        539
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "photo-237"
+      ]
+    },
+    {
+      "path": "/gallery/assets/photo-1060.jpg",
+      "originalLabPath": "assets/photo-1060.jpg",
+      "bytes": 50129,
+      "sha256": "573740ae5feaa9928435c858b395b264e04598c8ea207836d84d246429999274",
+      "dimensions": [
+        900,
+        600
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "photo-1060"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-sushi.png",
+      "originalLabPath": "assets/detail-sushi.png",
+      "bytes": 378,
+      "sha256": "8a296cb844a0b9732aa87d7c42b7205b4ca4f42f91f6daf4adfc6192060fa5ad",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-sushi"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-strawberry.png",
+      "originalLabPath": "assets/detail-strawberry.png",
+      "bytes": 459,
+      "sha256": "1cc8b2d9fbc4743670be0ef15bf8e55337af81143536aaecae20ab5662f411af",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-strawberry"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-watermelon.png",
+      "originalLabPath": "assets/detail-watermelon.png",
+      "bytes": 497,
+      "sha256": "9b7e032eec0036e63b689974467a1ef1b1495d570240ea850d9aff87fc2b1e89",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-watermelon"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-avocado.png",
+      "originalLabPath": "assets/detail-avocado.png",
+      "bytes": 435,
+      "sha256": "aaede7d44282299baee8fb9edc5f3f8b3a5be6657e99e5500e84ef5597f6c2d4",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-avocado"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-eggs.png",
+      "originalLabPath": "assets/detail-eggs.png",
+      "bytes": 437,
+      "sha256": "3506c6a55b725e482d193f0ed3ba6779bbf30cd476367b3918428c9436d57339",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-eggs"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-jam.png",
+      "originalLabPath": "assets/detail-jam.png",
+      "bytes": 446,
+      "sha256": "cc303fc88ae056f60250abf654a3e81c6859f459b4b067ca988da524726a30d2",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-jam"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-wizard.png",
+      "originalLabPath": "assets/detail-wizard.png",
+      "bytes": 362,
+      "sha256": "54c85aa651c8745bd96784142106ffdcb9b6fc387a575219960a1d8b66e1b312",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-wizard"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-knight.png",
+      "originalLabPath": "assets/detail-knight.png",
+      "bytes": 303,
+      "sha256": "0c5bbda3e259a527d2d28b374b35ee83ecec448b33a296d421e12a303dfe5850",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-knight"
+      ]
+    },
+    {
+      "path": "/gallery/assets/detail-crab.png",
+      "originalLabPath": "assets/detail-crab.png",
+      "bytes": 332,
+      "sha256": "48159859ef76a29b106965501dc14e1911f7c781b4fd20c2a98e9f66c52adb1a",
+      "dimensions": [
+        32,
+        32
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "detail-crab"
+      ]
+    },
+    {
+      "path": "/gallery/assets/ruff.png",
+      "originalLabPath": "assets/ruff.png",
+      "bytes": 15841,
+      "sha256": "ae64ce0df3edd0ff28a41ea86257dbf87e79d5eb0a5473fc96bff218feec4c26",
+      "dimensions": [
+        640,
+        434
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "ruff"
+      ]
+    },
+    {
+      "path": "/gallery/assets/silkworm.png",
+      "originalLabPath": "assets/silkworm.png",
+      "bytes": 7449,
+      "sha256": "4ac1c89a95d9d17e90a52af26bfe243c5ed172da6068e369e73567c36f27d054",
+      "dimensions": [
+        640,
+        410
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "silkworm"
+      ]
+    },
+    {
+      "path": "/gallery/assets/maniac.png",
+      "originalLabPath": "assets/maniac.png",
+      "bytes": 4109,
+      "sha256": "af2110e58ea8c7b261339912b316c361155e4acbd4de0742a63bdc1deb31f815",
+      "dimensions": [
+        640,
+        400
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "maniac"
+      ]
+    },
+    {
+      "path": "/gallery/assets/mayhem.png",
+      "originalLabPath": "assets/mayhem.png",
+      "bytes": 4789,
+      "sha256": "4d05372a3fa2ad035a4afc41fd0dda5b41f6ffe00e4912a7d272923bb9987e03",
+      "dimensions": [
+        640,
+        400
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "mayhem"
+      ]
+    },
+    {
+      "path": "/gallery/assets/monkey.png",
+      "originalLabPath": "assets/monkey.png",
+      "bytes": 220763,
+      "sha256": "132e59120e334830921e39eb4b259f9697b5c58db821db72286159d337eeace6",
+      "dimensions": [
+        640,
+        288
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "monkey"
+      ]
+    },
+    {
+      "path": "/gallery/assets/dither.png",
+      "originalLabPath": "assets/dither.png",
+      "bytes": 4498,
+      "sha256": "59f9e4fd871b200d926d9948708e668a82392e6b55627325d445a39996b7ace9",
+      "dimensions": [
+        640,
+        376
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "dither"
+      ]
+    },
+    {
+      "path": "/gallery/assets/tokitori.png",
+      "originalLabPath": "assets/tokitori.png",
+      "bytes": 11197,
+      "sha256": "3592e5b96b3bc569e7a54af08ddcacccde98511aebfba24c7dc1d829d155584d",
+      "dimensions": [
+        640,
+        576
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "tokitori"
+      ]
+    },
+    {
+      "path": "/gallery/assets/kirby.png",
+      "originalLabPath": "assets/kirby.png",
+      "bytes": 3962,
+      "sha256": "9a8aceb9bd7714d7185a65b0ad9d1f99acc01c4f6323048f6971ed8f1897f7f7",
+      "dimensions": [
+        640,
+        576
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "kirby"
+      ]
+    },
+    {
+      "path": "/gallery/assets/gremlins.png",
+      "originalLabPath": "assets/gremlins.png",
+      "bytes": 5281,
+      "sha256": "afbb696c03d6863e8d73efe3fdba3ff9ea2b85f655b2b8c8de7d5448be4de1c0",
+      "dimensions": [
+        640,
+        576
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "gremlins"
+      ]
+    },
+    {
+      "path": "/gallery/assets/tripworld.png",
+      "originalLabPath": "assets/tripworld.png",
+      "bytes": 5771,
+      "sha256": "df90d0868565135951b8e9f0abe9d698b211bdcf46d9ac3c5f0732f03d1724d3",
+      "dimensions": [
+        640,
+        576
+      ],
+      "role": "shader-input",
+      "rowIDs": [
+        "tripworld"
+      ]
+    },
+    {
+      "path": "/gallery/assets/reference-head.png",
+      "originalLabPath": "assets/reference-head.png",
+      "bytes": 151003,
+      "sha256": "57a0edce82cab40c0140e21c6f28ec589936ead9420749c3f771ceb0cc43888a",
+      "dimensions": [
+        423,
+        257
+      ],
+      "role": "article-reference-not-shader",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/assets/reference-comparison.png",
+      "originalLabPath": "assets/reference-comparison.png",
+      "bytes": 189974,
+      "sha256": "256f518620e06a27d2bb84fc422dc21f09c8f0af3d8e97555c8719bc4585e094",
+      "dimensions": [
+        853,
+        257
+      ],
+      "role": "article-reference-not-shader",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/assets/reference-full.jpg",
+      "originalLabPath": "assets/reference-full.jpg",
+      "bytes": 108852,
+      "sha256": "a034ea8d2d26f8f3d6560d6135ca4eea978ee23c76ad44be9fd374751fd9e7ea",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "role": "article-reference-not-shader",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/assets/itch-food-sheet.png",
+      "originalLabPath": "assets/itch-food-sheet.png",
+      "bytes": 22602,
+      "sha256": "eb3bd9301354180ec85ebe6558818cffaad53c8bf9677cc3539f9f6d5f5116b4",
+      "dimensions": [
+        128,
+        128
+      ],
+      "role": "original-atlas-provenance",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/assets/kenney-license.txt",
+      "originalLabPath": "assets/kenney-license.txt",
+      "bytes": 570,
+      "sha256": "9f574a2f1f636a3db8a0665ba90212f34e2b5e61ecb533d77c05237766374111",
+      "dimensions": null,
+      "role": "provenance-or-notice",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/assets/gallery-sources.json",
+      "originalLabPath": "assets/gallery-sources.json",
+      "bytes": 1888,
+      "sha256": "97dd9088c04012dbbde445251fc5c1889184bbb198069c4d3e5c7c39906fe298",
+      "dimensions": null,
+      "role": "provenance-or-notice",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/assets/detail-sources.json",
+      "originalLabPath": "assets/detail-sources.json",
+      "bytes": 2713,
+      "sha256": "0846d2b28dafb049893fcae7bd858feb098e1f30edb625977c3d5895ca6bb615",
+      "dimensions": null,
+      "role": "provenance-or-notice",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/assets/photo-sources.json",
+      "originalLabPath": "assets/photo-sources.json",
+      "bytes": 1239,
+      "sha256": "23ebd5fda538de013745724d060104ddd23dac5a73e4dc4547f2e369bdb48e9a",
+      "dimensions": null,
+      "role": "provenance-or-notice",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/SOURCES.md",
+      "originalLabPath": "SOURCES.md",
+      "bytes": 4543,
+      "sha256": "0ebff6f42a1b2d29b73a158a40b97387a7adee30fc1f2e90a2549a0d1b27fee3",
+      "dimensions": null,
+      "role": "provenance-or-notice",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/patterns.js",
+      "originalLabPath": "patterns.js",
+      "bytes": 1277,
+      "sha256": "2db2f0ba6cc2f24916d9ac08309e341d9fe23c8c033194f902b18026aa520b55",
+      "dimensions": null,
+      "role": "provenance-or-notice",
+      "rowIDs": []
+    },
+    {
+      "path": "/gallery/calibration/source-correspondence.json",
+      "originalLabPath": "calibration/source-correspondence.json",
+      "bytes": 3273,
+      "sha256": "17031991837fe235c26e8360ae6d3987221009fcdad629f01422c895995dd353",
+      "dimensions": null,
+      "role": "provenance-or-notice",
+      "rowIDs": []
+    }
+  ]
+}

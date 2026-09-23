@@ -1,10 +1,13 @@
-# Credits and provenance
+---
+title: "Credits and provenance"
+description: "Shader authorship, article inspiration, and the separate rights of reference images and artwork."
+---
 
 ## Code
 
-**Brooklyn ([OutThisLife](https://github.com/OutThisLife))** implemented the reconstruction shaders, rendering pipeline, framework adapters and package. The canonical [`shaders.js`](../packages/crt-shader/shaders.js) and [`presets.js`](../packages/crt-shader/presets.js) preserve the approved study implementation and appearance. Raw `.glsl` files are generated from those JavaScript shader strings, not from an external shader project.
+**Brooklyn ([OutThisLife](https://github.com/OutThisLife))** implemented the reconstruction shaders, rendering pipeline, framework adapters and package. The canonical [`shaders.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/shaders.js) and [`presets.js`](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/presets.js) preserve the approved study implementation and appearance. Raw `.glsl` files are generated from those JavaScript shader strings, not from an external shader project.
 
-This project's original code is MIT-licensed. The distributed [LICENSE](../LICENSE) contains the legal terms; [NOTICE.md](../NOTICE.md) records attribution. Copies and ports, including extracted GLSL, must retain the applicable copyright and permission notice. Keep the provenance notice alongside them. Do not infer a license for other material from the package's `license` field.
+This project's original code is MIT-licensed. The distributed [LICENSE](https://github.com/OutThisLife/crt-shader/blob/main/LICENSE) contains the legal terms; [NOTICE.md](https://github.com/OutThisLife/crt-shader/blob/main/NOTICE.md) records attribution. Copies and ports, including extracted GLSL, must retain the applicable copyright and permission notice. Keep the provenance notice alongside them. Do not infer a license for other material from the package's `license` field.
 
 ## Visual inspiration
 

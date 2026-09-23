@@ -1,0 +1,112 @@
+---
+title: "Installation"
+description: "Install crt-shader and the optional peers for your renderer."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Install the package
+
+<Tabs syncKey="package-manager">
+<TabItem label="npm">
+
+```sh
+npm install crt-shader
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add crt-shader
+```
+
+</TabItem>
+<TabItem label="yarn">
+
+```sh
+yarn add crt-shader
+```
+
+</TabItem>
+</Tabs>
+
+The package ships ES modules and TypeScript declarations. Browser rendering requires WebGL 2. The core image path also uses Canvas 2D.
+
+## Choose an integration
+
+Install only the peers for the entry point you use. The core and presets do not require React or Three.js.
+
+<Tabs>
+  <TabItem label="Vanilla JavaScript">
+    ```js
+    import { createRuntime, prepareInput } from 'crt-shader';
+    ```
+
+    See [core and images](/images).
+  </TabItem>
+  <TabItem label="React">
+    ```sh
+    npm install react@19 react-dom@19
+    ```
+
+    ```jsx
+    import { CRTImage } from 'crt-shader/react';
+    ```
+
+    The image adapter also supports React 18.3.1. Match `react-dom` to React. See [React images](/guides/react).
+  </TabItem>
+  <TabItem label="Three.js">
+    ```sh
+    npm install three@^0.186.0
+    ```
+
+    ```js
+    import { CRTPass } from 'crt-shader/three';
+    ```
+
+    Use Three’s native composer and put CRT after `OutputPass`. See [native Three.js](/guides/three).
+  </TabItem>
+  <TabItem label="pmndrs">
+    ```sh
+    npm install three@^0.186.0 postprocessing@^6.39.5
+    ```
+
+    ```js
+    import { CRTPass } from 'crt-shader/postprocessing';
+    ```
+
+    This is a different pass from the native Three adapter. See [pmndrs postprocessing](/guides/postprocessing).
+  </TabItem>
+  <TabItem label="React Three Fiber">
+    ```sh
+    npm install react@19 react-dom@19 three@^0.186.0 postprocessing@^6.39.5 @react-three/fiber@^9.7.0 @react-three/postprocessing@^3.1.1
+    ```
+
+    ```jsx
+    import { CRT } from 'crt-shader/r3f';
+    ```
+
+    Fiber 9 needs React 19. See [React Three Fiber](/guides/r3f).
+  </TabItem>
+</Tabs>
+
+Keep one installed copy of React, Three.js, and postprocessing. The [package manifest](https://github.com/OutThisLife/crt-shader/blob/main/packages/crt-shader/package.json) is the source of truth for compatible peer ranges.
+
+## Decide what your source pixels are
+
+- **Pixel art:** keep native pixels with image `inputMode="pixel"` (the default).
+- **Photographs:** explicitly choose `inputMode="photo"` and a numeric `inputResolution` for reduction.
+- **Scenes:** `inputResolution="auto"` reduces the scene before CRT. For native input, supply a positive integer at least as large as the incoming buffer’s longest edge and update it on resize or DPR changes.
+
+There is no `"source"` or `"native"` API value. Presets change the CRT effect, not input preparation. See [options and presets](/options).
+
+
+
+## Browser and asset requirements
+
+Remote images need CORS permission from their image server. Rendering is client-side; importing or server-rendering the React image component does not allocate a GPU context. Output is opaque on black, not transparent HDR or Display-P3. WebGPU is not supported by these WebGL 2 exports.
+
+## Source and local examples
+
+The [repository](https://github.com/OutThisLife/crt-shader) contains runnable examples for every adapter. Use the [contribution guide](/CONTRIBUTING) for workspace commands; those are not required to install the published package.
