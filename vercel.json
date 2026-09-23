@@ -5,10 +5,15 @@
   "buildCommand": "pnpm run ci",
   "outputDirectory": "docs/dist",
   "redirects": [
+    {"source":"/vanilla/","destination":"/guides/vanilla/","permanent":true},
     {"source":"/vanilla/:path*","destination":"/guides/vanilla/","permanent":true},
+    {"source":"/react/","destination":"/guides/react/","permanent":true},
     {"source":"/react/:path*","destination":"/guides/react/","permanent":true},
+    {"source":"/three/","destination":"/guides/three/","permanent":true},
     {"source":"/three/:path*","destination":"/guides/three/","permanent":true},
+    {"source":"/postprocessing/","destination":"/guides/postprocessing/","permanent":true},
     {"source":"/postprocessing/:path*","destination":"/guides/postprocessing/","permanent":true},
+    {"source":"/r3f/","destination":"/guides/r3f/","permanent":true},
     {"source":"/r3f/:path*","destination":"/guides/r3f/","permanent":true}
   ],
   "headers": [
