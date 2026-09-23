@@ -7,7 +7,8 @@ import {fileURLToPath} from 'node:url';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const args=process.argv.slice(2);
-const archive=resolve(root,args.find(arg=>!arg.startsWith('--'))||'artifacts/crt-shader-1.0.0.tgz');
+const manifest=JSON.parse(await readFile(join(root,'packages/crt-shader/package.json'),'utf8'));
+const archive=resolve(root,args.find(arg=>!arg.startsWith('--'))||`artifacts/crt-shader-${manifest.version}.tgz`);
 const entries=execFileSync('tar',['-tzf',archive],{encoding:'utf8'}).trim().split('\n');
 assert(entries.every(name=>!/(?:^|\/)(?:tests|examples|assets|calibration|node_modules|\.env)(?:\/|$)/.test(name)),'Tarball contains non-library material');
 for(const name of ['LICENSE','NOTICE.md','README.md','PORTING.md','glsl/vertex.glsl','glsl/horizontal.glsl','glsl/vertical.glsl','glsl/optics.glsl'])assert(entries.includes(`package/${name}`),`Missing ${name}`);
