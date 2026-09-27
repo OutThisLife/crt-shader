@@ -1,6 +1,6 @@
 {
   "name": "crt-shader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Multi-pass CRT reconstruction for WebGL, Three.js and React, with portable GLSL sources.",
   "type": "module",
   "license": "MIT",
