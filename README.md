@@ -1,5 +1,7 @@
 # crt-shader
 
+[![npm](https://img.shields.io/npm/v/crt-shader)](https://www.npmjs.com/package/crt-shader)
+
 Multi-pass CRT rendering for WebGL 2, with image, React, Three.js and pmndrs adapters. The pipeline applies signal filtering, brightness-dependent scanlines and display optics.
 
 [Documentation](https://crt-shader.vercel.app/) · [Gallery](https://crt-shader.vercel.app/examples/gallery/) · [npm](https://www.npmjs.com/package/crt-shader)
