@@ -1,22 +1,42 @@
 ---
 title: "crt-shader"
-description: "Install crt-shader and use it with JavaScript, React, Three.js, pmndrs or R3F."
+description: "A CRT effect for images and 3D scenes. Works with JavaScript, React, Three.js, pmndrs and R3F."
 tableOfContents: false
+hero:
+  tagline: "A CRT effect for images and 3D scenes."
+  actions:
+    - text: Gallery
+      link: /examples/gallery/
+      icon: right-arrow
+    - text: npm
+      link: https://www.npmjs.com/package/crt-shader
+      icon: external
+      variant: minimal
+    - text: GitHub
+      link: https://github.com/OutThisLife/crt-shader
+      icon: external
+      variant: minimal
 ---
 
 import Quickstart from './components/Quickstart.astro';
 
-CRT rendering for images and 3D scenes. Requires WebGL 2 and a browser app with a bundler, such as Vite.
-
-[Gallery](/examples/gallery/) · [npm](https://www.npmjs.com/package/crt-shader) · [GitHub](https://github.com/OutThisLife/crt-shader)
-
-Using a coding agent? Add the skill and ask it for a CRT effect. It installs the package and the peers for your stack:
+Add the skill to your coding agent:
 
 ```sh
 npx skills add OutThisLife/crt-shader
 ```
 
-Or install it yourself:
+Then ask for what you want:
+
+> Put a CRT effect on the hero image.
+
+> Add a CRT pass to my R3F scene, low-res and soft.
+
+The agent installs the package and wires it into your stack.
+
+## Manual setup
+
+Needs WebGL 2 and a bundler like Vite.
 
 <Quickstart />
 
