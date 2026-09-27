@@ -6,8 +6,8 @@
   "license": "MIT",
   "author": "Brooklyn (OutThisLife)",
   "repository": {"type":"git","url":"git+https://github.com/OutThisLife/crt-shader.git","directory":"packages/crt-shader"},
-  "homepage": "https://github.com/OutThisLife/crt-shader#readme",
-  "keywords": ["crt","shader","glsl","webgl","three","react","r3f","pixel-art"],
+  "homepage": "https://crt-shader.vercel.app",
+  "keywords": ["crt","shader","glsl","webgl","webgl2","three","threejs","react","r3f","react-three-fiber","postprocessing","retro","scanlines","pixel-art"],
   "main": "./core.js",
   "types": "./index.d.ts",
   "exports": {
