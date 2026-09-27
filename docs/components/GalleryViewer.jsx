@@ -183,11 +183,21 @@ export function useGalleryViewer() {
 export function InspectableSurface({ label, capture, children, className = '', style }) {
   const { open, busy, error } = useGalleryViewer();
   const statusId = useId();
+  const press = useRef(null);
+  // Orbit-controlled scenes share this surface; a drag must not open the viewer.
+  const dragged = event => event.detail > 0 && press.current
+    && Math.hypot(event.clientX - press.current.x, event.clientY - press.current.y) > 4;
   return <>
     <button type="button" className={`crt-surface crt-inspect ${className}`.trim()} style={style}
       aria-label={`Inspect ${label}`} aria-haspopup="dialog" aria-busy={busy}
       aria-describedby={busy || error ? statusId : undefined}
-      onClick={event => open({ trigger: event.currentTarget, label, capture })}>
+      onPointerDown={event => void (press.current = { x: event.clientX, y: event.clientY })}
+      onClick={event => {
+        const moved = dragged(event);
+        press.current = null;
+        if (moved) return;
+        open({ trigger: event.currentTarget, label, capture });
+      }}>
       {children}
     </button>
     {busy && <span id={statusId} className="crt-inspect-status" role="status">Preparing preview…</span>}
