@@ -6,6 +6,14 @@ Multi-pass CRT rendering for WebGL 2, with React, Three.js and pmndrs adapters.
 
 ## Install
 
+Using a coding agent? Add the skill and ask it for a CRT effect. It installs the package and the peers for your stack:
+
+```sh
+npx skills add OutThisLife/crt-shader
+```
+
+Or install the package yourself:
+
 ```sh
 pnpm add crt-shader
 ```
