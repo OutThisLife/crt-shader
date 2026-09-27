@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {
   EffectComposer, EffectPass, RenderPass, ToneMappingEffect, ToneMappingMode,
 } from 'postprocessing';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CRTPass } from 'crt-shader/postprocessing';
 
 export function mount(host) {
@@ -32,9 +33,14 @@ export function mount(host) {
   composer.addPass(new CRTPass({ preset: 'reference', inputResolution: 160 }));
   composer.render(); // For animation, call this in your render loop.
 
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableZoom = false; // Let the page scroll over the canvas.
+  controls.addEventListener('change', () => composer.render());
+
   return {
     canvas: renderer.domElement,
     dispose() {
+      controls.dispose();
       composer.dispose(); // pmndrs also disposes its passes.
       geometry.dispose();
       material.dispose();

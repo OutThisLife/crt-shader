@@ -1,6 +1,7 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import { EffectComposer, ToneMapping } from '@react-three/postprocessing';
 import { HalfFloatType } from 'three';
 import { ToneMappingMode } from 'postprocessing';
@@ -20,6 +21,7 @@ export default function CRTScene({ onCreated, crtRef }) {
         <torusKnotGeometry args={[0.8, 0.25, 128, 16]} />
         <meshNormalMaterial />
       </mesh>
+      <OrbitControls enableZoom={false} />
       <EffectComposer frameBufferType={HalfFloatType} multisampling={0}>
         <ToneMapping mode={ToneMappingMode.LINEAR} />
         <CRT ref={crtRef} preset="reference" inputResolution={160} />

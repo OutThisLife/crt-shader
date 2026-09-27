@@ -11,9 +11,9 @@ export default defineConfig({
     server: { strictPort: true },
     // These client-only adapters are imported from the sibling examples workspace.
     // Prebundle their CommonJS dependencies before serving the React islands.
-    optimizeDeps: { include: ['@react-three/fiber', '@react-three/postprocessing'] },
+    optimizeDeps: { include: ['@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'] },
     resolve: {
-      dedupe: ['react', 'react-dom', 'three', 'postprocessing', '@react-three/fiber', '@react-three/postprocessing'],
+      dedupe: ['react', 'react-dom', 'three', 'postprocessing', '@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
     },
   },
   integrations: [

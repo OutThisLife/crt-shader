@@ -28,3 +28,7 @@
   --sl-color-black: hsl(0, 0%, 100%);
   --sl-color-backdrop-overlay: hsla(0, 0%, 36%, 0.66);
 }
+
+@media (min-width: 50rem) {
+  .hero { padding-block: 3rem 0; }
+}

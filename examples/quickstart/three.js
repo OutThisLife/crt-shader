@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CRTPass } from 'crt-shader/three';
 
 export function mount(host) {
@@ -31,9 +32,14 @@ export function mount(host) {
   composer.addPass(crt); // Last: do not encode again.
   composer.render(); // For animation, call this in your render loop.
 
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableZoom = false; // Let the page scroll over the canvas.
+  controls.addEventListener('change', () => composer.render());
+
   return {
     canvas: renderer.domElement,
     dispose() {
+      controls.dispose();
       crt.dispose();
       output.dispose();
       render.dispose();

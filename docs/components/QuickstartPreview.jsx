@@ -8,6 +8,7 @@ const recipes = {
   postprocessing: () => import('../../examples/quickstart/postprocessing.js'),
   r3f: () => import('../../examples/quickstart/r3f.jsx'),
 };
+const orbitable = new Set(['three', 'postprocessing', 'r3f']);
 
 export default function QuickstartPreview({ integration, label }) {
   const root = useRef(null);
@@ -82,7 +83,7 @@ export default function QuickstartPreview({ integration, label }) {
 
   return (
     <div ref={root} className="crt-quickstart not-content" data-quickstart={integration} data-ready="false">
-      <p className="crt-caption">Live example · <InspectHint /></p>
+      <p className="crt-caption">Live example · {orbitable.has(integration) && 'Drag to orbit · '}<InspectHint /></p>
       <InspectableSurface label={`${label}: CRT example`} capture={capture}>
         <div ref={host} className="crt-quickstart-frame">
           {visible && Recipe && <Recipe onLoad={markReady} onError={reportError} crtRef={crt}
