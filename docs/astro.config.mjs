@@ -30,8 +30,10 @@ export default defineConfig({
       },
       description: 'A WebGL 2 CRT effect for images and 3D scenes, with React and Three.js integrations.',
       social: [
+        { icon: 'npm', label: 'npm', href: 'https://www.npmjs.com/package/crt-shader' },
         { icon: 'github', label: 'GitHub', href: 'https://github.com/OutThisLife/crt-shader' },
       ],
+      editLink: { baseUrl: 'https://github.com/OutThisLife/crt-shader/edit/main/docs/' },
       // Canonical Markdown lives at docs/*.md for existing GitHub/npm links.
       markdown: { processedDirs: ['.'] },
       sidebar: [
